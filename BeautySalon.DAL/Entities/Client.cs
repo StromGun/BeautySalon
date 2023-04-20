@@ -8,6 +8,13 @@ namespace BeautySalon.DAL.Entities
         Ж = 1
     }
 
+    public enum Status
+    {
+        Постоянный = 0,
+        Потенциальный = 1,
+        Потерянный = 3
+    }
+
     public class Client
     {
         public int ID { get; set; }
@@ -19,8 +26,12 @@ namespace BeautySalon.DAL.Entities
 
         public Gender? Gender { get; set; }
 
+        [Phone]
         public string? Phone { get; set; }
+        [EmailAddress]
         public string? Email { get; set; }
+
+        public Status? Status { get; set; }
 
         public DateTime? BirthDay { get; set; }
         public byte[]? Image { get; set; }

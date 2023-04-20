@@ -2,9 +2,12 @@
 using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Threading;
 
 namespace BeautySalon.ViewModels
 {

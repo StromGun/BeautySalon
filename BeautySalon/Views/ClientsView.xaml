@@ -22,8 +22,13 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-
-        <DataGrid Grid.Row="1" ItemsSource="{Binding ClientsView}" AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedClient}">
+        
+        <GroupBox Header="HIHIH" Margin="5" BorderBrush="Black" BorderThickness="0.5">
+            
+        </GroupBox>
+        
+        <DataGrid Grid.Row="1" ItemsSource="{Binding ClientsView}" Margin="5 0"
+                  AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedClient}">
             
             <DataGrid.Resources>
                 <ContextMenu  x:Key="CtxMenu">
@@ -37,6 +42,7 @@
 
                 </ContextMenu>
             </DataGrid.Resources>
+            
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <Setter Property="ContextMenu" Value="{StaticResource CtxMenu}"/>

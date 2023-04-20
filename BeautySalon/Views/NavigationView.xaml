@@ -11,7 +11,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadAsyncCmd}"/>
+            <i:InvokeCommandAction />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
@@ -23,7 +23,7 @@
 
             <Border BorderBrush="Black" BorderThickness="0 0 1 0">
                 <WrapPanel Orientation="Horizontal" Grid.Column="0" Margin="0" ItemHeight="125" ItemWidth="125">
-                    <Button Style="{StaticResource NavigationBtn}" Command="{Binding OpenClientViewCmd}">
+                    <Button Style="{StaticResource NavigationBtn}" >
                         <Button.Content>
                             <StackPanel HorizontalAlignment="Stretch">
                                 <Image  MaxHeight="90"/>
@@ -32,7 +32,7 @@
                         </Button.Content>
                     </Button>
 
-                    <Button Style="{StaticResource NavigationBtn}" Command="{Binding OpenOrderViewCmd}">
+                    <Button Style="{StaticResource NavigationBtn}" >
                         <Button.Content>
                             <StackPanel HorizontalAlignment="Stretch">
                                 <Image MaxHeight="90"/>

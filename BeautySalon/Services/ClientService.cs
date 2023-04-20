@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 
 namespace BeautySalon.Services
 {
@@ -14,17 +13,18 @@ namespace BeautySalon.Services
         private ObservableCollection<Client>? _clients;
         private readonly BeautySalonDB dB;
 
-        public ObservableCollection<Client>? Clients { get => _clients = GetClients(); set => Set(ref _clients,value); }
+        public ObservableCollection<Client>? Clients { get => _clients; set => Set(ref _clients,value); }
 
         public ObservableCollection<Client>? GetClients()
         {
-            dB.Clients.LoadAsync().Wait();
+            dB.Clients.Load();
             return  dB.Clients.Local.ToObservableCollection();
         }
 
         public ClientService(BeautySalonDB dB)
         {
             this.dB = dB;
+            Clients = GetClients();
         }
 
 

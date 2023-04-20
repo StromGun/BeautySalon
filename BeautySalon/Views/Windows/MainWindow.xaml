@@ -1,0 +1,30 @@
+﻿<Window x:Class="BeautySalon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="clr-namespace:BeautySalon.ViewModels"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BeautySalon"
+        d:DataContext="{d:DesignInstance {x:Type vm:MainViewModel}}"
+        mc:Ignorable="d"
+        Title="MainWindow" MinHeight="600" MinWidth="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*" MaxHeight="90"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.2*" MaxHeight="50"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Background="{StaticResource ColorCommon}" Margin="0">
+            <Image  HorizontalAlignment="Left" Margin="20 0 0 10"/>
+
+            <TextBlock Text="{Binding ElementName=FrameMain, Path=Content.Title}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Width="auto"/>
+        </Grid>
+
+        <ContentControl Grid.Row="1" Name="FrameMain" Content="{Binding CurrentViewModel}"/>
+
+        <Grid Grid.Row="3" Background="{StaticResource ColorCommon}"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,55 @@
+﻿<Window x:Class="BeautySalon.Views.Windows.EditClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:BeautySalon.ViewModels"
+        xmlns:local="clr-namespace:BeautySalon.Views.Windows"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance {x:Type vm:EditClientViewModel}}"
+        Title="EditClientWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+            <StackPanel Margin="30">
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Фамилия" Style="{StaticResource TBmain}"/>
+                    <TextBox Text="{Binding Client.LastName}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Имя" Style="{StaticResource TBmain}"/>
+                    <TextBox Text="{Binding Client.FirstName}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Отчество" Style="{StaticResource TBmain}"/>
+                    <TextBox Text="{Binding Client.Patronymic}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Дата рождения" Style="{StaticResource TBmain}"/>
+                    <TextBox Text="{Binding Client.BirthDay}"/>
+                </StackPanel>
+
+                <Button Content="Сохранить" IsDefault="True" Command="{StaticResource DialogResultCommand}" CommandParameter="True" HorizontalAlignment="Right" Margin="5"/>
+
+            </StackPanel>
+
+
+            <StackPanel  Margin="20">
+
+                <TextBlock Text="Картинка" Style="{StaticResource TBmain}"/>
+
+                <Border BorderBrush="Black" BorderThickness="1" Width="150" Height="135">
+                    <Image x:Name="ClientImage"/>
+                </Border>
+
+                <Button Content="Выбрать"/>
+
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>

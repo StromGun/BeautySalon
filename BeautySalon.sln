@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalon", "BeautySalon\BeautySalon.csproj", "{7DAC26E8-0C3C-4C59-B6B3-5BC4049C361D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalon.DAL", "BeautySalon.DAL\BeautySalon.DAL.csproj", "{8B49ECD6-3B71-4E8E-BFBB-CDB5412927F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DAC26E8-0C3C-4C59-B6B3-5BC4049C361D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DAC26E8-0C3C-4C59-B6B3-5BC4049C361D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DAC26E8-0C3C-4C59-B6B3-5BC4049C361D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DAC26E8-0C3C-4C59-B6B3-5BC4049C361D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B49ECD6-3B71-4E8E-BFBB-CDB5412927F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B49ECD6-3B71-4E8E-BFBB-CDB5412927F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B49ECD6-3B71-4E8E-BFBB-CDB5412927F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B49ECD6-3B71-4E8E-BFBB-CDB5412927F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7C853BE-00E2-4B3D-95DD-10A5AA9BB2D7}
+	EndGlobalSection
+EndGlobal

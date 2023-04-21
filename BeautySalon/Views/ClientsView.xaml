@@ -24,7 +24,9 @@
         </Grid.RowDefinitions>
         
         <GroupBox Header="HIHIH" Margin="5" BorderBrush="Black" BorderThickness="0.5">
-            
+            <TreeView ItemsSource="{Binding ClientsView}">
+                
+            </TreeView>
         </GroupBox>
         
         <DataGrid Grid.Row="1" ItemsSource="{Binding ClientsView}" Margin="5 0"

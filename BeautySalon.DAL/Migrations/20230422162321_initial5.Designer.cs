@@ -4,6 +4,7 @@ using BeautySalon.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BeautySalon.DAL.Migrations
 {
     [DbContext(typeof(BeautySalonDB))]
-    partial class BeautySalonDBModelSnapshot : ModelSnapshot
+    [Migration("20230422162321_initial5")]
+    partial class initial5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,7 +108,7 @@ namespace BeautySalon.DAL.Migrations
                     b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("ServiceTypeId")
+                    b.Property<int>("ServiceTypeId")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -160,7 +163,9 @@ namespace BeautySalon.DAL.Migrations
                 {
                     b.HasOne("BeautySalon.DAL.Entities.ServiceType", "ServiceType")
                         .WithMany("Services")
-                        .HasForeignKey("ServiceTypeId");
+                        .HasForeignKey("ServiceTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ServiceType");
                 });

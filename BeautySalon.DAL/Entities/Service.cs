@@ -14,5 +14,6 @@ namespace BeautySalon.DAL.Entities
         public decimal? Price { get => price; set => Set(ref price, value); }
 
         public virtual ICollection<Order>? Orders { get => orders; set => Set(ref orders, value); }
+        public ServiceType? ServiceType { get; set; }
     }
 }

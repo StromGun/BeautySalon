@@ -11,31 +11,31 @@
     <Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-            <StackPanel Margin="30">
+            <WrapPanel Orientation="Vertical" Margin="30">
 
-                <StackPanel Orientation="Horizontal">
+                <WrapPanel ItemWidth="140" Orientation="Horizontal">
                     <TextBlock Text="Фамилия" Style="{StaticResource TBmain}"/>
-                    <TextBox Text="{Binding Client.LastName}"/>
-                </StackPanel>
+                    <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.LastName}"/>
+                </WrapPanel>
 
-                <StackPanel Orientation="Horizontal">
+                <WrapPanel ItemWidth="140" Orientation="Horizontal">
                     <TextBlock Text="Имя" Style="{StaticResource TBmain}"/>
-                    <TextBox Text="{Binding Client.FirstName}"/>
-                </StackPanel>
+                    <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.FirstName}"/>
+                </WrapPanel>
 
-                <StackPanel Orientation="Horizontal">
+                <WrapPanel ItemWidth="140" Orientation="Horizontal">
                     <TextBlock Text="Отчество" Style="{StaticResource TBmain}"/>
-                    <TextBox Text="{Binding Client.Patronymic}"/>
-                </StackPanel>
+                    <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.Patronymic}"/>
+                </WrapPanel>
 
-                <StackPanel Orientation="Horizontal">
+                <WrapPanel ItemWidth="140" Orientation="Horizontal">
                     <TextBlock Text="Дата рождения" Style="{StaticResource TBmain}"/>
-                    <TextBox Text="{Binding Client.BirthDay}"/>
-                </StackPanel>
+                    <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.BirthDay}"/>
+                </WrapPanel>
 
                 <Button Content="Сохранить" Command="{StaticResource DialogResultCommand}" CommandParameter="True" HorizontalAlignment="Right" Margin="5"/>
 
-            </StackPanel>
+            </WrapPanel>
 
 
             <StackPanel  Margin="20">

@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BeautySalon.DAL.Entities.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace BeautySalon.DAL.Entities
 {
-    internal class ServiceType
+    public class ServiceType : Entity
     {
+        private int id;
+        private string? name;
+
+        public int Id { get => id; set => Set(ref id,value); }
+        [Required]
+        public string? Name { get => name; set => Set(ref name,value); }
+
+        public ICollection<Service>? Services { get; set; }
     }
 }

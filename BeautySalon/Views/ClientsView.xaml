@@ -37,10 +37,11 @@
                     <MenuItem Header="Копировать"
                               Command="Copy"/>
                     <MenuItem Header="Редактировать" 
-                              />
+                              Command="{StaticResource EditClientCommand}"
+                              CommandParameter="{Binding Path=DataContext.SelectedClient, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
                     <MenuItem Header="Удалить" 
                               Command="{StaticResource RemoveClientCommand}" 
-                              CommandParameter="{Binding Path=SelectedItem,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                              CommandParameter="{Binding Path=DataContext.SelectedClient, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
 
                 </ContextMenu>
             </DataGrid.Resources>
@@ -62,6 +63,6 @@
         </DataGrid>
 
 
-        <Button Grid.Row="2" Content="Добавить" HorizontalAlignment="Right" Command="{StaticResource AddClientCommand}" />
+        <Button Grid.Row="2" Content="Добавить" Command="{StaticResource AddClientCommand}" HorizontalAlignment="Right"  />
     </Grid>
 </UserControl>

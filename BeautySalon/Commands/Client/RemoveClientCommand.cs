@@ -4,12 +4,14 @@ using System.Windows;
 using System.Windows.Input;
 using BeautySalon.DAL.Context;
 using BeautySalon.DAL.Entities;
+using BeautySalon.Services.Interfaces;
 
 namespace BeautySalon.Commands
 {
     internal class RemoveClientCommand : ICommand
     {
         private readonly BeautySalonDB DataBase = App.Services.GetRequiredService<BeautySalonDB>();
+        private readonly IUserDialog userDialog = App.Services.GetRequiredService<IUserDialog>();
 
         public event EventHandler? CanExecuteChanged
         {
@@ -23,8 +25,7 @@ namespace BeautySalon.Commands
         {
             var client = (Client)parameter!;
 
-            if (MessageBox.Show($"Вы действительн хотите удалить клиента {client?.FirstName}?",
-                "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No) == MessageBoxResult.Yes)
+            if (userDialog.ConfirmedWarning($"Вы точно хотите удалить клиента {client.LastName}?", "Внимание"))
             {
                 try
                 {

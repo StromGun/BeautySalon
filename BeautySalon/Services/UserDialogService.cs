@@ -15,11 +15,21 @@ namespace BeautySalon.Services
             var client_editor_model = new EditClientViewModel(client);
             var client_editor_window = new EditClientWindow()
             {
-                DataContext = client_editor_model
+                DataContext = client_editor_model,
+                Owner = App.ActiveWindow
             };
 
             if (client_editor_window.ShowDialog() != true) 
                 return false;
+
+            client.ID = client_editor_model.Client.ID;
+            client.LastName = client_editor_model.Client.LastName;
+            client.FirstName = client_editor_model.Client.FirstName;
+            client.Patronymic = client_editor_model.Client.Patronymic;
+            client.Status = client_editor_model.Client.Status;
+            client.Email = client_editor_model.Client.Email;
+            client.Phone = client_editor_model.Client.Phone;
+            client.BirthDay = client_editor_model.Client.BirthDay;
 
             return true;
         }

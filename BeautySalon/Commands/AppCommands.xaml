@@ -6,5 +6,6 @@
 
     <cmd:RemoveClientCommand x:Key="RemoveClientCommand"/>
     <cmd:AddClientCommand x:Key="AddClientCommand"/>
+    <cmd:EditClientCommand x:Key="EditClientCommand"/>
 
 </ResourceDictionary>

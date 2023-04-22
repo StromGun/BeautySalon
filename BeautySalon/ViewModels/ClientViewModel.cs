@@ -1,21 +1,23 @@
 ﻿using BeautySalon.Commands;
+using BeautySalon.DAL.Context;
 using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.Windows;
 using System.Windows.Data;
-using System.Windows.Threading;
 
 namespace BeautySalon.ViewModels
 {
     internal class ClientViewModel : ViewModel
     {
         private readonly IClientService clientService;
-
-
+        private readonly BeautySalonDB dB;
+        private readonly IUserDialog userDialog;
         private string _title = "Dada";
         public string Title { get => _title; set => Set(ref _title,value); }
 
@@ -46,17 +48,21 @@ namespace BeautySalon.ViewModels
         private Client? selectedClient;
         public Client? SelectedClient { get => selectedClient; set=> Set(ref selectedClient,value); }
 
+        #region Loaded
         private RelayCommand? loadedCmd;
         public RelayCommand? LoadedCmd => loadedCmd ??= new RelayCommand(obj => Loaded());
         private void Loaded()
         {
             Clients = clientService.Clients;
         }
+        #endregion
 
-
-        public ClientViewModel(IClientService clientService)
+       
+        public ClientViewModel(IClientService clientService, BeautySalonDB dB, IUserDialog userDialog)
         {
             this.clientService = clientService;
+            this.dB = dB;
+            this.userDialog = userDialog;
         }
 
 

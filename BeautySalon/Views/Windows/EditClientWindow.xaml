@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:BeautySalon.Views.Windows"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type vm:EditClientViewModel}}"
-        Title="EditClientWindow" Height="450" Width="800">
+        Title="EditClientWindow" Height="450" Width="800" WindowStartupLocation="CenterOwner">
     <Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
 
@@ -33,7 +33,7 @@
                     <TextBox Text="{Binding Client.BirthDay}"/>
                 </StackPanel>
 
-                <Button Content="Сохранить" IsDefault="True" Command="{StaticResource DialogResultCommand}" CommandParameter="True" HorizontalAlignment="Right" Margin="5"/>
+                <Button Content="Сохранить" Command="{StaticResource DialogResultCommand}" CommandParameter="True" HorizontalAlignment="Right" Margin="5"/>
 
             </StackPanel>
 

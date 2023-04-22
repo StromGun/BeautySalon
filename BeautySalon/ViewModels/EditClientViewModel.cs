@@ -1,10 +1,5 @@
 ﻿using BeautySalon.DAL.Entities;
 using BeautySalon.ViewModels.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BeautySalon.ViewModels
 {
@@ -16,7 +11,16 @@ namespace BeautySalon.ViewModels
         public EditClientViewModel(Client? client)
         {
 
-            Client = client!;
+            Client.ID = client!.ID;
+            Client.FirstName = client.FirstName;
+            Client.LastName = client.LastName;
+            Client.Email = client.Email;
+            Client.Phone = client.Phone;
+            Client.Patronymic = client.Patronymic;
+            Client.Status = client.Status;
+            Client.BirthDay = client.BirthDay;
+            Client.Image = client.Image;
+            Client.Orders = client.Orders;
 
         }
     }

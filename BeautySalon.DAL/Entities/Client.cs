@@ -1,6 +1,7 @@
 ﻿using BeautySalon.DAL.Entities.Base;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 
 namespace BeautySalon.DAL.Entities
@@ -24,6 +25,7 @@ namespace BeautySalon.DAL.Entities
         private string? lastName;
         private string? firstName;
         private string? patronymic;
+        private DateTime dateAdded;
         private Gender? gender;
         private string? phone;
         private string? email;
@@ -40,6 +42,8 @@ namespace BeautySalon.DAL.Entities
         public string? Patronymic { get => patronymic; set => Set(ref patronymic, value); }
 
         public Gender? Gender { get => gender; set => Set(ref gender, value); }
+        [Column(TypeName = "Date")]
+        public DateTime DateAdded { get => dateAdded; set => Set(ref dateAdded, value); }
 
         [Phone]
         public string? Phone { get => phone; set => Set(ref phone, value); }

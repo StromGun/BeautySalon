@@ -1,7 +1,6 @@
 ﻿using BeautySalon.Commands;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
-using System;
 
 namespace BeautySalon.ViewModels
 {
@@ -31,6 +30,7 @@ namespace BeautySalon.ViewModels
         private void OpenOrderView() => ChangeViewModel(ordersView);
         #endregion
 
+        #region OpenAboutBox - Command
         private RelayCommand? openAboutBox;
         public RelayCommand? OpenAboutBoxCmd => openAboutBox ??= new(obj => OpenAboutBox());
         private void OpenAboutBox()
@@ -41,7 +41,8 @@ namespace BeautySalon.ViewModels
         private void ChangeViewModel(ViewModel viewModel)
         {
             CurrentViewModel = viewModel;
-        }
+        } 
+        #endregion
 
         public MainViewModel(
             NavigationViewModel navigationViewModel,

@@ -28,9 +28,14 @@
                 
             </TreeView>
         </GroupBox>
-        
-        <DataGrid Grid.Row="1" ItemsSource="{Binding ClientsView}" Margin="5 0"
+         
+        <DataGrid Grid.Row="1" ItemsSource="{Binding ClientsView}" Margin="5 0" Language="ru-RU" SelectionMode="Single" 
                   AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedClient}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{StaticResource EditClientCommand}" CommandParameter="{Binding Path=SelectedClient}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             
             <DataGrid.Resources>
                 <ContextMenu  x:Key="CtxMenu">

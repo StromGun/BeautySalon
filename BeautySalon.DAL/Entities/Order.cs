@@ -1,14 +1,25 @@
-﻿namespace BeautySalon.DAL.Entities
+﻿using BeautySalon.DAL.Entities.Base;
+
+namespace BeautySalon.DAL.Entities
 {
-    public class Order
+    public class Order : Entity
     {
-        public int ID { get; set; }
-        public string? OrderName { get; set; }
-        public int? ClientID { get; set; }
-        public decimal? Price { get; set; }
+        private int iD;
+        private string? orderName;
+        private int? clientID;
+        private decimal? price;
+        private Client? client;
+        private ICollection<Service>? services;
 
 
-        public virtual Client? Client { get; set; }
-        public virtual ICollection<Service>? Services { get; set; }
+
+        public int ID { get => iD; set => Set(ref iD, value); }
+        public string? OrderName { get => orderName; set => Set(ref orderName, value); }
+        public int? ClientID { get => clientID; set => Set(ref clientID, value); }
+        public decimal? Price { get => price; set => Set(ref price, value); }
+
+
+        public virtual Client? Client { get => client; set => Set(ref client, value); }
+        public virtual ICollection<Service>? Services { get => services; set => Set(ref services, value); }
     }
 }

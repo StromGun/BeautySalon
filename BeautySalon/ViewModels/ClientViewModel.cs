@@ -3,12 +3,8 @@ using BeautySalon.DAL.Context;
 using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Windows;
 using System.Windows.Data;
 
 namespace BeautySalon.ViewModels

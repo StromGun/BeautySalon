@@ -10,6 +10,7 @@ namespace BeautySalon.Services.Interfaces
         bool ConfirmedInformation(string Information, string Caption);
         bool ConfirmedWarning(string Warning, string Caption);
         bool ConfirmError(string Error, string Caption);
+        bool OpenAboutBox();
     }
 
 }

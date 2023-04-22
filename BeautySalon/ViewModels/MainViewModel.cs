@@ -1,4 +1,5 @@
 ﻿using BeautySalon.Commands;
+using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
 using System;
 
@@ -9,6 +10,7 @@ namespace BeautySalon.ViewModels
         private readonly NavigationViewModel navigationViewModel;
         private readonly ClientViewModel clientView;
         private readonly OrdersViewModels ordersView;
+        private readonly IUserDialog userDialog;
         private ViewModel? currentViewModel;
         public ViewModel? CurrentViewModel { get => currentViewModel; set => Set(ref currentViewModel, value); }
 
@@ -26,8 +28,15 @@ namespace BeautySalon.ViewModels
         private RelayCommand? openOrderViewCmd;
         public RelayCommand? OpenOrderViewCmd => openOrderViewCmd ??= new(obj => OpenOrderView(), obj => CanOpenOrderView());
         private bool CanOpenOrderView() => CurrentViewModel != ordersView;
-        private void OpenOrderView() => ChangeViewModel(ordersView); 
+        private void OpenOrderView() => ChangeViewModel(ordersView);
         #endregion
+
+        private RelayCommand? openAboutBox;
+        public RelayCommand? OpenAboutBoxCmd => openAboutBox ??= new(obj => OpenAboutBox());
+        private void OpenAboutBox()
+        {
+            userDialog.OpenAboutBox();
+        }
 
         private void ChangeViewModel(ViewModel viewModel)
         {
@@ -37,11 +46,13 @@ namespace BeautySalon.ViewModels
         public MainViewModel(
             NavigationViewModel navigationViewModel,
             ClientViewModel clientView,
-            OrdersViewModels ordersView)
+            OrdersViewModels ordersView,
+            IUserDialog userDialog)
         {
             this.navigationViewModel = navigationViewModel;
             this.clientView = clientView;
             this.ordersView = ordersView;
+            this.userDialog = userDialog;
             CurrentViewModel = this.navigationViewModel;
         }
 

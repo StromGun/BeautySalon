@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BeautySalon.DAL.Entities.Base;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 
 namespace BeautySalon.DAL.Entities
 {
@@ -15,27 +18,39 @@ namespace BeautySalon.DAL.Entities
         Потерянный = 3
     }
 
-    public class Client
+    public class Client : Entity
     {
-        public int ID { get; set; }
-        [Required]
-        public string? LastName { get; set; }
-        [Required]
-        public string? FirstName { get; set; }
-        public string? Patronymic { get; set; }
+        private int iD;
+        private string? lastName;
+        private string? firstName;
+        private string? patronymic;
+        private Gender? gender;
+        private string? phone;
+        private string? email;
+        private Status? status;
+        private DateTime? birthDay;
+        private byte[]? image;
+        private ICollection<Order>? orders;
 
-        public Gender? Gender { get; set; }
+        public int ID { get => iD; set => Set(ref iD,value); }
+        [Required]
+        public string? LastName { get => lastName; set => Set(ref lastName,value); }
+        [Required]
+        public string? FirstName { get => firstName; set => Set(ref firstName, value); }
+        public string? Patronymic { get => patronymic; set => Set(ref patronymic, value); }
+
+        public Gender? Gender { get => gender; set => Set(ref gender, value); }
 
         [Phone]
-        public string? Phone { get; set; }
+        public string? Phone { get => phone; set => Set(ref phone, value); }
         [EmailAddress]
-        public string? Email { get; set; }
+        public string? Email { get => email; set => Set(ref email, value); }
 
-        public Status? Status { get; set; }
+        public Status? Status { get => status; set => Set(ref status, value); }
 
-        public DateTime? BirthDay { get; set; }
-        public byte[]? Image { get; set; }
+        public DateTime? BirthDay { get => birthDay; set => Set(ref birthDay, value); }
+        public byte[]? Image { get => image; set => Set(ref image, value); }
 
-        public virtual ICollection<Order>? Orders { get; set; }
+        public virtual ICollection<Order>? Orders { get => orders; set => Set(ref orders, value); }
     }
 }

@@ -35,6 +35,14 @@ namespace BeautySalon.Services
         }
 
 
+
+        public bool OpenAboutBox()
+        {
+            var aboutBox = new AboutWindow();
+            aboutBox.ShowDialog();
+            return true;
+        }
+
         public bool ConfirmedInformation(string Information, string Caption) => MessageBox
             .Show(
             Information, Caption,

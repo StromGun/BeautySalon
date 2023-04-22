@@ -5,7 +5,11 @@ namespace BeautySalon.Commands
 {
     internal class DialogResultCommand : ICommand
     {
-        public event EventHandler? CanExecuteChanged;
+        public event EventHandler? CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public bool? DialogResult { get; set; }
 

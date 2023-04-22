@@ -20,7 +20,6 @@ namespace BeautySalon.ViewModels
             Client.Status = client.Status;
             Client.BirthDay = client.BirthDay;
             Client.Image = client.Image;
-            Client.Orders = client.Orders;
 
         }
     }

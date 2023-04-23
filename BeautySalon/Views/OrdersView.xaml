@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:vm="clr-namespace:BeautySalon.ViewModels"
+             xmlns:us="clr-namespace:BeautySalon.Resources.UserControls"
              xmlns:local="clr-namespace:BeautySalon.Views"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance {x:Type vm:OrdersViewModels}}"
@@ -15,8 +16,11 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding Days}">
-            <!-- ItemsPanelTemplate -->
+
+        <us:ScheduleDayControl x:Name="scheduleControl" Grid.Row="1" Items="{Binding ScheduleItems}"/>
+
+        <!--<ItemsControl Grid.Row="1" ItemsSource="{Binding Days}">
+            --><!-- ItemsPanelTemplate --><!--
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
@@ -40,7 +44,7 @@
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 
-            <!-- ItemContainerStyle -->
+            --><!-- ItemContainerStyle --><!--
             <ItemsControl.ItemContainerStyle>
                 <Style>
                     <Setter Property="Grid.Column" Value="{Binding WeekDay}" />
@@ -54,7 +58,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 
-        </ItemsControl>
+        </ItemsControl>-->
 
         <Button Grid.Row="2" HorizontalAlignment="Right" >
             <StackPanel Orientation="Horizontal">

@@ -1,23 +1,32 @@
-﻿using BeautySalon.ViewModels.Base;
+﻿using BeautySalon.DAL.Entities;
+using BeautySalon.Resources.UserControls;
+using BeautySalon.Services.Interfaces;
+using BeautySalon.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BeautySalon.ViewModels
 {
     class OrdersViewModels : ViewModel
     {
+        private readonly IOrderService orderService;
+
+
+
         private string _title = "Записи";
         public string Title { get => _title; set => Set(ref _title,value); }
+
+        public List<ScheduleItem>? ScheduleItems { get; set; }
 
         private ObservableCollection<Day>? days;
         public ObservableCollection<Day>? Days { get => days; set => Set(ref days,value); }
 
-        public OrdersViewModels()
+        private ObservableCollection<Order>? orders;
+        public ObservableCollection<Order>? Orders { get => orders; set => Set(ref orders, value); }
+
+        public OrdersViewModels(IOrderService orderService)
         {
             Days = new()
             {
@@ -30,6 +39,12 @@ namespace BeautySalon.ViewModels
                 new Day { WeekNo = 5, WeekDay = 7, Date = DateTime.Now},
                 new Day { WeekNo = 6, WeekDay = 7, Date = DateTime.Now},
             };
+            this.orderService = orderService;
+
+            ScheduleItems = new();
+            
+            Orders = this.orderService.Orders;
+            ScheduleItems.Add(new() { Title = Orders?.FirstOrDefault()?.OrderName });
         }
     }
 

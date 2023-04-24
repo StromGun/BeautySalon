@@ -4,7 +4,6 @@
 
 
     <Style TargetType="TextBox" x:Key="TboxCommon">
-        <Setter Property="Margin" Value="5"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
@@ -29,6 +28,9 @@
     <Style TargetType="TextBlock" x:Key="TBmain">
         <Setter Property="Height" Value="30"/>
         <Setter Property="FontSize" Value="20"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="TBlockCommon">
+        <Setter Property="FontSize" Value="14"/>
     </Style>
 
 

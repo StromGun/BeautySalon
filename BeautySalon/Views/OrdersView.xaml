@@ -17,10 +17,10 @@
         </Grid.RowDefinitions>
 
 
-        <us:ScheduleDayControl x:Name="scheduleControl" Grid.Row="1" Items="{Binding ScheduleItems}"/>
+        <!--<us:ScheduleDayControl x:Name="scheduleControl" Grid.Row="1" Items="{Binding ScheduleItems}"/>-->
 
-        <!--<ItemsControl Grid.Row="1" ItemsSource="{Binding Days}">
-            --><!-- ItemsPanelTemplate --><!--
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Days}">
+
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
@@ -44,7 +44,7 @@
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 
-            --><!-- ItemContainerStyle --><!--
+
             <ItemsControl.ItemContainerStyle>
                 <Style>
                     <Setter Property="Grid.Column" Value="{Binding WeekDay}" />
@@ -58,7 +58,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 
-        </ItemsControl>-->
+        </ItemsControl>
 
         <Button Grid.Row="2" HorizontalAlignment="Right" >
             <StackPanel Orientation="Horizontal">

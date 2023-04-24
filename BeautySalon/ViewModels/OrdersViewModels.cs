@@ -18,8 +18,6 @@ namespace BeautySalon.ViewModels
         private string _title = "Записи";
         public string Title { get => _title; set => Set(ref _title,value); }
 
-        public List<ScheduleItem>? ScheduleItems { get; set; }
-
         private ObservableCollection<Day>? days;
         public ObservableCollection<Day>? Days { get => days; set => Set(ref days,value); }
 
@@ -40,11 +38,8 @@ namespace BeautySalon.ViewModels
                 new Day { WeekNo = 6, WeekDay = 7, Date = DateTime.Now},
             };
             this.orderService = orderService;
-
-            ScheduleItems = new();
             
             Orders = this.orderService.Orders;
-            ScheduleItems.Add(new() { Title = Orders?.FirstOrDefault()?.OrderName });
         }
     }
 

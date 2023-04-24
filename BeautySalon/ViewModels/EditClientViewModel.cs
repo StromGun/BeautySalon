@@ -1,5 +1,7 @@
 ﻿using BeautySalon.DAL.Entities;
 using BeautySalon.ViewModels.Base;
+using System;
+using System.Runtime.CompilerServices;
 
 namespace BeautySalon.ViewModels
 {

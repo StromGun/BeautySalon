@@ -1,8 +1,6 @@
 ﻿using BeautySalon.DAL.Entities.Base;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.CompilerServices;
 
 namespace BeautySalon.DAL.Entities
 {
@@ -16,7 +14,7 @@ namespace BeautySalon.DAL.Entities
     {
         Постоянный = 0,
         Потенциальный = 1,
-        Потерянный = 3
+        Потерянный = 2
     }
 
     public class Client : Entity

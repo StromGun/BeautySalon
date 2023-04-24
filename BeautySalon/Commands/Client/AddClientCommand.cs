@@ -25,7 +25,7 @@ namespace BeautySalon.Commands
 
         public void Execute(object? parameter)
         {
-            var client = new Client();
+            var client = new Client() { DateAdded = DateTime.Now};
             if (!userDialog.EditClient(client)) return;
 
             if (DataBase is null) return;

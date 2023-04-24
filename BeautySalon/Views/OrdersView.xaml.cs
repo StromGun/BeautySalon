@@ -10,12 +10,6 @@ namespace BeautySalon.Views
         public OrdersView()
         {
             InitializeComponent();
-
-            scheduleControl.IntervalHeight = 25.0;
-            scheduleControl.Interval = new(0, 15, 0);
-            scheduleControl.TimeStart = new(8, 0, 0);
-            scheduleControl.TimeEnd = new(16, 0, 0);
-            scheduleControl.Redraw();
         }
     }
 }

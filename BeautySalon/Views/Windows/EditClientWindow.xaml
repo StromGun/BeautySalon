@@ -4,51 +4,89 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:BeautySalon.ViewModels"
+        xmlns:sys="clr-namespace:System.Globalization;assembly=mscorlib"
         xmlns:local="clr-namespace:BeautySalon.Views.Windows"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type vm:EditClientViewModel}}"
-        Title="EditClientWindow" Height="450" Width="800" WindowStartupLocation="CenterOwner">
+        Title="EditClientWindow" Height="450" Width="900" 
+        FontSize="14"
+        WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize">
     <Grid>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel>
+
+            <GroupBox Header="Клиент" Margin="2" BorderThickness="1.5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+
+                    <WrapPanel Orientation="Horizontal">
+                        <WrapPanel ItemWidth="180" Orientation="Vertical" Margin="5">
+                            <TextBlock Text="Фамилия" Style="{StaticResource TBlockCommon}"/>
+                            <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.LastName}"/>
+                        </WrapPanel>
+
+                        <WrapPanel ItemWidth="180" Orientation="Vertical" Margin="5">
+                            <TextBlock Text="Имя" Style="{StaticResource TBlockCommon}"/>
+                            <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.FirstName}"/>
+                        </WrapPanel>
+
+                        <WrapPanel ItemWidth="180" Orientation="Vertical" Margin="5">
+                            <TextBlock Text="Отчество" Style="{StaticResource TBlockCommon}"/>
+                            <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.Patronymic}"/>
+                        </WrapPanel>
+
+                        <WrapPanel ItemWidth="180" Orientation="Vertical" Margin="5 ">
+                            <TextBlock Text="Дата рождения" Style="{StaticResource TBlockCommon}"/>
+                            <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.BirthDay, StringFormat={}{0:dd.MM.yyyy},ConverterCulture=ru-RU}"/>
+                        </WrapPanel>
+
+                        <WrapPanel ItemWidth="180" Orientation="Vertical" Margin="5">
+                            <TextBlock Text="Пол" Style="{StaticResource TBlockCommon}"/>
+                            <TextBox Text="{Binding Client.Gender}" Style="{StaticResource TboxCommon}"/>
+                        </WrapPanel>
+                    </WrapPanel>
+
+                    <StackPanel Grid.Column="1">
+                        <Border Width="150" Height="135">
+                            <Image x:Name="ClientImage"/>
+                        </Border>
+                        <Button Content="Выбрать"/>
+                    </StackPanel>
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="Контакты" Margin="2" BorderThickness="1.5">
+                <WrapPanel Orientation="Horizontal">
+
+                    <WrapPanel ItemWidth="190" Orientation="Vertical" Margin="5">
+                        <TextBlock Text="Телефон" Style="{StaticResource TBlockCommon}"/>
+                        <TextBox Text="{Binding Client.Phone}" Style="{StaticResource TboxCommon}"/>
+                    </WrapPanel>
+
+                    <WrapPanel ItemWidth="190" Orientation="Vertical" Margin="5">
+                        <TextBlock Text="Email" Style="{StaticResource TBlockCommon}"/>
+                        <TextBox Text="{Binding Client.Email}" Style="{StaticResource TboxCommon}"/>
+                    </WrapPanel>
+                </WrapPanel>
+            </GroupBox>
+
+
 
             <WrapPanel Orientation="Vertical" Margin="30">
 
-                <WrapPanel ItemWidth="140" Orientation="Horizontal">
-                    <TextBlock Text="Фамилия" Style="{StaticResource TBmain}"/>
-                    <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.LastName}"/>
-                </WrapPanel>
+                
 
-                <WrapPanel ItemWidth="140" Orientation="Horizontal">
-                    <TextBlock Text="Имя" Style="{StaticResource TBmain}"/>
-                    <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.FirstName}"/>
-                </WrapPanel>
-
-                <WrapPanel ItemWidth="140" Orientation="Horizontal">
-                    <TextBlock Text="Отчество" Style="{StaticResource TBmain}"/>
-                    <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.Patronymic}"/>
-                </WrapPanel>
-
-                <WrapPanel ItemWidth="140" Orientation="Horizontal">
-                    <TextBlock Text="Дата рождения" Style="{StaticResource TBmain}"/>
-                    <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.BirthDay}"/>
-                </WrapPanel>
+                
 
                 <Button Content="Сохранить" Command="{StaticResource DialogResultCommand}" CommandParameter="True" HorizontalAlignment="Right" Margin="5"/>
 
             </WrapPanel>
 
 
-            <StackPanel  Margin="20">
-
-                <TextBlock Text="Картинка" Style="{StaticResource TBmain}"/>
-
-                <Border BorderBrush="Black" BorderThickness="1" Width="150" Height="135">
-                    <Image x:Name="ClientImage"/>
-                </Border>
-
-                <Button Content="Выбрать"/>
-
-            </StackPanel>
+            
 
         </StackPanel>
     </Grid>

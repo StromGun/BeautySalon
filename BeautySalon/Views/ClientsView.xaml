@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:vm="clr-namespace:BeautySalon.ViewModels"
+             xmlns:cv="clr-namespace:BeautySalon.Resources.Converters"
              xmlns:local="clr-namespace:BeautySalon.Views"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance {x:Type vm:ClientViewModel}}"
@@ -62,7 +63,10 @@
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="*"/>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}" Width="*"/>
-                <DataGridTextColumn Header="Возраст" Binding="{Binding BirthDay}" Width="*"/>
+                <DataGridTextColumn Header="Пол" Binding="{Binding Gender}" Width="*"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                <DataGridTextColumn Header="Возраст" Binding="{Binding BirthDay, Converter={cv:DatetimeToPassedDateConverter}}" Width="*"/>
 
             </DataGrid.Columns>
         </DataGrid>

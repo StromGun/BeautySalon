@@ -5,7 +5,7 @@ namespace BeautySalon.Services.Interfaces
 {
     internal interface IUserDialog
     {
-        bool EditClient(Client? client);
+        bool EditClient(ref Client? client);
 
         bool ConfirmedInformation(string Information, string Caption);
         bool ConfirmedWarning(string Warning, string Caption);

@@ -9,8 +9,9 @@ namespace BeautySalon.Services
     internal class UserDialogService : IUserDialog
     {
       
-        public bool EditClient(Client? client)
+        public bool EditClient(ref Client? client)
         {
+
             if (client == null) return false;
             var client_editor_model = new EditClientViewModel(client);
             var client_editor_window = new EditClientWindow()
@@ -22,12 +23,12 @@ namespace BeautySalon.Services
             if (client_editor_window.ShowDialog() != true) 
                 return false;
 
-            client.ID = client_editor_model.Client.ID;
             client.LastName = client_editor_model.Client.LastName;
             client.FirstName = client_editor_model.Client.FirstName;
             client.Patronymic = client_editor_model.Client.Patronymic;
             client.Status = client_editor_model.Client.Status;
             client.Email = client_editor_model.Client.Email;
+            client.Gender = client_editor_model.Client.Gender;
             client.Phone = client_editor_model.Client.Phone;
             client.BirthDay = client_editor_model.Client.BirthDay;
 

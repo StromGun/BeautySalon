@@ -25,12 +25,13 @@ namespace BeautySalon.Commands
 
         public void Execute(object? parameter)
         {
-            if (!userDialog.EditClient((Client)parameter!)) return;
+            var client = parameter as Client;
+            if (!userDialog.EditClient(ref client)) return;
 
             var results = new List<ValidationResult>();
-            var context = new ValidationContext(parameter!);
+            var context = new ValidationContext(client!);
 
-            if (!Validator.TryValidateObject(parameter!, context, results, true))
+            if (!Validator.TryValidateObject(client!, context, results, true))
             {
                 foreach (var item in results)
                     MessageBox.Show(item.ErrorMessage);
@@ -39,7 +40,7 @@ namespace BeautySalon.Commands
             {
                 try
                 {
-                    DataBase.Clients.Update((Client)parameter!);
+                    DataBase.Clients.Update(client!);
                     DataBase.SaveChanges();
                 }
                 catch (Exception ex)

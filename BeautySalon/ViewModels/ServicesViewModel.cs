@@ -17,9 +17,11 @@ namespace BeautySalon.ViewModels
         private ObservableCollection<Service>? _services;
         public ObservableCollection<Service>? Services { get => _services; set => Set(ref _services, value); }
 
+        private Service? selectedService;
+        public Service? SelectedService { get => selectedService; set => Set(ref selectedService, value); }
+
         private ObservableCollection<ServiceType>? _serviceTypes;
         public ObservableCollection<ServiceType>? ServiceTypes { get => _serviceTypes; set => Set(ref _serviceTypes, value); }
-
 
         public ServicesViewModel()
         {

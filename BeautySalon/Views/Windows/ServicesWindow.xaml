@@ -12,25 +12,32 @@
         FontSize="14"
         Title="ServicesWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel>
-            <TreeView ItemsSource="{Binding ServiceTypes}" >
-                <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate ItemsSource="{Binding Path=Services}">
-                        <TextBlock Text="{Binding Path=Name}"/>
-                        <HierarchicalDataTemplate.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Name}" />
-                            </DataTemplate>
-                        </HierarchicalDataTemplate.ItemTemplate>
-                    </HierarchicalDataTemplate>
-                </TreeView.ItemTemplate>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <TreeView ItemsSource="{Binding ServiceTypes}">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=Services}">
+                    <TextBlock Text="{Binding Path=Name}"/>
+                    <HierarchicalDataTemplate.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </HierarchicalDataTemplate.ItemTemplate>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
 
-                <i:Interaction.Behaviors>
-                    <b:BindableSelectedItemBehavior SelectedItem="{Binding SelectedService, Mode=TwoWay}"/>
-                </i:Interaction.Behaviors>
+            <i:Interaction.Behaviors>
+                <b:BindableSelectedItemBehavior SelectedItem="{Binding SelectedService, Mode=TwoWay}"/>
+            </i:Interaction.Behaviors>
                 
-            </TreeView>
+        </TreeView>
+
+        <StackPanel>
             <TextBlock Text="{Binding SelectedService.Name}"/>
         </StackPanel>
+
     </Grid>
 </Window>

@@ -6,11 +6,21 @@
         xmlns:vm="clr-namespace:BeautySalon.ViewModels"
         xmlns:local="clr-namespace:BeautySalon.Views.Windows"
         mc:Ignorable="d"
-        
+        d:DataContext="{d:DesignInstance {x:Type vm:ServicesViewModel}}"
+        FontSize="14"
         Title="ServicesWindow" Height="450" Width="800">
     <Grid>
-        <TreeView>
-            
+        <TreeView ItemsSource="{Binding ServiceTypes}">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=Services}">
+                    <TextBlock Text="{Binding Path=Name}"/>
+                    <HierarchicalDataTemplate.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </HierarchicalDataTemplate.ItemTemplate>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
         </TreeView>
     </Grid>
 </Window>

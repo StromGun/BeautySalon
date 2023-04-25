@@ -11,7 +11,6 @@ namespace BeautySalon.Services
       
         public bool EditClient(ref Client? client)
         {
-
             if (client == null) return false;
             var client_editor_model = new EditClientViewModel(client);
             var client_editor_window = new EditClientWindow()
@@ -35,7 +34,19 @@ namespace BeautySalon.Services
             return true;
         }
 
+        public bool OpenServices()
+        {
+            var services_model = new ServicesViewModel();
+            var services_window = new ServicesWindow()
+            {
+                DataContext = services_model,
+                Owner = App.ActiveWindow
+            };
+            if (services_window.ShowDialog() != true)
+                return false;
 
+            return true;
+        }
 
         public bool OpenAboutBox()
         {

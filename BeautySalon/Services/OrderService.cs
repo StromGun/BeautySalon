@@ -23,7 +23,7 @@ namespace BeautySalon.Services
         public OrderService(BeautySalonDB dB)
         {
             DB = dB;
-            GetOrders();
+            Orders = GetOrders();
         }
 
         #region Dda

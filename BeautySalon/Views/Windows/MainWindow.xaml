@@ -21,6 +21,7 @@
             <Menu Background="{StaticResource ColorCommon}" FontSize="14">
                 <MenuItem Header="Клиенты" Command="{Binding OpenClientViewCmd}"/>
                 <MenuItem Header="Записи" Command="{Binding OpenOrderViewCmd}"/>
+                <MenuItem Header="Услуги" Command="{Binding OpenServicesCmd}"/>
                 <MenuItem Header="О программе" Command="{Binding OpenAboutBoxCmd}"/>
             </Menu>
         </Grid>

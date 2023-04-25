@@ -7,6 +7,8 @@ namespace BeautySalon.Services.Interfaces
     {
         bool EditClient(ref Client? client);
 
+        bool OpenServices();
+
         bool ConfirmedInformation(string Information, string Caption);
         bool ConfirmedWarning(string Warning, string Caption);
         bool ConfirmError(string Error, string Caption);

@@ -37,12 +37,22 @@ namespace BeautySalon.ViewModels
         {
             userDialog.OpenAboutBox();
         }
+        #endregion
+
+        #region OpenServices - Command
+        private RelayCommand? openServices;
+        public RelayCommand? OpenServicesCmd => openServices ??= new(obj => OpenServices());
+        private void OpenServices()
+        {
+            userDialog.OpenServices();
+        } 
+        #endregion
+
 
         private void ChangeViewModel(ViewModel viewModel)
         {
             CurrentViewModel = viewModel;
-        } 
-        #endregion
+        }
 
         public MainViewModel(
             NavigationViewModel navigationViewModel,

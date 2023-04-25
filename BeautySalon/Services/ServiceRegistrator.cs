@@ -9,6 +9,7 @@ namespace BeautySalon.Services
             .AddTransient<IClientService, ClientService>()
             .AddTransient<IUserDialog, UserDialogService>()
             .AddTransient<IOrderService, OrderService>()
+            .AddTransient<IServicesService, ServicesService>()
             ;
 
     }

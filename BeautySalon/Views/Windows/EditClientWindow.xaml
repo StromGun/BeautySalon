@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type vm:EditClientViewModel}}"
         Title="EditClientWindow" Height="450" Width="900" 
-        FontSize="14"
+        FontSize="14" ShowInTaskbar="False"
         WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel>
@@ -22,37 +22,37 @@
                     </Grid.ColumnDefinitions>
 
                     <WrapPanel Orientation="Horizontal">
-                        <WrapPanel ItemWidth="180" Orientation="Vertical" Margin="5">
+                        <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5">
                             <TextBlock Text="Фамилия" Style="{StaticResource TBlockCommon}"/>
                             <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.LastName}"/>
                         </WrapPanel>
 
-                        <WrapPanel ItemWidth="180" Orientation="Vertical" Margin="5">
+                        <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5">
                             <TextBlock Text="Имя" Style="{StaticResource TBlockCommon}"/>
                             <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.FirstName}"/>
                         </WrapPanel>
 
-                        <WrapPanel ItemWidth="180" Orientation="Vertical" Margin="5">
+                        <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5">
                             <TextBlock Text="Отчество" Style="{StaticResource TBlockCommon}"/>
                             <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.Patronymic}"/>
                         </WrapPanel>
 
-                        <WrapPanel ItemWidth="180" Orientation="Vertical" Margin="5 ">
+                        <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5 ">
                             <TextBlock Text="Дата рождения" Style="{StaticResource TBlockCommon}"/>
                             <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.BirthDay, StringFormat={}{0:dd.MM.yyyy},ConverterCulture=ru-RU}"/>
                         </WrapPanel>
 
-                        <WrapPanel ItemWidth="180" Orientation="Vertical" Margin="5">
+                        <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5">
                             <TextBlock Text="Пол" Style="{StaticResource TBlockCommon}"/>
                             <TextBox Text="{Binding Client.Gender}" Style="{StaticResource TboxCommon}"/>
                         </WrapPanel>
                     </WrapPanel>
 
                     <StackPanel Grid.Column="1">
-                        <Border Width="150" Height="135">
+                        <Border Width="150" Height="135" BorderThickness="0.5" BorderBrush="Black">
                             <Image x:Name="ClientImage"/>
                         </Border>
-                        <Button Content="Выбрать"/>
+                        <Button Content="Выбрать" Style="{StaticResource BtnCommon}"/>
                     </StackPanel>
 
                 </Grid>
@@ -61,12 +61,12 @@
             <GroupBox Header="Контакты" Margin="2" BorderThickness="1.5">
                 <WrapPanel Orientation="Horizontal">
 
-                    <WrapPanel ItemWidth="190" Orientation="Vertical" Margin="5">
+                    <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5">
                         <TextBlock Text="Телефон" Style="{StaticResource TBlockCommon}"/>
                         <TextBox Text="{Binding Client.Phone}" Style="{StaticResource TboxCommon}"/>
                     </WrapPanel>
 
-                    <WrapPanel ItemWidth="190" Orientation="Vertical" Margin="5">
+                    <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5">
                         <TextBlock Text="Email" Style="{StaticResource TBlockCommon}"/>
                         <TextBox Text="{Binding Client.Email}" Style="{StaticResource TboxCommon}"/>
                     </WrapPanel>
@@ -77,11 +77,11 @@
 
             <WrapPanel Orientation="Vertical" Margin="30">
 
-                
 
-                
 
-                <Button Content="Сохранить" Command="{StaticResource DialogResultCommand}" CommandParameter="True" HorizontalAlignment="Right" Margin="5"/>
+
+
+                <Button Content="Сохранить" Style="{StaticResource BtnCommon}" Command="{StaticResource DialogResultCommand}" CommandParameter="True" HorizontalAlignment="Right" Margin="5"/>
 
             </WrapPanel>
 

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:vm="clr-namespace:BeautySalon.ViewModels"
+             xmlns:con="clr-namespace:BeautySalon.Resources.Converters"
              xmlns:us="clr-namespace:BeautySalon.Resources.UserControls"
              xmlns:local="clr-namespace:BeautySalon.Views"
              mc:Ignorable="d" 
@@ -16,12 +17,9 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Orders}">
 
-        <!--<us:ScheduleDayControl x:Name="scheduleControl" Grid.Row="1" Items="{Binding ScheduleItems}"/>-->
-
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding Days}">
-
-            <ItemsControl.ItemsPanel>
+            <!--<ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -39,22 +37,23 @@
                             <ColumnDefinition />
                             <ColumnDefinition />
                             <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                     </Grid>
                 </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+            </ItemsControl.ItemsPanel>-->
+            
 
-
-            <ItemsControl.ItemContainerStyle>
+            <!--<ItemsControl.ItemContainerStyle>
                 <Style>
-                    <Setter Property="Grid.Column" Value="{Binding WeekDay}" />
+                    <Setter Property="Grid.Column" Value="{Binding TimeStart, Converter={con:DateToWeek}}" />
                     <Setter Property="Grid.Row" Value="{Binding WeekNo}" />
                 </Style>
-            </ItemsControl.ItemContainerStyle>
+            </ItemsControl.ItemContainerStyle>-->
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding WeekNo}"/>
+                    <Button Content="{Binding TimeStart, Converter={con:DateToWeek}}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 

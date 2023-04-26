@@ -72,6 +72,6 @@
         </DataGrid>
 
 
-        <Button Grid.Row="2" Content="Добавить" Command="{StaticResource AddClientCommand}" HorizontalAlignment="Right"  />
+        <Button Grid.Row="2" Style="{StaticResource BtnCommon}" Content="Добавить" Command="{StaticResource AddClientCommand}" HorizontalAlignment="Right"  />
     </Grid>
 </UserControl>

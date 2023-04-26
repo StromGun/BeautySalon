@@ -9,15 +9,16 @@
         xmlns:local="clr-namespace:BeautySalon.Views.Windows"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type vm:ServicesViewModel}}"
-        FontSize="14"
+        FontSize="14" ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
         Title="ServicesWindow" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
-        
-        <TreeView ItemsSource="{Binding ServiceTypes}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TreeView ItemsSource="{Binding ServiceTypes}" Margin="5">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=Services}">
                     <TextBlock Text="{Binding Path=Name}"/>
@@ -30,14 +31,30 @@
             </TreeView.ItemTemplate>
 
             <i:Interaction.Behaviors>
-                <b:BindableSelectedItemBehavior SelectedItem="{Binding SelectedService, Mode=TwoWay}"/>
+                <b:BindableSelectedItemBehavior SelectedItem="{Binding SelectedServiceL, Mode=TwoWay}"/>
             </i:Interaction.Behaviors>
                 
         </TreeView>
 
-        <StackPanel>
-            <TextBlock Text="{Binding SelectedService.Name}"/>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Margin="5" Command="{Binding AddServiceCmd}">
+                <Image Source="/Resources/Images/arrow_forward.png" Height="25"/>
+            </Button>
+
+            <Button Margin="5" Command="{Binding DeleteServiceCmd}">
+                <Image Source="/Resources/Images/arrow_back.png" Height="25"/>
+            </Button>
         </StackPanel>
+
+
+        <DataGrid Grid.Column="2" ItemsSource="{Binding SelectedServices}" Margin="5"
+                  SelectedItem="{Binding SelectedServiceR}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding }"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

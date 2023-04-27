@@ -10,15 +10,18 @@ namespace BeautySalon.Services
 {
     class OrderService : IOrderService, INotifyPropertyChanged
     {
+        public BeautySalonDB DB { get; }
+
         private ObservableCollection<Order>? _orders;
         public ObservableCollection<Order>? Orders { get => _orders; set => Set(ref _orders, value); }
-        public BeautySalonDB DB { get; }
 
         public ObservableCollection<Order>? GetOrders()
         {
             DB.Orders.Load();
             return DB.Orders.Local.ToObservableCollection();
         }
+
+        
 
         public OrderService(BeautySalonDB dB)
         {

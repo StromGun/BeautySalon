@@ -8,8 +8,8 @@ namespace BeautySalon.DAL.Entities
         private string? orderName;
         private int? clientID;
         private decimal? price;
-        private DateTime? timeStart;
-        private DateTime? timeEnd;
+        private DateTime? dateStart;
+        private TimeSpan? timeEnd;
 
         private Client? client;
         private ICollection<Service>? services;
@@ -24,7 +24,7 @@ namespace BeautySalon.DAL.Entities
 
         public virtual Client? Client { get => client; set => Set(ref client, value); }
         public virtual ICollection<Service>? Services { get => services; set => Set(ref services, value); }
-        public DateTime? TimeStart { get => timeStart; set => Set(ref timeStart,value); }
-        public DateTime? TimeEnd { get => timeEnd; set => Set(ref timeEnd,value); }
+        public DateTime? DateStart { get => dateStart; set => Set(ref dateStart,value); }
+        public TimeSpan? TimeEnd { get => timeEnd; set => Set(ref timeEnd,value); }
     }
 }

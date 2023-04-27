@@ -9,7 +9,7 @@ namespace BeautySalon.Views
     {
         public OrdersView()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage.Internal;
+using System;
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Markup;
@@ -9,9 +10,9 @@ namespace BeautySalon.Resources.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is DateTime week)
+            if (value is DateTime time)
             {
-                return (int)week.Date.DayOfWeek;
+                return DateTime.Now.Year - time.Year;
             }
             else return null;
         }

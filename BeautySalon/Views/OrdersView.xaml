@@ -17,47 +17,46 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding Orders}">
+        <!--<ItemsControl x:Name="IC" Grid.Row="1" ItemsSource="{Binding Orders}">
 
-            <!--<ItemsControl.ItemsPanel>
+            --><!--<ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
+                            <RowDefinition />              
                             <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition />                                               
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
                             <ColumnDefinition />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                     </Grid>
                 </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>-->
+            </ItemsControl.ItemsPanel>
             
 
-            <!--<ItemsControl.ItemContainerStyle>
+            <ItemsControl.ItemContainerStyle>
                 <Style>
-                    <Setter Property="Grid.Column" Value="{Binding TimeStart, Converter={con:DateToWeek}}" />
-                    <Setter Property="Grid.Row" Value="{Binding WeekNo}" />
+                    <Setter Property="Grid.Column" Value="0" />
+                    <Setter Property="Grid.Row" Value="{Binding TimeStart, Converter={con:DateToWeek}}" />
                 </Style>
-            </ItemsControl.ItemContainerStyle>-->
+            </ItemsControl.ItemContainerStyle>--><!--
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding TimeStart, Converter={con:DateToWeek}}"/>
+                    --><!--<Button Content="{Binding TimeStart, Converter={con:DateToWeek}}"/>--><!--
+                    <Button Content="{Binding Path=DateStart}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 
-        </ItemsControl>
+        </ItemsControl>-->
+
+
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Orders}" IsReadOnly="True">
+            
+        </DataGrid>
 
         <Button Grid.Row="2" HorizontalAlignment="Right" >
             <StackPanel Orientation="Horizontal">

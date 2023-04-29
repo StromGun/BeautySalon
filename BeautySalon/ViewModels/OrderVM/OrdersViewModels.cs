@@ -1,13 +1,9 @@
 ﻿using BeautySalon.DAL.Entities;
-using BeautySalon.Resources.UserControls;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Data;
 
 namespace BeautySalon.ViewModels
@@ -26,6 +22,10 @@ namespace BeautySalon.ViewModels
 
         private ObservableCollection<OrderService>? orderServices;
         public ObservableCollection<OrderService>? OrderServices { get => orderServices; set => Set(ref orderServices,value); }
+
+        private Order? selectedOrder;
+        public Order? SelectedOrder { get => selectedOrder; set => Set(ref selectedOrder, value); }
+
 
         #region Orders
         private ObservableCollection<Order>? orders;

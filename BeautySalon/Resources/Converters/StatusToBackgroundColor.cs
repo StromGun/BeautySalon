@@ -18,9 +18,10 @@ namespace BeautySalon.Resources.Converters
             {
                 return status switch
                 {
-                    StatusOrder.Выполнен => "#90ee90",
-                    StatusOrder.Выполняется => "#f5dc38",
-                    StatusOrder.Отменен => "#e84343",
+                    0 => "white",
+                    StatusOrder.Выполнен => "#cdf7b1",
+                    StatusOrder.Выполняется => "#cff6ff",
+                    StatusOrder.Отменен => "#fd877d",
                     _ => "Transparent",
                 };
             }

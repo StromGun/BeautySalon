@@ -34,6 +34,22 @@ namespace BeautySalon.Services
             return true;
         }
 
+        public bool EditOrder (ref Order? order)
+        {
+            if (order == null) return false;
+            var order_editor_model = new EditOrderViewModel(order);
+            var order_editor_window = new EditOrderWindow()
+            {
+                DataContext = order_editor_model,
+                Owner = App.ActiveWindow
+            };
+
+            if (order_editor_window.ShowDialog() != true)
+                return false;
+
+            return true;
+        }
+
         public bool OpenServices()
         {
             var services_model = new ServicesViewModel();

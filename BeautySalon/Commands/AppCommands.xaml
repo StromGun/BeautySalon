@@ -8,4 +8,6 @@
     <cmd:AddClientCommand x:Key="AddClientCommand"/>
     <cmd:EditClientCommand x:Key="EditClientCommand"/>
 
+    <cmd:EditOrderCommand x:Key="EditOrderCommand"/>
+
 </ResourceDictionary>

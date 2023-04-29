@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:vm="clr-namespace:BeautySalon.ViewModels"
              xmlns:con="clr-namespace:BeautySalon.Resources.Converters"
-             xmlns:us="clr-namespace:BeautySalon.Resources.UserControls"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:BeautySalon.Views"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance {x:Type vm:OrdersViewModels}}"
@@ -26,7 +26,14 @@
             Text="{Binding SelectedDate, StringFormat={}{0:dd MMMM yyyy}г, ConverterCulture=ru-RU}" 
                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <ListView Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding OrdersView}">
+        <ListView ItemContainerStyle="{StaticResource LVstyle}" SelectedItem="{Binding SelectedOrder}"
+            Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding OrdersView}">
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{StaticResource EditOrderCommand}" CommandParameter="{Binding Path=SelectedOrder}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -36,7 +43,8 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border Margin="5" Background="{Binding Status, Converter={con:StatusToBackgroundColor}}" BorderBrush="Black" CornerRadius="25" BorderThickness="1">
+                    <Border Margin="5" Background="{Binding Status, Converter={con:StatusToBackgroundColor}}" 
+                            BorderBrush="Black" CornerRadius="25 25 5 25" BorderThickness="1">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -66,34 +74,37 @@
                             </StackPanel>
 
                             <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0 1 0 0">
-                                <ItemsControl Margin="10 5" ItemsSource="{Binding Path=OrderServices}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock>
-                                                <TextBlock.Text>
-                                                    <MultiBinding StringFormat="{}{0} {1:C2} Кол-во: {2}" ConverterCulture="ru-RU">
-                                                        <Binding Path="Service.Name"/>
-                                                        <Binding Path="Price"/>
-                                                        <Binding Path="Amount"/>
-                                                    </MultiBinding>
-                                                </TextBlock.Text>
-                                            </TextBlock>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
+                                <ScrollViewer Margin="10 5" Style="{StaticResource ScrollViewerStyle1}">
+                                    <ItemsControl  ItemsSource="{Binding Path=OrderServices}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock>
+                                                    <TextBlock.Text>
+                                                        <MultiBinding StringFormat="{}{0} {1:C2} Кол-во: {2}" ConverterCulture="ru-RU">
+                                                            <Binding Path="Service.Name"/>
+                                                            <Binding Path="Price"/>
+                                                            <Binding Path="Amount"/>
+                                                        </MultiBinding>
+                                                    </TextBlock.Text>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </ScrollViewer>
                             </Border>
                             
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
-
-            <ListView.ItemContainerStyle>
+            
+            
+            <!--<ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                     <Setter Property="VerticalContentAlignment" Value="Stretch"/>
                 </Style>
-            </ListView.ItemContainerStyle>
+            </ListView.ItemContainerStyle>-->
         </ListView>
 
         <GridSplitter Grid.Row="1" Grid.Column="1" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"  BorderThickness="1" BorderBrush="Black"/>

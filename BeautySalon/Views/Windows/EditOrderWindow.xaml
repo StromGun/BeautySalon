@@ -9,7 +9,7 @@
         d:DataContext="{d:DesignInstance {x:Type vm:EditOrderViewModel}}"
         ShowInTaskbar="False" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize"
         Title="{Binding Path=Order.OrderName}" FontSize="14"
-        Height="450" Width="800">
+        Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -34,7 +34,16 @@
         </Border>
 
         <Border Grid.Row="1" Margin="10" BorderBrush="Gray" BorderThickness="0.5" >
-            <DataGrid />
+            <DataGrid Template="{DynamicResource DataGridTemplate1}" Margin="5" Style="{StaticResource BasiGrid2}" ItemsSource="{Binding Path=OrderService}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Артикул" Binding="{Binding Path=Service.ID}"/>
+                    <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Service.Name}"/>
+                    <DataGridTextColumn Header="Длительность" Binding="{Binding Path=Service.Time}"/>
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Path=Amount}"/>
+                    <DataGridTextColumn Header="Скидка" Binding="{Binding Path=Discount}"/>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Border>
 
     </Grid>

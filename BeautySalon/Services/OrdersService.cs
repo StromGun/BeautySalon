@@ -4,6 +4,7 @@ using BeautySalon.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace BeautySalon.Services
@@ -27,6 +28,13 @@ namespace BeautySalon.Services
         public ObservableCollection<OrderService>? GetOrderServices()
         {
             DB.OrderServices.Include(e => e.Service).Load();
+            return DB.OrderServices.Local.ToObservableCollection();
+        }
+
+        public ObservableCollection<OrderService>? GetSpecificOrderServices(Order order)
+        {
+            if (order == null) return null;
+            DB.OrderServices.Where(e => e.Order == order).Include(e => e.Service).Load();
             return DB.OrderServices.Local.ToObservableCollection();
         }
 

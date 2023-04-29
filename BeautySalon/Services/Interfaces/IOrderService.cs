@@ -7,7 +7,7 @@ namespace BeautySalon.Services.Interfaces
     {
         public ObservableCollection<Order>? Orders { get; set; }
         public ObservableCollection<OrderService>? OrderServices { get; set; }
-
+        public ObservableCollection<OrderService>? GetSpecificOrderServices(Order order);
 
         protected ObservableCollection<Order>? GetOrders();
         protected ObservableCollection<OrderService>? GetOrderServices();

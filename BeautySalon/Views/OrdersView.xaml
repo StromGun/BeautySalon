@@ -21,40 +21,80 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-       
-        <DataGrid Grid.Row="1" ItemsSource="{Binding OrdersView}" AutoGenerateColumns="False" IsReadOnly="True" HorizontalAlignment="Stretch">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Время с" Binding="{Binding Path=DateStart, StringFormat={}{0:hh:mm}, ConverterCulture=ru-RU}"/>
-                <DataGridTextColumn Header="Время по" Binding="{Binding Path=TimeEnd, StringFormat={}{0:hh\\:mm}}"/>
-                <DataGridTextColumn Header="Клиент" Binding="{Binding Path=Client.LastName}"/>
-                
-            </DataGrid.Columns>
+
+        <TextBlock FontSize="18" FontWeight="Medium"
+            Text="{Binding SelectedDate, StringFormat={}{0:dd MMMM yyyy}г, ConverterCulture=ru-RU}" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <ListView Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding OrdersView}">
             
-            <DataGrid.RowDetailsTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Margin="5" ItemHeight="150" ItemWidth="250"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ItemsControl ItemsSource="{Binding Path=OrderServices}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Margin="5 0">
+                    <Border Margin="5" Background="{Binding Status, Converter={con:StatusToBackgroundColor}}" BorderBrush="Black" CornerRadius="25" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.8*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Margin="10">
+                                
+                                <TextBlock FontSize="16">
                                     <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}{0} {2:C2} {1:N0}">
-                                            <Binding Path="Service.Name"/>
-                                            <Binding Path="Amount"/>
-                                            <Binding Path="Price"/>
+                                        <MultiBinding StringFormat="{}{0:HH:mm} - {1:hh\:mm}">
+                                            <Binding Path="DateStart"/>
+                                            <Binding Path="TimeEnd"/>
                                         </MultiBinding>
                                     </TextBlock.Text>
                                 </TextBlock>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                                            <Binding Path="Client.LastName"/>
+                                            <Binding Path="Client.FirstName"/>
+                                            <Binding Path="Client.Patronymic"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+
+                            </StackPanel>
+
+                            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0 1 0 0">
+                                <ItemsControl Margin="10 5" ItemsSource="{Binding Path=OrderServices}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="{}{0} {1:C2} Кол-во: {2}" ConverterCulture="ru-RU">
+                                                        <Binding Path="Service.Name"/>
+                                                        <Binding Path="Price"/>
+                                                        <Binding Path="Amount"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Border>
+                            
+                        </Grid>
+                    </Border>
                 </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
-        </DataGrid>
+            </ListView.ItemTemplate>
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
 
         <GridSplitter Grid.Row="1" Grid.Column="1" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"  BorderThickness="1" BorderBrush="Black"/>
 

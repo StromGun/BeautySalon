@@ -4,11 +4,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeautySalon.DAL.Entities
 {
+    public enum StatusOrder
+    {
+        Выполняется = 1,
+        Выполнен = 2,
+        Отменен = 3
+    }
+
     public class Order : Entity
     {
         private int iD;
         private string? orderName;
         private decimal? totalPrice;
+        private StatusOrder status;
         private DateTime? dateStart;
         private TimeSpan? timeEnd;
 
@@ -23,7 +31,8 @@ namespace BeautySalon.DAL.Entities
         public string? OrderName { get => orderName; set => Set(ref orderName, value); }
         [Column(TypeName = "money")]
         public decimal? TotalPrice { get => totalPrice; set => Set(ref totalPrice, value); }
-
+        [Required]
+        public StatusOrder Status { get => status; set => Set(ref status, value); }
         [Required]
         public DateTime? DateStart { get => dateStart; set => Set(ref dateStart, value); }
         [Required]

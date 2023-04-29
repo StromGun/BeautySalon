@@ -24,10 +24,23 @@
        
         <DataGrid Grid.Row="1" ItemsSource="{Binding OrdersView}" AutoGenerateColumns="False" IsReadOnly="True" HorizontalAlignment="Stretch">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Время" Binding="{Binding Path=DateStart, StringFormat={}{0:hh:mm}, ConverterCulture=ru-RU}"/>
+                <DataGridTextColumn Header="Время с" Binding="{Binding Path=DateStart, StringFormat={}{0:hh:mm}, ConverterCulture=ru-RU}"/>
+                <DataGridTextColumn Header="Время по" Binding="{Binding Path=TimeEnd, StringFormat={}{0:hh\\:mm}}"/>
                 <DataGridTextColumn Header="Клиент" Binding="{Binding Path=Client.LastName}"/>
                 
             </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                            
+                    </ItemsControl>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
 
         <GridSplitter Grid.Row="1" Grid.Column="1" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"  BorderThickness="1" BorderBrush="Black"/>

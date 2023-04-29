@@ -8,7 +8,7 @@ namespace BeautySalon.Services
         public static IServiceCollection AddServices(this IServiceCollection services) => services
             .AddTransient<IClientService, ClientService>()
             .AddTransient<IUserDialog, UserDialogService>()
-            .AddTransient<IOrderService, OrderService>()
+            .AddTransient<IOrderService, OrdersService>()
             .AddTransient<IServicesService, ServicesService>()
             ;
 

@@ -12,8 +12,6 @@ namespace BeautySalon.ViewModels
     internal class ClientViewModel : ViewModel
     {
         private readonly IClientService clientService;
-        private readonly BeautySalonDB dB;
-        private readonly IUserDialog userDialog;
         private string _title = "Dada";
         public string Title { get => _title; set => Set(ref _title,value); }
 
@@ -54,11 +52,9 @@ namespace BeautySalon.ViewModels
         #endregion
 
        
-        public ClientViewModel(IClientService clientService, BeautySalonDB dB, IUserDialog userDialog)
+        public ClientViewModel(IClientService clientService)
         {
             this.clientService = clientService;
-            this.dB = dB;
-            this.userDialog = userDialog;
         }
 
 

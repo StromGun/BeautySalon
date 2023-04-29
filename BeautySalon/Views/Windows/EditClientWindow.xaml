@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:BeautySalon.ViewModels"
-        xmlns:sys="clr-namespace:System.Globalization;assembly=mscorlib"
         xmlns:local="clr-namespace:BeautySalon.Views.Windows"
+        xmlns:uc="clr-namespace:BeautySalon.Resources.UserControls"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type vm:EditClientViewModel}}"
         Title="EditClientWindow" Height="450" Width="900" 
@@ -24,7 +24,8 @@
                     <WrapPanel Orientation="Horizontal">
                         <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5">
                             <TextBlock Text="Фамилия" Style="{StaticResource TBlockCommon}"/>
-                            <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.LastName}"/>
+                            <!--<TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.LastName}"/>-->
+                            <uc:WatermarkTextBox DefaultTextBrush="Gray" WaterMarkText="Введите фамилию клиента" Text="{Binding Client.LastName, Mode=TwoWay}"/>
                         </WrapPanel>
 
                         <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5">

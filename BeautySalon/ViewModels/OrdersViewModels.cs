@@ -53,8 +53,10 @@ namespace BeautySalon.ViewModels
         {
             if (e.Item is Order order)
             {
-                if (order?.DateStart.Value.Date == SelectedDate.Date)
-                    e.Accepted = true;
+                if (order?.DateStart != null)
+                    if (order?.DateStart.Value.Date == SelectedDate.Date)
+                        e.Accepted = true;
+                    else e.Accepted = false;
                 else e.Accepted = false;
             }
         }

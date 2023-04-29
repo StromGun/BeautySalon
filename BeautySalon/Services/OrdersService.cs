@@ -8,12 +8,15 @@ using System.Runtime.CompilerServices;
 
 namespace BeautySalon.Services
 {
-    class OrderService : IOrderService, INotifyPropertyChanged
+    class OrdersService : IOrderService, INotifyPropertyChanged
     {
         public BeautySalonDB DB { get; }
 
         private ObservableCollection<Order>? _orders;
         public ObservableCollection<Order>? Orders { get => _orders; set => Set(ref _orders, value); }
+
+        private ObservableCollection<OrderService>? orderServices;
+        public ObservableCollection<OrderService>? OrderServices { get => orderServices; set => Set(ref orderServices,value); }
 
         public ObservableCollection<Order>? GetOrders()
         {
@@ -21,12 +24,17 @@ namespace BeautySalon.Services
             return DB.Orders.Local.ToObservableCollection();
         }
 
-        
+        public ObservableCollection<OrderService>? GetOrderServices()
+        {
+            DB.OrderServices.Include(e => e.Service).Load();
+            return DB.OrderServices.Local.ToObservableCollection();
+        }
 
-        public OrderService(BeautySalonDB dB)
+        public OrdersService(BeautySalonDB dB)
         {
             DB = dB;
             Orders = GetOrders();
+            OrderServices = GetOrderServices();
         }
 
         #region Dda

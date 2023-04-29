@@ -9,6 +9,19 @@ namespace BeautySalon.DAL.Context
         public DbSet<Order> Orders { get; set; }
         public DbSet<ServiceType> ServiceTypes { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<OrderService> OrderServices { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Service>()
+                .HasMany(e => e.Orders)
+                .WithMany(e => e.Services)
+                .UsingEntity<OrderService>();
+
+            base.OnModelCreating(modelBuilder);
+        }
 
         public BeautySalonDB(DbContextOptions<BeautySalonDB> options) : base(options)
         {

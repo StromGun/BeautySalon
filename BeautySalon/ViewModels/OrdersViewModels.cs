@@ -24,6 +24,9 @@ namespace BeautySalon.ViewModels
         private DateTime selectedDate;
         public DateTime SelectedDate { get => selectedDate; set { Set(ref selectedDate, value); orderViewSource?.View.Refresh(); } }
 
+        private ObservableCollection<OrderService>? orderServices;
+        public ObservableCollection<OrderService>? OrderServices { get => orderServices; set => Set(ref orderServices,value); }
+
         #region Orders
         private ObservableCollection<Order>? orders;
         private CollectionViewSource? orderViewSource;
@@ -49,6 +52,7 @@ namespace BeautySalon.ViewModels
             }
         }
 
+
         private void SelectedDateFilter(object sender, FilterEventArgs e)
         {
             if (e.Item is Order order)
@@ -68,6 +72,7 @@ namespace BeautySalon.ViewModels
             SelectedDate = DateTime.Now;
 
             Orders = this.orderService.Orders;
+            OrderServices = this.orderService.OrderServices;
 
         }
     }

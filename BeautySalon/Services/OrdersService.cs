@@ -34,8 +34,8 @@ namespace BeautySalon.Services
         public ObservableCollection<OrderService>? GetSpecificOrderServices(Order order)
         {
             if (order == null) return null;
-            DB.OrderServices.Where(e => e.Order == order).Include(e => e.Service).Load();
-            return DB.OrderServices.Local.ToObservableCollection();
+            var os = DB.OrderServices.Where(e => e.Order == order).Include(e => e.Service).ToList();
+            return new ObservableCollection<OrderService>(os);
         }
 
         public OrdersService(BeautySalonDB dB)

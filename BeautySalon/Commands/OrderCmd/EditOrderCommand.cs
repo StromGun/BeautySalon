@@ -3,6 +3,9 @@ using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BeautySalon.Commands
@@ -25,26 +28,26 @@ namespace BeautySalon.Commands
             var order = parameter as Order;
             if (!userDialog.EditOrder(ref order)) return;
 
-            //var results = new List<ValidationResult>();
-            //var context = new ValidationContext(order!);
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(order!);
 
-            //if (!Validator.TryValidateObject(order!, context, results, true))
-            //{
-            //    foreach (var item in results)
-            //        MessageBox.Show(item.ErrorMessage);
-            //}
-            //else
-            //{
-            //    try
-            //    {
-            //        DataBase.Orders.Update(order!);
-            //        DataBase.SaveChanges();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
+            if (!Validator.TryValidateObject(order!, context, results, true))
+            {
+                foreach (var item in results)
+                    MessageBox.Show(item.ErrorMessage);
+            }
+            else
+            {
+                try
+                {
+                    DataBase.Orders.Update(order!);
+                    DataBase.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

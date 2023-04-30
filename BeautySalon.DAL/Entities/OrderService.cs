@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeautySalon.DAL.Entities
 {
-    //[PrimaryKey("OrderId", "ServiceId")]
     public class OrderService : Entity
     {
         private Order? order;
@@ -25,8 +24,9 @@ namespace BeautySalon.DAL.Entities
         [Column(TypeName = "money")]
         public decimal? Price { get => Service?.Price; set => Set(ref price, value); }
         [Column(TypeName = "decimal(3,2)")]
+        [Required]
         public decimal? Discount { get => discount; set => Set(ref discount, value); }
         [Column(TypeName = "money")]
-        public decimal? TotalPrice { get => Price - Price * Discount; set => Set(ref totalPrice, value); }
+        public decimal? TotalPrice { get => Amount * Price - Amount * Price * Discount; set => Set(ref totalPrice, value); }
     }
 }

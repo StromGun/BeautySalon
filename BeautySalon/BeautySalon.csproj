@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\2_.png" />
     <None Remove="Resources\Images\arrow_back.png" />
     <None Remove="Resources\Images\arrow_forward.png" />
   </ItemGroup>
@@ -28,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\2_.png" />
     <Resource Include="Resources\Images\arrow_back.png" />
     <Resource Include="Resources\Images\arrow_forward.png" />
   </ItemGroup>

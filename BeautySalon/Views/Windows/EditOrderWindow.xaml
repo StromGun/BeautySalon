@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:BeautySalon.ViewModels"
+        xmlns:us="clr-namespace:BeautySalon.Resources.UserControls"
         xmlns:local="clr-namespace:BeautySalon.Views.Windows"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type vm:EditOrderViewModel}}"
         ShowInTaskbar="False" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize"
         Title="{Binding Path=Order.OrderName}" FontSize="14"
-        Height="600" Width="800">
+        Height="600" Width="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -25,8 +26,35 @@
                 </Grid.ColumnDefinitions>
 
                 <Border BorderBrush="Gray" BorderThickness="0 0 0.5 0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Border BorderBrush="Gray" BorderThickness="0 0 0 0.5">
+                            <WrapPanel Orientation="Horizontal" Margin="5">
+                                <Border CornerRadius="25" Width="40" Height="40" BorderBrush="Black" BorderThickness="0.5">
+                                    <Image Source="/Resources/Images/2_.png" />
+                                </Border>
 
+                                <us:WatermarkTextBox Margin="5 0 1 0" WaterMarkText="Фамилия" Text="{Binding Path=Order.Client.LastName}" Height="25" DefaultTextBrush="Gray" Width="120"/>
+                                <us:WatermarkTextBox WaterMarkText="Имя" Height="25" Text="{Binding Path=Order.Client.FirstName}" DefaultTextBrush="Gray" Width="120"/>
+                                <us:WatermarkTextBox Margin="1 0 0 0" WaterMarkText="Отчество" Text="{Binding Path=Order.Client.Patronymic}" Height="25" DefaultTextBrush="Gray" Width="120"/>
+                                <us:WatermarkTextBox Margin="10 0 0 0" WaterMarkText="Телефон" Text="{Binding Path=Order.Client.Phone}" Height="25" DefaultTextBrush="Gray" Width="120"/>
+                            </WrapPanel>
+                        </Border>
+
+                        <StackPanel Grid.Row="1" Margin="5">
+                            <TextBlock FontWeight="SemiBold">Время начала: <Run FontWeight="Regular" Text="{Binding Order.DateStart, StringFormat={}{0:hh\\:mm}}"/></TextBlock>
+                            <TextBlock FontWeight="SemiBold">Время окончания: <Run FontWeight="Regular" Text="{Binding Order.TimeEnd, StringFormat={}{0:hh\\:mm}}"/></TextBlock>
+                            <TextBlock FontWeight="SemiBold">Статус: <Run FontWeight="Regular" Text="{Binding Order.Status}"/></TextBlock>
+                            <TextBlock FontWeight="SemiBold">Итого: <Run FontWeight="Regular" Text="{Binding Order.TotalPrice}"/></TextBlock>
+                        </StackPanel>
+                        
+                    </Grid>
                 </Border>
+                
                 <Border Grid.Column="1">
 
                 </Border>
@@ -36,12 +64,13 @@
         <Border Grid.Row="1" Margin="10" BorderBrush="Gray" BorderThickness="0.5" >
             <DataGrid Template="{DynamicResource DataGridTemplate1}" Margin="5" Style="{StaticResource BasiGrid2}" ItemsSource="{Binding Path=OrderService}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Артикул" Binding="{Binding Path=Service.ID}"/>
-                    <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Service.Name}"/>
-                    <DataGridTextColumn Header="Длительность" Binding="{Binding Path=Service.Time}"/>
+                    <DataGridTextColumn Header="Артикул" Binding="{Binding Path=Service.ID}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Service.Name}" />
+                    <DataGridTextColumn Header="Длительность" Binding="{Binding Path=Service.Time}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Количество" Binding="{Binding Path=Amount}"/>
                     <DataGridTextColumn Header="Скидка" Binding="{Binding Path=Discount}"/>
                     <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}"/>
+                    <DataGridTextColumn Header="Итого" Binding="{Binding Path=TotalPrice}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

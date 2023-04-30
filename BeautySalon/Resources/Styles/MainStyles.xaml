@@ -35,8 +35,20 @@
 
 
 
-    
+
+    <ContextMenu  x:Key="CtxMenuLV">
+        <MenuItem Header="Копировать"
+                              Command="Copy"/>
+        <MenuItem Header="Редактировать" 
+                  DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                  Command="{StaticResource EditOrderCommand}" 
+                  CommandParameter="{Binding SelectedOrder}" />
+        <MenuItem Header="Удалить" 
+                              />
+    </ContextMenu>
+
     <Style x:Key="LVstyle" TargetType="ListViewItem">
+        <Setter Property="ContextMenu" Value="{StaticResource CtxMenuLV}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">

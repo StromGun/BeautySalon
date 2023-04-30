@@ -1,15 +1,11 @@
 ﻿using BeautySalon.DAL.Entities;
-using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
-using Microsoft.Extensions.DependencyInjection;
 using System.Collections.ObjectModel;
 
 namespace BeautySalon.ViewModels
 {
     internal class EditOrderViewModel : ViewModel
     {
-        private readonly IOrderService orderService = App.Services.GetRequiredService<IOrderService>();
-
 
         private ObservableCollection<OrderService>? orderServiceCollection;
         public ObservableCollection<OrderService>? OrderService { get => orderServiceCollection; set => Set(ref orderServiceCollection,value); }
@@ -19,9 +15,22 @@ namespace BeautySalon.ViewModels
 
         public EditOrderViewModel(Order? order)
         {
-            Order = order;
+            Order = new()
+            {
+                ID = order.ID,
+                Client = order.Client,
+                DateStart = order.DateStart,
+                OrderName = order.OrderName,
+                OrderServices = order.OrderServices,
+                Services = order.Services,
+                Status = order.Status,
+                TimeEnd = order.TimeEnd,
+                TotalPrice = order.TotalPrice
+            };
 
-            OrderService = orderService.GetSpecificOrderServices(Order!);
+            if (order.OrderServices != null)
+                OrderService = new(order.OrderServices);
+            else OrderService = new();
         }
     }
 }

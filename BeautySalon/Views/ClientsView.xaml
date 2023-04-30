@@ -30,7 +30,7 @@
             </TreeView>
         </GroupBox>
          
-        <DataGrid Grid.Row="1" ItemsSource="{Binding ClientsView}" Margin="5 0" Language="ru-RU" SelectionMode="Single" 
+        <DataGrid Style="{StaticResource BasiGrid2}" Grid.Row="1" ItemsSource="{Binding ClientsView}" Margin="5 0" Language="ru-RU" SelectionMode="Single" 
                   AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedClient}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">

@@ -15,7 +15,7 @@ namespace BeautySalon.DAL.Entities
     {
         private int iD;
         private string? orderName;
-        private decimal? totalPrice;
+        private decimal totalPrice;
         private StatusOrder status;
         private DateTime? dateStart;
         private TimeSpan? timeEnd;
@@ -29,8 +29,12 @@ namespace BeautySalon.DAL.Entities
         public int ID { get => iD; set => Set(ref iD, value); }
         [Required]
         public string? OrderName { get => orderName; set => Set(ref orderName, value); }
+
         [Column(TypeName = "money")]
-        public decimal? TotalPrice { get => totalPrice; set => Set(ref totalPrice, value); }
+        public decimal TotalPrice {
+            get => totalPrice;
+            set => Set(ref totalPrice, value); }
+
         [Required]
         public StatusOrder Status { get => status; set => Set(ref status, value); }
         [Required]

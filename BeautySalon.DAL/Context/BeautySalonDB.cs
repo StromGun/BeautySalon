@@ -20,6 +20,10 @@ namespace BeautySalon.DAL.Context
                 .WithMany(e => e.Services)
                 .UsingEntity<OrderService>();
 
+            modelBuilder.Entity<Client>()
+                .Property(e => e.Gender)
+                .HasConversion<string>();
+
             base.OnModelCreating(modelBuilder);
         }
 

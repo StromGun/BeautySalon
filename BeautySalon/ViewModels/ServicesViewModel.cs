@@ -3,7 +3,9 @@ using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace BeautySalon.ViewModels
 {
@@ -18,11 +20,14 @@ namespace BeautySalon.ViewModels
         private ObservableCollection<Service>? _services;
         public ObservableCollection<Service>? Services { get => _services; set => Set(ref _services, value); }
 
+        #region SelectedService
         private Service? selectedServiceL;
         public Service? SelectedServiceL { get => selectedServiceL; set => Set(ref selectedServiceL, value); }
 
         private Service? selectedServiceR;
-        public Service? SelectedServiceR { get => selectedServiceR; set => Set(ref selectedServiceR, value); }
+        public Service? SelectedServiceR { get => selectedServiceR; set => Set(ref selectedServiceR, value); } 
+        #endregion
+
 
         private ObservableCollection<ServiceType>? _serviceTypes;
         public ObservableCollection<ServiceType>? ServiceTypes { get => _serviceTypes; set => Set(ref _serviceTypes, value); }
@@ -37,7 +42,21 @@ namespace BeautySalon.ViewModels
         private bool CanAddService() => SelectedServiceL != null;
         private void AddService()
         {
-            SelectedServices!.Add(SelectedServiceL!);
+            if (SelectedServices!.Count > 0)
+            {
+                bool equal = false;
+                foreach ( var item in SelectedServices!.ToList())
+                {
+                    if (item.ID == SelectedServiceL!.ID)
+                    {
+                        equal = true;
+                        break;
+                    }
+                }
+                if (!equal) 
+                    SelectedServices!.Add(SelectedServiceL!);
+            }
+            else SelectedServices!.Add(SelectedServiceL!);
         }
         #endregion
 
@@ -51,11 +70,11 @@ namespace BeautySalon.ViewModels
         } 
         #endregion
 
-        public ServicesViewModel()
+        public ServicesViewModel(ICollection services)
         {
             Services = servicesService.Services;
             ServiceTypes = servicesService.ServiceTypes;
-            SelectedServices = new();
+            SelectedServices = (ObservableCollection<Service>?)services;
         }
 
     }

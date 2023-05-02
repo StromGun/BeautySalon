@@ -46,7 +46,7 @@
                         </Border>
 
                         <StackPanel Grid.Row="1" Margin="5">
-                            <TextBlock FontWeight="SemiBold">Время начала: <Run FontWeight="Regular" Text="{Binding Order.DateStart, StringFormat={}{0:hh\\:mm}}"/></TextBlock>
+                            <TextBlock FontWeight="SemiBold">Время начала: <Run FontWeight="Regular" Text="{Binding Order.DateStart, StringFormat={}{0:HH\\:mm}}"/></TextBlock>
                             <TextBlock FontWeight="SemiBold">Время окончания: <Run FontWeight="Regular" Text="{Binding Order.TimeEnd, StringFormat={}{0:hh\\:mm}}"/></TextBlock>
                             <TextBlock FontWeight="SemiBold">Статус: <Run FontWeight="Regular" Text="{Binding Order.Status}"/></TextBlock>
                             <TextBlock FontWeight="SemiBold">Итого: <Run FontWeight="Regular" Text="{Binding Order.TotalPrice}"/></TextBlock>
@@ -68,15 +68,15 @@
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
             <DataGrid Template="{DynamicResource DataGridTemplate1}" Margin="5" SelectedItem="{Binding SelectedOrderService}"
-                      Style="{StaticResource BasiGrid2}" ItemsSource="{Binding Path=OrderService}">
+                      Style="{StaticResource BasiGrid2}" ItemsSource="{Binding Path=OrderServiceBindingList}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Артикул" Binding="{Binding Path=Service.ID}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Service.Name}" />
-                    <DataGridTextColumn Header="Длительность" Binding="{Binding Path=Service.Time}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Количество" Binding="{Binding Path=Amount}"/>
+                    <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Service.Name}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Длительность" Binding="{Binding Path=Service.Time}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Количество" Binding="{Binding Path=Amount}"/>
                     <DataGridTextColumn Header="Скидка" Binding="{Binding Path=Discount}"/>
                     <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}"/>
-                    <DataGridTextColumn Header="Итого" Binding="{Binding Path=TotalPrice}"/>
+                    <DataGridTextColumn Header="Итого" Binding="{Binding Path=TotalPrice}" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
 

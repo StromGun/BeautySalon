@@ -1,8 +1,10 @@
-﻿using System.Windows;
+﻿using System.Collections;
+using System.Windows;
 using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels;
 using BeautySalon.Views.Windows;
+using Microsoft.Identity.Client;
 
 namespace BeautySalon.Services
 {
@@ -50,14 +52,15 @@ namespace BeautySalon.Services
             return true;
         }
 
-        public bool OpenServices()
+        public bool OpenServices(ICollection services)
         {
-            var services_model = new ServicesViewModel();
+            var services_model = new ServicesViewModel(services);
             var services_window = new ServicesWindow()
             {
                 DataContext = services_model,
                 Owner = App.ActiveWindow
             };
+
             if (services_window.ShowDialog() != true)
                 return false;
 

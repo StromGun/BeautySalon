@@ -3,7 +3,11 @@ using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows;
 
 namespace BeautySalon.ViewModels
 {
@@ -15,11 +19,17 @@ namespace BeautySalon.ViewModels
         private ObservableCollection<OrderService>? orderServiceCollection;
         public ObservableCollection<OrderService>? OrderService { get => orderServiceCollection; set => Set(ref orderServiceCollection,value); }
 
+        private ObservableCollection<Service>? serviceCollection;
+        public ObservableCollection<Service>? ServiceCollection { get => serviceCollection; set => Set(ref serviceCollection, value); }
+
+        private BindingList<OrderService>? orderServiceBindingList;
+        public BindingList<OrderService>? OrderServiceBindingList { get => orderServiceBindingList; set => Set(ref orderServiceBindingList, value); }
+
         private Order? order;
         public Order? Order { get => order; set => Set(ref order,value); }
 
         private OrderService? selectedOrderService;
-        public OrderService? SelectedOrderService { get => selectedOrderService; set => Set(ref selectedOrderService,value); }
+        public OrderService? SelectedOrderService { get => selectedOrderService; set { Set(ref selectedOrderService, value); } }
 
 
         #region PlusMinusAmount - Command
@@ -27,28 +37,50 @@ namespace BeautySalon.ViewModels
         public RelayCommand? PlusAmountCmd => plusAmountCmd ??= new(obj => AddAmount(), obj => SelectedOrderService != null);
         private void AddAmount()
         {
-            SelectedOrderService.Amount++;
+            SelectedOrderService!.Amount++;
         }
         private RelayCommand? minusAmountCmd;
         public RelayCommand? MinusAmountCmd => minusAmountCmd ??= new(obj => MinusAmount(), obj => SelectedOrderService != null && SelectedOrderService.Amount > 1);
         private void MinusAmount()
         {
-            SelectedOrderService.Amount--;
+            SelectedOrderService!.Amount--;
         } 
         #endregion
 
         private RelayCommand? addService;
         public RelayCommand? AddServiceCmd => addService ??= new(obj => AddService());
+
+
         private void AddService()
         {
-            userDialog.OpenServices();
+            if (userDialog.OpenServices(ServiceCollection!) != true) return;
+
+            foreach (var item in ServiceCollection!)
+            {
+                bool equal = false;
+                foreach (var oitem in OrderServiceBindingList!)
+                {
+                    if (oitem.Service.ID == item.ID)
+                    {
+                        oitem.Amount++;
+                        equal = true;
+                        break;
+                    }
+                    else equal = false;
+                }
+                if (!equal)
+                   OrderServiceBindingList!.Add(new OrderService() { Service = item, Amount = 1, Order = Order });
+
+            }
         }
 
         public EditOrderViewModel(Order? order)
         {
+            ServiceCollection = new();
+
             Order = new()
             {
-                ID = order.ID,
+                ID = order!.ID,
                 Client = order.Client,
                 DateStart = order.DateStart,
                 OrderName = order.OrderName,
@@ -60,8 +92,24 @@ namespace BeautySalon.ViewModels
             };
 
             if (order.OrderServices != null)
-                OrderService = new(order.OrderServices);
-            else OrderService = new();
+            {
+                OrderServiceBindingList = new(order.OrderServices.ToList());         
+            }
+            else OrderServiceBindingList = new();
+
+            OrderServiceBindingList!.ListChanged += OrderServiceBindingList_ListChanged;
+        }
+
+        private void OrderServiceBindingList_ListChanged(object? sender, ListChangedEventArgs e)
+        {
+            if (e.ListChangedType == ListChangedType.ItemChanged)
+            {
+                foreach (var item in OrderServiceBindingList!)
+                    item.TotalPrice = item.Price * item.Amount - item.Price * item.Amount * item.Discount;
+
+                Order!.TimeEnd = new TimeSpan(Order.DateStart!.Value.Ticks + OrderServiceBindingList.Sum(x => x.Service!.Time!.Value.Ticks));
+                Order!.TotalPrice = OrderServiceBindingList.Sum(x => x.TotalPrice);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BeautySalon.DAL.Entities;
+using System.Collections;
 
 namespace BeautySalon.Services.Interfaces
 {
@@ -7,7 +8,7 @@ namespace BeautySalon.Services.Interfaces
         bool EditClient(ref Client? client);
         bool EditOrder(ref Order? order);
 
-        bool OpenServices();
+        bool OpenServices(ICollection collection);
 
         bool ConfirmedInformation(string Information, string Caption);
         bool ConfirmedWarning(string Warning, string Caption);

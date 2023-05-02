@@ -3,9 +3,11 @@ using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace BeautySalon.ViewModels
 {
@@ -42,21 +44,28 @@ namespace BeautySalon.ViewModels
         private bool CanAddService() => SelectedServiceL != null;
         private void AddService()
         {
-            if (SelectedServices!.Count > 0)
+            try
             {
-                bool equal = false;
-                foreach ( var item in SelectedServices!.ToList())
+                if (SelectedServices!.Count > 0)
                 {
-                    if (item.ID == SelectedServiceL!.ID)
+                    bool equal = false;
+                    foreach ( var item in SelectedServices!.ToList())
                     {
-                        equal = true;
-                        break;
+                        if (item.ID == SelectedServiceL!.ID)
+                        {
+                            equal = true;
+                            break;
+                        }
                     }
+                    if (!equal) 
+                        SelectedServices!.Add(SelectedServiceL!);
                 }
-                if (!equal) 
-                    SelectedServices!.Add(SelectedServiceL!);
+                else SelectedServices!.Add(SelectedServiceL!);
             }
-            else SelectedServices!.Add(SelectedServiceL!);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         #endregion
 

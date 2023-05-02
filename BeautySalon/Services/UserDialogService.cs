@@ -4,7 +4,6 @@ using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels;
 using BeautySalon.Views.Windows;
-using Microsoft.Identity.Client;
 
 namespace BeautySalon.Services
 {
@@ -48,6 +47,14 @@ namespace BeautySalon.Services
 
             if (order_editor_window.ShowDialog() != true)
                 return false;
+
+            order.Client = order_editor_model.Order!.Client;
+            order.OrderName = order_editor_model.Order.OrderName;
+            order.Status = order_editor_model.Order.Status;
+            order.DateStart = order_editor_model.Order.DateStart;
+            order.TimeEnd = order_editor_model.Order.TimeEnd;
+            order.OrderServices = order_editor_model.OrderServiceBindingList;
+            order.TotalPrice = order_editor_model.Order.TotalPrice;
 
             return true;
         }

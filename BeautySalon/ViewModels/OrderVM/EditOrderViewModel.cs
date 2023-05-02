@@ -44,34 +44,47 @@ namespace BeautySalon.ViewModels
         private void MinusAmount()
         {
             SelectedOrderService!.Amount--;
-        } 
+        }
         #endregion
 
+        #region AddService - Command
         private RelayCommand? addService;
         public RelayCommand? AddServiceCmd => addService ??= new(obj => AddService());
-
-
         private void AddService()
         {
             if (userDialog.OpenServices(ServiceCollection!) != true) return;
 
-            foreach (var item in ServiceCollection!)
+            try
             {
-                bool equal = false;
-                foreach (var oitem in OrderServiceBindingList!)
+                foreach (var item in ServiceCollection!)
                 {
-                    if (oitem.Service.ID == item.ID)
+                    bool equal = false;
+                    foreach (var oitem in OrderServiceBindingList!)
                     {
-                        oitem.Amount++;
-                        equal = true;
-                        break;
+                        if (oitem.Service!.ID == item.ID)
+                        {
+                            oitem.Amount++;
+                            equal = true;
+                            break;
+                        }
+                        else equal = false;
                     }
-                    else equal = false;
+                    if (!equal)
+                        OrderServiceBindingList!.Add(new OrderService() { Service = item, Amount = 1, Order = Order });
                 }
-                if (!equal)
-                   OrderServiceBindingList!.Add(new OrderService() { Service = item, Amount = 1, Order = Order });
-
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        } 
+        #endregion
+
+        private RelayCommand? removeService;
+        public RelayCommand? RemoveServiceCmd => removeService ??= new(obj => RemoveService(), obj => SelectedOrderService != null);
+        private void RemoveService()
+        {
+            OrderServiceBindingList!.Remove(SelectedOrderService!);
         }
 
         public EditOrderViewModel(Order? order)
@@ -93,7 +106,7 @@ namespace BeautySalon.ViewModels
 
             if (order.OrderServices != null)
             {
-                OrderServiceBindingList = new(order.OrderServices.ToList());         
+                OrderServiceBindingList = new(order.OrderServices.ToList());      
             }
             else OrderServiceBindingList = new();
 
@@ -105,9 +118,10 @@ namespace BeautySalon.ViewModels
             if (e.ListChangedType == ListChangedType.ItemChanged)
             {
                 foreach (var item in OrderServiceBindingList!)
-                    item.TotalPrice = item.Price * item.Amount - item.Price * item.Amount * item.Discount;
+                    item.TotalPrice = item.Service!.Price * item.Amount - item.Service.Price * item.Amount * item.Discount;
 
-                Order!.TimeEnd = new TimeSpan(Order.DateStart!.Value.Ticks + OrderServiceBindingList.Sum(x => x.Service!.Time!.Value.Ticks));
+                var sum = new TimeSpan(OrderServiceBindingList.Sum(x => x.Service!.Time!.Value.Ticks));
+                Order!.TimeEnd = Order.DateStart!.Value.TimeOfDay + sum;
                 Order!.TotalPrice = OrderServiceBindingList.Sum(x => x.TotalPrice);
             }
         }

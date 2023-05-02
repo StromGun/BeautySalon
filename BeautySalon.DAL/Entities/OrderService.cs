@@ -10,7 +10,6 @@ namespace BeautySalon.DAL.Entities
         private Order? order;
         private Service? service;
         private int amount;
-        private decimal price;
         private decimal discount;
         private decimal totalPrice;
 
@@ -21,9 +20,8 @@ namespace BeautySalon.DAL.Entities
 
         public int Amount { get => amount; set => Set(ref amount, value); }
 
-        [Column(TypeName = "money")]
-        public decimal Price { get => price; set => Set(ref price, value); }
-        [Column(TypeName = "decimal(3,2)")]
+        [Column(TypeName = "decimal(5,4)")]
+        [Range(0.0000, 1.0000)]
         public decimal Discount { get => discount; set => Set(ref discount, value); }
         [Column(TypeName = "money")]
         public decimal TotalPrice { get => totalPrice; set {Set(ref totalPrice, value);   } }

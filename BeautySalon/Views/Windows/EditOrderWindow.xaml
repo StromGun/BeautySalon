@@ -47,7 +47,7 @@
 
                         <StackPanel Grid.Row="1" Margin="5">
                             <TextBlock FontWeight="SemiBold">Время начала: <Run FontWeight="Regular" Text="{Binding Order.DateStart, StringFormat={}{0:HH\\:mm}}"/></TextBlock>
-                            <TextBlock FontWeight="SemiBold">Время окончания: <Run FontWeight="Regular" Text="{Binding Order.TimeEnd, StringFormat={}{0:hh\\:mm}}"/></TextBlock>
+                            <TextBlock FontWeight="SemiBold">Время окончания: <Run FontWeight="Regular" Text="{Binding Order.TimeEnd}"/></TextBlock>
                             <TextBlock FontWeight="SemiBold">Статус: <Run FontWeight="Regular" Text="{Binding Order.Status}"/></TextBlock>
                             <TextBlock FontWeight="SemiBold">Итого: <Run FontWeight="Regular" Text="{Binding Order.TotalPrice}"/></TextBlock>
                         </StackPanel>
@@ -74,8 +74,8 @@
                     <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Service.Name}" IsReadOnly="True"/>
                         <DataGridTextColumn Header="Длительность" Binding="{Binding Path=Service.Time}" IsReadOnly="True"/>
                         <DataGridTextColumn Header="Количество" Binding="{Binding Path=Amount}"/>
-                    <DataGridTextColumn Header="Скидка" Binding="{Binding Path=Discount}"/>
-                    <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}"/>
+                    <DataGridTextColumn Header="Скидка" Binding="{Binding Path=Discount, StringFormat={}{0:P1}}"/>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Path=Service.Price}"/>
                     <DataGridTextColumn Header="Итого" Binding="{Binding Path=TotalPrice}" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
@@ -84,10 +84,15 @@
                     <Button Content="+" Margin="0 5" Command="{Binding AddServiceCmd}"/>
                     <Button Content="+1" Margin="0 5" Command="{Binding PlusAmountCmd}"/>
                     <Button Content="-1" Margin="0 5" Command="{Binding MinusAmountCmd}"/>
-                    <Button Content="-" Margin="0 5"/>
+                    <Button Content="-" Margin="0 5" Command="{Binding RemoveServiceCmd}"/>
                 </StackPanel>
             </Grid>
         </Border>
 
+
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Button Content="Сохранить" Command="{StaticResource DialogResultCommand}" CommandParameter="True"/>
+            <Button Content="Отмена" Command="{StaticResource DialogResultCommand}" CommandParameter="False"/>
+        </WrapPanel>
     </Grid>
 </Window>

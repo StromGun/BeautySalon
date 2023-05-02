@@ -31,9 +31,9 @@ namespace BeautySalon.Commands
             if (DataBase is null) return;
 
             var results = new List<ValidationResult>();
-            var context = new ValidationContext(client);
+            var context = new ValidationContext(client!);
 
-            if (!Validator.TryValidateObject(client, context, results, true))
+            if (!Validator.TryValidateObject(client!, context, results, true))
             {
                 foreach (var item in results)
                     MessageBox.Show(item.ErrorMessage);
@@ -42,7 +42,7 @@ namespace BeautySalon.Commands
             {
                 try
                 {
-                    DataBase.Clients.Add(client);
+                    DataBase.Clients.Add(client!);
                     DataBase.SaveChanges();
                 }
                 catch (Exception ex)

@@ -82,7 +82,7 @@
                                                     <TextBlock.Text>
                                                         <MultiBinding StringFormat="{}{0} {1:C2} Кол-во: {2}" ConverterCulture="ru-RU">
                                                             <Binding Path="Service.Name"/>
-                                                            <Binding Path="Price"/>
+                                                            <Binding Path="Service.Price"/>
                                                             <Binding Path="Amount"/>
                                                         </MultiBinding>
                                                     </TextBlock.Text>

@@ -9,6 +9,7 @@ namespace BeautySalon.Services.Interfaces
         bool EditOrder(ref Order? order);
 
         bool OpenServices(ICollection collection);
+        bool OpenClientList(ref Client client);
 
         bool ConfirmedInformation(string Information, string Caption);
         bool ConfirmedWarning(string Warning, string Caption);

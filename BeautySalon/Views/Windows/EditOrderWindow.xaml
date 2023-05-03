@@ -5,12 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:BeautySalon.ViewModels"
         xmlns:us="clr-namespace:BeautySalon.Resources.UserControls"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:ent="clr-namespace:BeautySalon.DAL.Entities;assembly=BeautySalon.DAL"
         xmlns:local="clr-namespace:BeautySalon.Views.Windows"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type vm:EditOrderViewModel}}"
         ShowInTaskbar="False" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize"
         Title="{Binding Path=Order.OrderName}" FontSize="14"
         Height="600" Width="900">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="StatusEnum"
+                            ObjectType="{x:Type sys:Enum}"
+                            MethodName="GetValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="ent:StatusOrder"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -35,7 +48,15 @@
                         <Border BorderBrush="Gray" BorderThickness="0 0 0 0.5">
                             <WrapPanel Orientation="Horizontal" Margin="5">
                                 <Border CornerRadius="25" Width="40" Height="40" BorderBrush="Black" BorderThickness="0.5">
-                                    <Image Source="/Resources/Images/2_.png" />
+                                    <!--<Image Source="/Resources/Images/2_.png">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="LeftMouseClick">
+                                                <i:InvokeCommandAction Command="{Binding SelectClientCmd}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Image>-->
+
+                                    <Button Command="{Binding SelectClientCmd}"/>
                                 </Border>
 
                                 <us:WatermarkTextBox Margin="5 0 1 0" WaterMarkText="Фамилия" Text="{Binding Path=Order.Client.LastName}" Height="25" DefaultTextBrush="Gray" Width="120"/>
@@ -46,13 +67,20 @@
                         </Border>
 
                         <StackPanel Grid.Row="1" Margin="5">
-                            <StackPanel Orientation="Horizontal">
+                            <WrapPanel>
                                 <TextBlock FontWeight="SemiBold" VerticalAlignment="Center" >Время начала: </TextBlock>
-                                <DatePicker Height="25" BorderThickness="0.5" SelectedDate="{Binding Order.DateStart}"/>
-                                <us:WatermarkTextBox WaterMarkText="Введите время" DefaultTextBrush="Gray" Text="{Binding Order.TimeStart, Mode=TwoWay}" />
-                            </StackPanel>
+                                <DatePicker Height="25" SelectedDate="{Binding Order.DateStart}" Width="100" BorderThickness="0 0 0 0.5"/>
+                                <us:WatermarkTextBox BorderThickness="0 0 0 0.5" Height="28" Margin="5 0 "
+                                    WaterMarkText="Введите время" DefaultTextBrush="Gray" Text="{Binding Order.TimeStart, Mode=TwoWay}" />
+                            </WrapPanel>
                             <TextBlock FontWeight="SemiBold">Время окончания: <Run FontWeight="Regular" Text="{Binding Order.TimeEnd}"/></TextBlock>
-                            <TextBlock FontWeight="SemiBold">Статус: <Run FontWeight="Regular" Text="{Binding Order.Status}"/></TextBlock>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontWeight="SemiBold">Статус:</TextBlock>
+                                <ComboBox Style="{DynamicResource ComboBoxStyle1}" BorderThickness="0 0 0 0.5"
+                                          ItemsSource="{Binding Source={StaticResource StatusEnum}}" SelectedValue="{Binding Order.Status}"/>
+                            </StackPanel>
+                            
                             <TextBlock FontWeight="SemiBold">Итого: <Run FontWeight="Regular" Text="{Binding Order.TotalPrice}"/></TextBlock>
                         </StackPanel>
                         

@@ -17,6 +17,8 @@
                    FontStretch="{Binding FontStretch, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
                    />
         <TextBox x:Name="TBox" Background="{x:Null}"
+                 VerticalContentAlignment="Center"
+                 BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WatermarkTextBox}}}"
                  Foreground="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WatermarkTextBox}}}"
                  FontSize="{Binding FontSize, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
                  FontStyle="{Binding FontStyle, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"

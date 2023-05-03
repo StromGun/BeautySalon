@@ -76,6 +76,23 @@ namespace BeautySalon.Services
             return true;
         }
 
+        public bool OpenClientList(ref Client client)
+        {
+            var client_model = new ClientListViewModel();
+            var client_window = new ClientListWindow()
+            {
+                DataContext = client_model,
+                Owner = App.ActiveWindow
+            };
+
+            if (client_window.ShowDialog() != true)
+                return false;
+
+            client = client_model.Client!;
+
+            return true;
+        }
+
         public bool OpenAboutBox()
         {
             var aboutBox = new AboutWindow();

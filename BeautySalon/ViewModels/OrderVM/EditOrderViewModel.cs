@@ -28,6 +28,10 @@ namespace BeautySalon.ViewModels
         private Order? order;
         public Order? Order { get => order; set => Set(ref order,value); }
 
+        private Client? client = new();
+
+
+
         private OrderService? selectedOrderService;
         public OrderService? SelectedOrderService { get => selectedOrderService; set { Set(ref selectedOrderService, value); } }
 
@@ -77,15 +81,51 @@ namespace BeautySalon.ViewModels
             {
                 MessageBox.Show(ex.Message);
             }
-        } 
+
+            ServiceCollection!.Clear();
+        }
         #endregion
 
+        #region RemoveService - Command
         private RelayCommand? removeService;
         public RelayCommand? RemoveServiceCmd => removeService ??= new(obj => RemoveService(), obj => SelectedOrderService != null);
         private void RemoveService()
         {
             OrderServiceBindingList!.Remove(SelectedOrderService!);
         }
+
+        
+        #endregion
+
+        #region SelectClient - Command
+        private RelayCommand? selectClient;
+        public RelayCommand? SelectClientCmd => selectClient ??= new(obj => SelectClient(), obj => Order!.Client == null);
+        private void SelectClient()
+        {
+
+            if (userDialog.OpenClientList(ref client!) != true) return;
+
+            Order!.Client = client;
+
+        } 
+        #endregion
+
+        private void OrderServiceBindingList_ListChanged(object? sender, ListChangedEventArgs e)
+        {
+            if (e.ListChangedType == ListChangedType.ItemChanged)
+            {
+                foreach (var item in OrderServiceBindingList!)
+                    item.TotalPrice = item.Service!.Price * item.Amount - item.Service.Price * item.Amount * item.Discount;
+
+                var sum = new TimeSpan(OrderServiceBindingList.Sum(x => x.Service!.Time!.Value.Ticks));
+                Order!.TimeEnd = Order.TimeStart + sum;
+                Order!.TotalPrice = OrderServiceBindingList.Sum(x => x.TotalPrice);
+
+                MessageBox.Show(e.ListChangedType.ToString());
+            }
+        }
+
+
 
         public EditOrderViewModel(Order? order)
         {
@@ -107,24 +147,11 @@ namespace BeautySalon.ViewModels
 
             if (order.OrderServices != null)
             {
-                OrderServiceBindingList = new(order.OrderServices.ToList());      
+                OrderServiceBindingList = new(order.OrderServices.ToList());
             }
             else OrderServiceBindingList = new();
 
             OrderServiceBindingList!.ListChanged += OrderServiceBindingList_ListChanged;
-        }
-
-        private void OrderServiceBindingList_ListChanged(object? sender, ListChangedEventArgs e)
-        {
-            if (e.ListChangedType == ListChangedType.ItemChanged)
-            {
-                foreach (var item in OrderServiceBindingList!)
-                    item.TotalPrice = item.Service!.Price * item.Amount - item.Service.Price * item.Amount * item.Discount;
-
-                var sum = new TimeSpan(OrderServiceBindingList.Sum(x => x.Service!.Time!.Value.Ticks));
-                Order!.TimeEnd = Order.TimeStart + sum;
-                Order!.TotalPrice = OrderServiceBindingList.Sum(x => x.TotalPrice);
-            }
         }
     }
 }

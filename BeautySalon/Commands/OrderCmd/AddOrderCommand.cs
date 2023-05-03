@@ -5,9 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
 
@@ -28,7 +25,7 @@ namespace BeautySalon.Commands
 
         public void Execute(object? parameter)
         {
-            var order = new Order() { OrderName = $"Заказа № " };
+            var order = new Order() { OrderName = $"Заказ № " };
             if (!userDialog.EditOrder(ref order)) return;
 
             if (DataBase is null) return;

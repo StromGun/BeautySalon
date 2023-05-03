@@ -100,6 +100,7 @@ namespace BeautySalon.ViewModels
                 OrderServices = order.OrderServices,
                 Services = order.Services,
                 Status = order.Status,
+                TimeStart = order.TimeStart,
                 TimeEnd = order.TimeEnd,
                 TotalPrice = order.TotalPrice
             };
@@ -121,7 +122,7 @@ namespace BeautySalon.ViewModels
                     item.TotalPrice = item.Service!.Price * item.Amount - item.Service.Price * item.Amount * item.Discount;
 
                 var sum = new TimeSpan(OrderServiceBindingList.Sum(x => x.Service!.Time!.Value.Ticks));
-                Order!.TimeEnd = Order.DateStart!.Value.TimeOfDay + sum;
+                Order!.TimeEnd = Order.TimeStart + sum;
                 Order!.TotalPrice = OrderServiceBindingList.Sum(x => x.TotalPrice);
             }
         }

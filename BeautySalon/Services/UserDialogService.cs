@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Windows;
+using System.Windows.Controls;
 using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels;
@@ -52,6 +53,7 @@ namespace BeautySalon.Services
             order.OrderName = order_editor_model.Order.OrderName;
             order.Status = order_editor_model.Order.Status;
             order.DateStart = order_editor_model.Order.DateStart;
+            order.TimeStart = order_editor_model.Order.TimeStart;
             order.TimeEnd = order_editor_model.Order.TimeEnd;
             order.OrderServices = order_editor_model.OrderServiceBindingList;
             order.TotalPrice = order_editor_model.Order.TotalPrice;

@@ -46,7 +46,11 @@
                         </Border>
 
                         <StackPanel Grid.Row="1" Margin="5">
-                            <TextBlock FontWeight="SemiBold">Время начала: <Run FontWeight="Regular" Text="{Binding Order.DateStart, StringFormat={}{0:HH\\:mm}}"/></TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontWeight="SemiBold" VerticalAlignment="Center" >Время начала: </TextBlock>
+                                <DatePicker Height="25" BorderThickness="0.5" SelectedDate="{Binding Order.DateStart}"/>
+                                <us:WatermarkTextBox WaterMarkText="Введите время" DefaultTextBrush="Gray" Text="{Binding Order.TimeStart, Mode=TwoWay}" />
+                            </StackPanel>
                             <TextBlock FontWeight="SemiBold">Время окончания: <Run FontWeight="Regular" Text="{Binding Order.TimeEnd}"/></TextBlock>
                             <TextBlock FontWeight="SemiBold">Статус: <Run FontWeight="Regular" Text="{Binding Order.Status}"/></TextBlock>
                             <TextBlock FontWeight="SemiBold">Итого: <Run FontWeight="Regular" Text="{Binding Order.TotalPrice}"/></TextBlock>

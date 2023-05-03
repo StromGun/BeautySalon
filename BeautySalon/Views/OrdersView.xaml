@@ -54,8 +54,8 @@
 
                                 <TextBlock FontSize="16">
                                     <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}{0:HH:mm} - {1:hh\:mm}">
-                                            <Binding Path="DateStart"/>
+                                        <MultiBinding StringFormat="{}{0:hh\:mm} - {1:hh\:mm}">
+                                            <Binding Path="TimeStart"/>
                                             <Binding Path="TimeEnd"/>
                                         </MultiBinding>
                                     </TextBlock.Text>
@@ -103,9 +103,9 @@
 
         <Calendar Grid.Row="1" Grid.Column="2" SelectedDate="{Binding SelectedDate}" />
 
-        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" >
+        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Command="{StaticResource AddOrderCommand}" >
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Добавить"/>
+                <TextBlock Text="Добавить" />
             </StackPanel>
         </Button>
     </Grid>

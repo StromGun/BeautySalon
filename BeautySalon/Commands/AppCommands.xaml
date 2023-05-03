@@ -9,5 +9,6 @@
     <cmd:EditClientCommand x:Key="EditClientCommand"/>
 
     <cmd:EditOrderCommand x:Key="EditOrderCommand"/>
+    <cmd:AddOrderCommand x:Key="AddOrderCommand"/>
 
 </ResourceDictionary>

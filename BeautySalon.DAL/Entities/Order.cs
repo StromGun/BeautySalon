@@ -18,6 +18,7 @@ namespace BeautySalon.DAL.Entities
         private decimal totalPrice;
         private StatusOrder status;
         private DateTime? dateStart;
+        private TimeSpan? timeStart;
         private TimeSpan? timeEnd;
 
         private Client? client;
@@ -38,7 +39,10 @@ namespace BeautySalon.DAL.Entities
         [Required]
         public StatusOrder Status { get => status; set => Set(ref status, value); }
         [Required]
+        [Column(TypeName = "date")]
         public DateTime? DateStart { get => dateStart; set => Set(ref dateStart, value); }
+        [Required]
+        public TimeSpan? TimeStart { get => timeStart; set => Set(ref timeStart, value); }
         [Required]
         public TimeSpan? TimeEnd { get => timeEnd; set => Set(ref timeEnd,value); }
         [Required]

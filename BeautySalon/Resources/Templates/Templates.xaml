@@ -19,6 +19,9 @@
     <DataTemplate DataType="{x:Type vm:OrdersViewModels}">
         <view:OrdersView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ServicesListViewModel}">
+        <view:ServicesView/>
+    </DataTemplate>
     
     
     

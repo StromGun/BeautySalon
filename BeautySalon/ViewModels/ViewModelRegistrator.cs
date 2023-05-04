@@ -13,6 +13,7 @@ namespace BeautySalon.ViewModels
             .AddTransient<ClientViewModel>()
             .AddTransient<NavigationViewModel>()
             .AddTransient<OrdersViewModels>()
+            .AddTransient<ServicesListViewModel>()
             ;
     }
 }

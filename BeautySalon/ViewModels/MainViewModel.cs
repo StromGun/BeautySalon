@@ -9,7 +9,10 @@ namespace BeautySalon.ViewModels
         private readonly NavigationViewModel navigationViewModel;
         private readonly ClientViewModel clientView;
         private readonly OrdersViewModels ordersView;
+        private readonly ServicesListViewModel servicesListViewModel;
         private readonly IUserDialog userDialog;
+
+
         private ViewModel? currentViewModel;
         public ViewModel? CurrentViewModel { get => currentViewModel; set => Set(ref currentViewModel, value); }
 
@@ -30,6 +33,13 @@ namespace BeautySalon.ViewModels
         private void OpenOrderView() => ChangeViewModel(ordersView);
         #endregion
 
+        #region OpenServiceView - Command
+        private RelayCommand? openServiceViewCmd;
+        public RelayCommand? OpenServiceViewCmd => openServiceViewCmd ??= new(obj => OpenServiceView(), obj => CanOpenServiceView());
+        private bool CanOpenServiceView() => CurrentViewModel != servicesListViewModel;
+        private void OpenServiceView() => ChangeViewModel(servicesListViewModel);
+        #endregion
+
         #region OpenAboutBox - Command
         private RelayCommand? openAboutBox;
         public RelayCommand? OpenAboutBoxCmd => openAboutBox ??= new(obj => OpenAboutBox());
@@ -48,11 +58,13 @@ namespace BeautySalon.ViewModels
             NavigationViewModel navigationViewModel,
             ClientViewModel clientView,
             OrdersViewModels ordersView,
+            ServicesListViewModel servicesListViewModel,
             IUserDialog userDialog)
         {
             this.navigationViewModel = navigationViewModel;
             this.clientView = clientView;
             this.ordersView = ordersView;
+            this.servicesListViewModel = servicesListViewModel;
             this.userDialog = userDialog;
             CurrentViewModel = this.navigationViewModel;
         }

@@ -39,7 +39,7 @@
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Фильтр"/>
-                    <Button Style="{StaticResource ButtonStyle1}" Width="15" Height="15" Cursor="Hand">
+                    <Button Style="{StaticResource ButtonStyle1}" Command="{Binding ClearFilterCmd}" Width="15" Height="15" Cursor="Hand">
                         <Image Source="/Resources/Images/close.png" />
                     </Button>
                 </StackPanel>
@@ -48,14 +48,11 @@
                 <uc:WatermarkTextBox WaterMarkText="Фамилия" Style="{StaticResource WTboxCommon}" Text="{Binding LastName, Mode=TwoWay}" Margin="2" />
                 <uc:WatermarkTextBox WaterMarkText="Имя" Style="{StaticResource WTboxCommon}" Text="{Binding FirstName, Mode=TwoWay}" Margin="2"/>
                 <uc:WatermarkTextBox WaterMarkText="Отчество" Style="{StaticResource WTboxCommon}" Text="{Binding Patronymic, Mode=TwoWay}" Margin="2"/>
-                <Grid Margin="2">
-                    <ComboBox ItemsSource="{Binding Source={StaticResource GenderEnum}}" Style="{StaticResource ComboBoxStyle1}" BorderThickness="0 0 0 1" Margin="0 2"
-                                          SelectedItem="{Binding Gender}" />
-                    <Button Style="{StaticResource ButtonStyle1}" Width="15" HorizontalAlignment="Right" Margin="15 0">
-                        <Image Source="/Resources/Images/close.png" />
-                    </Button>
-                </Grid>
-                <uc:WatermarkTextBox WaterMarkText="Возраст" Style="{StaticResource WTboxCommon}" Margin="2"/>
+                <WrapPanel ItemWidth="50" VerticalAlignment="Center">
+                    <CheckBox Content="М" IsChecked="{Binding GenderM}"/>
+                    <CheckBox Content="Ж" IsChecked="{Binding GenderW}"/>
+                </WrapPanel>
+                <uc:WatermarkTextBox WaterMarkText="Возраст" Text="{Binding Age, Mode=TwoWay}" Style="{StaticResource WTboxCommon}" Margin="2"/>
             </WrapPanel>
         </GroupBox>
          

@@ -12,6 +12,8 @@ namespace BeautySalon.DAL.Context
         public DbSet<OrderService> OrderServices { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<Gender> Genders { get; set; }
+        public DbSet<ClientStatus> ClientStatuses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

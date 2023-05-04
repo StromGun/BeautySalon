@@ -4,8 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:BeautySalon.ViewModels"
-        xmlns:ent="clr-namespace:BeautySalon.DAL.Entities;assembly=BeautySalon.DAL"
-        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:BeautySalon.Views.Windows"
         xmlns:uc="clr-namespace:BeautySalon.Resources.UserControls"
         mc:Ignorable="d"
@@ -13,13 +11,6 @@
         Title="EditClientWindow" Height="450" Width="900" 
         FontSize="14" ShowInTaskbar="False"
         WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize">
-    <Window.Resources>
-        <ObjectDataProvider x:Key="GenderEnum" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="ent:Gender"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-    </Window.Resources>
     <Grid>
         <StackPanel>
 

@@ -4,17 +4,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeautySalon.DAL.Entities
 {
-    public enum Gender
+    public class Gender : Entity
     {
-        М = 0,
-        Ж = 1
+        private int id;
+        private string? name;
+
+        public int Id { get => id; set => Set(ref id, value); }
+        [Required]
+        public string? Name { get => name; set => Set(ref name, value); }
     }
 
-    public enum Status
+    public class ClientStatus : Entity
     {
-        Постоянный = 0,
-        Потенциальный = 1,
-        Потерянный = 2
+        private int id;
+        private string? status;
+
+        public int Id { get => id; set => Set(ref id,value); }
+        [Required]
+        public string? Status { get => status; set => Set(ref status,value); }
     }
 
     public class Client : Entity
@@ -27,7 +34,7 @@ namespace BeautySalon.DAL.Entities
         private Gender? gender;
         private string? phone;
         private string? email;
-        private Status? status;
+        private ClientStatus? status;
         private DateTime? birthDay;
         private byte[]? image;
         private ICollection<Order>? orders;
@@ -48,7 +55,7 @@ namespace BeautySalon.DAL.Entities
         [EmailAddress]
         public string? Email { get => email; set => Set(ref email, value); }
 
-        public Status? Status { get => status; set => Set(ref status, value); }
+        public ClientStatus? Status { get => status; set => Set(ref status, value); }
 
         public DateTime? BirthDay { get => birthDay; set => Set(ref birthDay, value); }
         public byte[]? Image { get => image; set => Set(ref image, value); }

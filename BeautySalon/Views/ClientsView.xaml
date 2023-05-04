@@ -6,10 +6,21 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:vm="clr-namespace:BeautySalon.ViewModels"
              xmlns:cv="clr-namespace:BeautySalon.Resources.Converters"
+             xmlns:uc="clr-namespace:BeautySalon.Resources.UserControls"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:ent="clr-namespace:BeautySalon.DAL.Entities;assembly=BeautySalon.DAL"
              xmlns:local="clr-namespace:BeautySalon.Views"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance {x:Type vm:ClientViewModel}}"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="GenderEnum" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="ent:Gender"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCmd}"/>
@@ -19,15 +30,33 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         
-        <GroupBox Header="HIHIH" Margin="5" BorderBrush="Black" BorderThickness="0.5">
-            <TreeView ItemsSource="{Binding ClientsView}">
-                
-            </TreeView>
+        <GroupBox Margin="5" BorderBrush="Black" BorderThickness="0.5">
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Фильтр"/>
+                    <Button Style="{StaticResource ButtonStyle1}" Width="15" Height="15" Cursor="Hand">
+                        <Image Source="/Resources/Images/close.png" />
+                    </Button>
+                </StackPanel>
+            </GroupBox.Header>
+            <WrapPanel ItemWidth="100">
+                <uc:WatermarkTextBox WaterMarkText="Фамилия" Style="{StaticResource WTboxCommon}" Text="{Binding LastName, Mode=TwoWay}" Margin="2" />
+                <uc:WatermarkTextBox WaterMarkText="Имя" Style="{StaticResource WTboxCommon}" Text="{Binding FirstName, Mode=TwoWay}" Margin="2"/>
+                <uc:WatermarkTextBox WaterMarkText="Отчество" Style="{StaticResource WTboxCommon}" Text="{Binding Patronymic, Mode=TwoWay}" Margin="2"/>
+                <Grid Margin="2">
+                    <ComboBox ItemsSource="{Binding Source={StaticResource GenderEnum}}" Style="{StaticResource ComboBoxStyle1}" BorderThickness="0 0 0 1" Margin="0 2"
+                                          SelectedItem="{Binding Gender}" />
+                    <Button Style="{StaticResource ButtonStyle1}" Width="15" HorizontalAlignment="Right" Margin="15 0">
+                        <Image Source="/Resources/Images/close.png" />
+                    </Button>
+                </Grid>
+                <uc:WatermarkTextBox WaterMarkText="Возраст" Style="{StaticResource WTboxCommon}" Margin="2"/>
+            </WrapPanel>
         </GroupBox>
          
         <DataGrid Style="{StaticResource BasiGrid2}" Grid.Row="1" ItemsSource="{Binding ClientsView}" Margin="5 0" Language="ru-RU" SelectionMode="Single" 

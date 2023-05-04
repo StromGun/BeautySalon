@@ -48,15 +48,21 @@
                         <Border BorderBrush="Gray" BorderThickness="0 0 0 0.5">
                             <WrapPanel Orientation="Horizontal" Margin="5">
                                 <Border CornerRadius="25" Width="40" Height="40" BorderBrush="Black" BorderThickness="0.5">
-                                    <!--<Image Source="/Resources/Images/2_.png">
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="LeftMouseClick">
-                                                <i:InvokeCommandAction Command="{Binding SelectClientCmd}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </Image>-->
-
-                                    <Button Command="{Binding SelectClientCmd}"/>
+                                    
+                                    <Button Style="{DynamicResource ButtonStyle1}" Command="{Binding SelectClientCmd}" Cursor="Hand">
+                                        <Image>
+                                            <Image.Source>
+                                                <Binding Path="Order.Client.Image">
+                                                    <Binding.TargetNullValue>
+                                                        <ImageSource>/Resources/Images/face.png</ImageSource>
+                                                    </Binding.TargetNullValue>
+                                                    <Binding.FallbackValue>
+                                                        <ImageSource>/Resources/Images/person_add.png</ImageSource>
+                                                    </Binding.FallbackValue>
+                                                </Binding>
+                                            </Image.Source>
+                                        </Image>
+                                    </Button>
                                 </Border>
 
                                 <us:WatermarkTextBox Margin="5 0 1 0" WaterMarkText="Фамилия" Text="{Binding Path=Order.Client.LastName}" Height="25" DefaultTextBrush="Gray" Width="120"/>
@@ -71,14 +77,14 @@
                                 <TextBlock FontWeight="SemiBold" VerticalAlignment="Center" >Время начала: </TextBlock>
                                 <DatePicker Height="25" SelectedDate="{Binding Order.DateStart}" Width="100" BorderThickness="0 0 0 0.5"/>
                                 <us:WatermarkTextBox BorderThickness="0 0 0 0.5" Height="28" Margin="5 0 "
-                                    WaterMarkText="Введите время" DefaultTextBrush="Gray" Text="{Binding Order.TimeStart, Mode=TwoWay}" />
+                                    WaterMarkText="Введите время" DefaultTextBrush="Gray" Text="{Binding Order.TimeStart, StringFormat={}{0:hh\\:mm}, Mode=TwoWay}" />
                             </WrapPanel>
                             <TextBlock FontWeight="SemiBold">Время окончания: <Run FontWeight="Regular" Text="{Binding Order.TimeEnd}"/></TextBlock>
 
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontWeight="SemiBold">Статус:</TextBlock>
                                 <ComboBox Style="{DynamicResource ComboBoxStyle1}" BorderThickness="0 0 0 0.5"
-                                          ItemsSource="{Binding Source={StaticResource StatusEnum}}" SelectedValue="{Binding Order.Status}"/>
+                                          ItemsSource="{Binding Source={StaticResource StatusEnum}}" SelectedItem="{Binding Order.Status}"/>
                             </StackPanel>
                             
                             <TextBlock FontWeight="SemiBold">Итого: <Run FontWeight="Regular" Text="{Binding Order.TotalPrice}"/></TextBlock>

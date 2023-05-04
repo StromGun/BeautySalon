@@ -25,12 +25,14 @@
                         <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5">
                             <TextBlock Text="Фамилия" Style="{StaticResource TBlockCommon}"/>
                             <!--<TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.LastName}"/>-->
-                            <uc:WatermarkTextBox DefaultTextBrush="Gray" WaterMarkText="Введите фамилию клиента" Text="{Binding Client.LastName, Mode=TwoWay}"/>
+                            <uc:WatermarkTextBox Style="{StaticResource WTboxCommon}" DefaultTextBrush="Gray" 
+                                                 WaterMarkText="Введите фамилию клиента" Text="{Binding Client.LastName, Mode=TwoWay}"/>
                         </WrapPanel>
 
                         <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5">
                             <TextBlock Text="Имя" Style="{StaticResource TBlockCommon}"/>
-                            <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.FirstName}"/>
+                            <uc:WatermarkTextBox Style="{StaticResource WTboxCommon}" DefaultTextBrush="Gray" 
+                                                 WaterMarkText="Введите имя клиента" Text="{Binding Client.FirstName, Mode=TwoWay}"/>
                         </WrapPanel>
 
                         <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5">

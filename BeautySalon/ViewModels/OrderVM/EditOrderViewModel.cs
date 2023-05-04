@@ -121,7 +121,7 @@ namespace BeautySalon.ViewModels
                 Order!.TimeEnd = Order.TimeStart + sum;
                 Order!.TotalPrice = OrderServiceBindingList.Sum(x => x.TotalPrice);
 
-                MessageBox.Show(e.ListChangedType.ToString());
+                //MessageBox.Show(e.ListChangedType.ToString());
             }
         }
 
@@ -135,12 +135,12 @@ namespace BeautySalon.ViewModels
             {
                 ID = order!.ID,
                 Client = order.Client,
-                DateStart = order.DateStart,
+                DateStart = order.DateStart ?? DateTime.Now,
                 OrderName = order.OrderName,
                 OrderServices = order.OrderServices,
                 Services = order.Services,
-                Status = order.Status,
-                TimeStart = order.TimeStart,
+                Status = order.Status == 0 ? StatusOrder.Выполняется: order.Status,
+                TimeStart = order.TimeStart ?? new TimeSpan(8,0, 0),
                 TimeEnd = order.TimeEnd,
                 TotalPrice = order.TotalPrice
             };

@@ -12,6 +12,8 @@
     <None Remove="Resources\Images\2_.png" />
     <None Remove="Resources\Images\arrow_back.png" />
     <None Remove="Resources\Images\arrow_forward.png" />
+    <None Remove="Resources\Images\face.png" />
+    <None Remove="Resources\Images\person_add.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +34,8 @@
     <Resource Include="Resources\Images\2_.png" />
     <Resource Include="Resources\Images\arrow_back.png" />
     <Resource Include="Resources\Images\arrow_forward.png" />
+    <Resource Include="Resources\Images\face.png" />
+    <Resource Include="Resources\Images\person_add.png" />
   </ItemGroup>
 
   <ItemGroup>

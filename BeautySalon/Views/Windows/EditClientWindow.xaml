@@ -42,7 +42,7 @@
 
                         <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5 ">
                             <TextBlock Text="Дата рождения" Style="{StaticResource TBlockCommon}"/>
-                            <TextBox Style="{StaticResource TboxCommon}" Text="{Binding Client.BirthDay, StringFormat={}{0:dd.MM.yyyy},ConverterCulture=ru-RU}"/>
+                            <DatePicker SelectedDate="{Binding Client.BirthDay}" FontSize="14" Height="25" BorderThickness="0 0 0 1"/>
                         </WrapPanel>
 
                         <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5">
@@ -53,9 +53,9 @@
 
                     <StackPanel Grid.Column="1">
                         <Border Width="150" Height="135" BorderThickness="0.5" BorderBrush="Black">
-                            <Image x:Name="ClientImage"/>
+                            <Image Source="{Binding Client.Image}"/>
                         </Border>
-                        <Button Content="Выбрать" Style="{StaticResource BtnCommon}"/>
+                        <Button Content="Выбрать" Command="{Binding OpenImageCmd}" Style="{StaticResource BtnCommon}"/>
                     </StackPanel>
 
                 </Grid>

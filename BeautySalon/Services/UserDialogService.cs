@@ -5,6 +5,7 @@ using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels;
 using BeautySalon.Views.Windows;
+using Microsoft.Win32;
 
 namespace BeautySalon.Services
 {
@@ -32,6 +33,7 @@ namespace BeautySalon.Services
             client.Gender = client_editor_model.Client.Gender;
             client.Phone = client_editor_model.Client.Phone;
             client.BirthDay = client_editor_model.Client.BirthDay;
+            client.Image = client_editor_model.Client.Image;
 
             return true;
         }
@@ -97,6 +99,19 @@ namespace BeautySalon.Services
         {
             var aboutBox = new AboutWindow();
             aboutBox.ShowDialog();
+            return true;
+        }
+
+        public bool OpenFileDialog(ref string path)
+        {
+            OpenFileDialog openFileDialog = new()
+            {
+                Filter = "Image Files(*.png, *.jpg, *.jpeg, *.bmp, *.gif)|*.png; *.jpg; *.jpeg; *.bmp"
+            };
+            if (openFileDialog.ShowDialog() != true) return false;
+
+            path = openFileDialog.FileName;
+            
             return true;
         }
 

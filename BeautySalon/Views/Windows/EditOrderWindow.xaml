@@ -65,10 +65,10 @@
                                     </Button>
                                 </Border>
 
-                                <us:WatermarkTextBox Margin="5 0 1 0" WaterMarkText="Фамилия" Text="{Binding Path=Order.Client.LastName}" Height="25" DefaultTextBrush="Gray" Width="120"/>
-                                <us:WatermarkTextBox WaterMarkText="Имя" Height="25" Text="{Binding Path=Order.Client.FirstName}" DefaultTextBrush="Gray" Width="120"/>
-                                <us:WatermarkTextBox Margin="1 0 0 0" WaterMarkText="Отчество" Text="{Binding Path=Order.Client.Patronymic}" Height="25" DefaultTextBrush="Gray" Width="120"/>
-                                <us:WatermarkTextBox Margin="10 0 0 0" WaterMarkText="Телефон" Text="{Binding Path=Order.Client.Phone}" Height="25" DefaultTextBrush="Gray" Width="120"/>
+                                <us:WatermarkTextBox Margin="5 1 2 0" WaterMarkText="Фамилия" Text="{Binding Path=Order.Client.LastName}" Style="{StaticResource WTboxCommon}" Width="120"/>
+                                <us:WatermarkTextBox Margin="0 0 0 0" WaterMarkText="Имя" Text="{Binding Path=Order.Client.FirstName}" Style="{StaticResource WTboxCommon}" Width="120"/>
+                                <us:WatermarkTextBox Margin="2 0 0 0" WaterMarkText="Отчество" Text="{Binding Path=Order.Client.Patronymic}" Style="{StaticResource WTboxCommon}" Width="120"/>
+                                <us:WatermarkTextBox Margin="10 0 0 0" WaterMarkText="Телефон" Text="{Binding Path=Order.Client.Phone}" Style="{StaticResource WTboxCommon}" Width="120"/>
                             </WrapPanel>
                         </Border>
 

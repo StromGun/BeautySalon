@@ -14,12 +14,15 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="BorderThickness" Value="0 0 0 1"/>
+        <Setter Property="Height" Value="25"/>
     </Style>
 
     <Style TargetType="us:WatermarkTextBox" x:Key="WTboxCommon">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="BorderThickness" Value="0 0 0 1"/>
+        <Setter Property="Height" Value="27"/>
+        <Setter Property="DefaultTextBrush" Value="Gray"/>
     </Style>
 
     <Style TargetType="Button" x:Key="BtnCommon">

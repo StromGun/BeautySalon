@@ -7,25 +7,25 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="White">
     <Grid>
-        <TextBlock x:Name="TBlock"
-                   Foreground="{Binding DefaultTextBrush, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WatermarkTextBox}}}"
-                   Margin="5 0" 
-                   Text="{Binding WaterMarkText, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
-                   FontSize="{Binding FontSize, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
-                   FontStyle="{Binding FontStyle, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
-                   FontFamily="{Binding FontFamily,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
-                   FontStretch="{Binding FontStretch, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
-                   />
-        <TextBox x:Name="TBox" Background="{x:Null}"
-                 VerticalContentAlignment="Center"
-                 BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WatermarkTextBox}}}"
-                 Foreground="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WatermarkTextBox}}}"
-                 FontSize="{Binding FontSize, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
-                 FontStyle="{Binding FontStyle, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
-                 FontFamily="{Binding FontFamily,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
-                 FontStretch="{Binding FontStretch, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
-                 Text="{Binding Text, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}, UpdateSourceTrigger=PropertyChanged}" 
-                 TextChanged="TBox_TextChanged"
-                />
-    </Grid>
+            <TextBlock x:Name="TBlock"
+                       Foreground="{Binding DefaultTextBrush, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WatermarkTextBox}}}"
+                       Margin="3 0" 
+                       Text="{Binding WaterMarkText, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
+                       FontSize="{Binding FontSize, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
+                       FontStyle="{Binding FontStyle, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
+                       FontFamily="{Binding FontFamily,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
+                       FontStretch="{Binding FontStretch, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
+                       />
+            <TextBox x:Name="TBox" Background="{x:Null}" Margin="0 3 0 0" Padding="0 0 0 3"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WatermarkTextBox}}}"
+                     Foreground="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WatermarkTextBox}}}"
+                     FontSize="{Binding FontSize, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
+                     FontStyle="{Binding FontStyle, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
+                     FontFamily="{Binding FontFamily,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
+                     FontStretch="{Binding FontStretch, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}}"
+                     Text="{Binding Text, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:WatermarkTextBox}}, UpdateSourceTrigger=PropertyChanged}" 
+                     TextChanged="TBox_TextChanged"
+                    />
+        </Grid>
 </UserControl>

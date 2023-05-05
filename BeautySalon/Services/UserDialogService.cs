@@ -63,6 +63,48 @@ namespace BeautySalon.Services
             return true;
         }
 
+        public bool EditServiceCategory(ref ServiceType serviceType)
+        {
+            if (serviceType == null) return false;
+            var serviceType_editor_model = new EditServiceCategoryViewModel(serviceType);
+            var serviceType_editor_window = new EditServiceCategoryWindow()
+            {
+                DataContext = serviceType_editor_model,
+                Owner = App.ActiveWindow
+            };
+
+            if (serviceType_editor_window.ShowDialog() != true)
+                return false;
+
+            serviceType.Name = serviceType_editor_model.ServiceType?.Name;
+            
+
+            return true;
+        }
+
+        public bool EditService(ref Service service)
+        {
+            if (service == null) return false;
+            var service_editor_model = new EditServiceViewModel(service);
+            var service_editor_window = new EditServiceWindow()
+            {
+                DataContext = service_editor_model,
+                Owner = App.ActiveWindow
+            };
+
+            if (service_editor_window.ShowDialog() != true)
+                return false;
+
+            service.Name = service_editor_model.Service!.Name;
+            service.Price = service_editor_model.Service!.Price;
+            service.ServiceType = service_editor_model.Service.ServiceType;
+            service.Time = service_editor_model.Service.Time;
+
+
+            return true;
+        }
+
+
         public bool OpenServices(ICollection services)
         {
             var services_model = new ServicesViewModel(services);

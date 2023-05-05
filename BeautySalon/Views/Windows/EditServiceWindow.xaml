@@ -1,0 +1,43 @@
+﻿<Window x:Class="BeautySalon.Views.Windows.EditServiceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:BeautySalon.ViewModels"
+        xmlns:local="clr-namespace:BeautySalon.Views.Windows"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance {x:Type vm:EditServiceViewModel}}"
+        Title="Редактирование услуги" FontSize="14"
+        Height="250" Width="400" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            
+            <WrapPanel Margin="2" ItemWidth="120" >
+                <TextBlock Text="Наименование"/>
+                <TextBox Text="{Binding Service.Name}"/>
+            </WrapPanel>
+            
+            <WrapPanel Margin="2" ItemWidth="120" >
+                <TextBlock Text="Категория"/>
+                <ComboBox ItemsSource="{Binding ServiceTypes}" DisplayMemberPath="Name" SelectedItem="{Binding Service.ServiceType}"/>
+            </WrapPanel>
+
+            <WrapPanel Margin="2" ItemWidth="120" >
+                <TextBlock Text="Цена"/>
+                <TextBox Text="{Binding Service.Price}"/>
+            </WrapPanel>
+
+            <WrapPanel Margin="2" ItemWidth="120" >
+                <TextBlock Text="Длительность"/>
+                <TextBox Text="{Binding Service.Time}"/>
+            </WrapPanel>
+            
+            
+            
+            <WrapPanel Margin="2 5" HorizontalAlignment="Right">
+                <Button Content="Сохранить" Command="{StaticResource DialogResultCommand}" CommandParameter="True"/>
+                <Button Content="Отмена" Command="{StaticResource DialogResultCommand}" CommandParameter="False"/>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>

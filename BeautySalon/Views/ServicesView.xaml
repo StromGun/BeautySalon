@@ -18,7 +18,8 @@
         </Grid.RowDefinitions>
         
         <WrapPanel  VerticalAlignment="Center">
-            <Button/>
+            <Button Content="Новая категория услуг" Command="{Binding AddServiceTypeCmd}"/>
+            <Button Content="Новая услуга" Command="{Binding AddServiceCmd}"/>
         </WrapPanel>
 
 
@@ -31,21 +32,57 @@
             </Grid.ColumnDefinitions>
 
             <Border BorderThickness="0 0 1 0" Margin="5 5 0 5" BorderBrush="Black">
-                <TreeView ItemsSource="{Binding ServiceTypes}"  DisplayMemberPath="Name">
+                <TreeView>
+                    <TreeViewItem Header="Все категории" ItemsSource="{Binding ServiceTypes}" DisplayMemberPath="Name">
+                    </TreeViewItem>
+
+                    <TreeView.Resources>
+                        <ContextMenu  x:Key="CtxMenu">
+                            <MenuItem Header="Редактировать" 
+                                   />
+                            <MenuItem Header="Удалить" 
+                                  Command="{Binding Path=DataContext.RemoveServiceTypeCmd, 
+                                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" 
+                              />
+                        </ContextMenu>
+                    </TreeView.Resources>
+
+                    <TreeView.ItemContainerStyle>
+                        <Style TargetType="TreeViewItem">
+                            <Setter Property="ContextMenu" Value="{StaticResource CtxMenu}"/>
+                        </Style>
+                    </TreeView.ItemContainerStyle>
+
                     <i:Interaction.Behaviors>
                         <b:BindableSelectedItemBehavior SelectedItem="{Binding SelectedServiceType, Mode=TwoWay}"/>
                     </i:Interaction.Behaviors>
-                    
-                    
-                    
                 </TreeView>
             </Border>
 
             <GridSplitter Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="3"/>
 
             <Grid Grid.Column="2">
-                <DataGrid Grid.Column="2" ItemsSource="{Binding ServicesView}"
+                <DataGrid Grid.Column="2" ItemsSource="{Binding ServicesView}" SelectedItem="{Binding SelectedService}"
                           Margin="5" AutoGenerateColumns="False" IsReadOnly="True">
+                    
+                    <DataGrid.Resources>
+                        <ContextMenu  x:Key="CtxMenu">
+                            <MenuItem Header="Редактировать" 
+                                   />
+                            <MenuItem Header="Удалить" 
+                                  Command="{Binding Path=DataContext.RemoveServiceCmd, 
+                                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" 
+                              />
+                        </ContextMenu>
+                    </DataGrid.Resources>
+
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="ContextMenu" Value="{StaticResource CtxMenu}"/>
+                        </Style>
+                    </DataGrid.RowStyle>
+
+
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
                         <DataGridTextColumn Header="Цена" Binding="{Binding Price}"/>

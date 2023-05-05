@@ -13,6 +13,7 @@ namespace BeautySalon.DAL.Entities
         private ICollection<OrderService>? orderService;
         private ICollection<Order>? orders;
         private ICollection<Product>? products;
+        private ServiceType? serviceType;
         
 
         public int ID { get => iD; set => Set(ref iD, value); }
@@ -25,7 +26,7 @@ namespace BeautySalon.DAL.Entities
         public virtual ICollection<OrderService>? OrderService { get => orderService; set => Set(ref orderService, value); }
         public virtual ICollection<Product>? Products { get => products; set => Set(ref products, value); }
 
-        public ServiceType? ServiceType { get; set; }
+        public ServiceType? ServiceType { get => serviceType; set => Set(ref serviceType,value); }
         public ICollection<Order>? Orders { get => orders; set => Set(ref orders, value); }
     }
 }

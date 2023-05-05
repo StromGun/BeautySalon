@@ -1,0 +1,25 @@
+﻿<Window x:Class="BeautySalon.Views.Windows.EditServiceCategoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:BeautySalon.ViewModels"
+        xmlns:local="clr-namespace:BeautySalon.Views.Windows"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance {x:Type vm:EditServiceCategoryViewModel}}"
+        Title="Редактирование категории услуг" FontSize="14"
+        Height="200" Width="300" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <WrapPanel ItemWidth="120" >
+                <TextBlock Text="Наименование"/>
+                <TextBox Text="{Binding ServiceType.Name}"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 5" HorizontalAlignment="Right">
+                <Button Content="Сохранить" Command="{StaticResource DialogResultCommand}" CommandParameter="True"/>
+                <Button Content="Отмена" Command="{StaticResource DialogResultCommand}" CommandParameter="False"/>
+            </WrapPanel>
+        </StackPanel>
+        
+    </Grid>
+</Window>

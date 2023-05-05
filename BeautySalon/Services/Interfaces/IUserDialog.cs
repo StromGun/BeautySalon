@@ -7,6 +7,8 @@ namespace BeautySalon.Services.Interfaces
     {
         bool EditClient(ref Client? client);
         bool EditOrder(ref Order? order);
+        bool EditServiceCategory(ref ServiceType serviceType);
+        bool EditService(ref Service service);
 
         bool OpenServices(ICollection collection);
         bool OpenClientList(ref Client client);

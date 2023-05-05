@@ -9,16 +9,16 @@
         mc:Ignorable="d"
         FontSize="14" WindowStartupLocation="CenterScreen"
         Title="MainWindow" MinHeight="600" MinWidth="1024">
-    <Grid>
+    <Grid Background="{StaticResource ColorBackground}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*" MaxHeight="90"/>
+            <RowDefinition Height="0.1*" MaxHeight="90"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="0.2*" MaxHeight="50"/>
         </Grid.RowDefinitions>
 
 
         <Grid Background="{StaticResource ColorCommon}" Margin="0">
-            <Menu Background="{StaticResource ColorCommon}" FontSize="14">
+            <Menu Background="{StaticResource ColorCommon}" FontSize="14" Foreground="{StaticResource ColorForeground}">
                 <MenuItem Header="Клиенты" Command="{Binding OpenClientViewCmd}"/>
                 <MenuItem Header="Записи" Command="{Binding OpenOrderViewCmd}"/>
                 <MenuItem Header="Услуги" Command="{Binding OpenServiceViewCmd}"/>

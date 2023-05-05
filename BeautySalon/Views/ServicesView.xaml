@@ -6,8 +6,9 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:b="clr-namespace:BeautySalon.Resources.Behaviors"
       xmlns:vm="clr-namespace:BeautySalon.ViewModels"
-      xmlns:local="clr-namespace:BeautySalon.Views"
-      mc:Ignorable="d" 
+      xmlns:us="clr-namespace:BeautySalon.Resources.UserControls"
+      xmlns:local="clr-namespace:BeautySalon.Views" 
+             mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance {x:Type vm:ServicesListViewModel}}"
       d:DesignHeight="450" d:DesignWidth="800">
     
@@ -18,8 +19,18 @@
         </Grid.RowDefinitions>
         
         <WrapPanel  VerticalAlignment="Center">
-            <Button Content="Новая категория услуг" Command="{Binding AddServiceTypeCmd}"/>
-            <Button Content="Новая услуга" Command="{Binding AddServiceCmd}"/>
+            <Button Style="{StaticResource BtnCommon}" Command="{Binding AddServiceTypeCmd}">
+                <StackPanel Orientation="Horizontal">
+                    <us:PlusFigure Width="20" Height="20" Margin="2" VerticalAlignment="Center"/>
+                    <TextBlock Text="Новая категория услуг" VerticalAlignment="Center" Margin="0 0 0 2" />
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource BtnCommon}" Command="{Binding AddServiceCmd}">
+                <StackPanel Orientation="Horizontal">
+                    <us:PlusFigure Width="20" Height="20" Margin="2" VerticalAlignment="Center"/>
+                    <TextBlock Text="Новая услуга" VerticalAlignment="Center" Margin="0 0 0 2" />
+                </StackPanel>
+            </Button>
         </WrapPanel>
 
 

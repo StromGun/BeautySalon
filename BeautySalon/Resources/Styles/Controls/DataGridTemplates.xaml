@@ -7,7 +7,7 @@
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True" >
                 <Setter Property="Background" Value="#eee" />
-                <Setter Property="Foreground" Value="#000" />
+                <Setter Property="Foreground" Value="#303030" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True" >
                 <Setter Property="Background" Value="#eee" />
@@ -81,7 +81,7 @@
 
     <Style x:Key="GridCellBig" TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource {x:Type DataGridCell}}">
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="#555"/>
+        
         <Setter Property="Width" Value="auto"/>
         <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
 
@@ -96,7 +96,8 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{StaticResource ColorCommon}"/>
+                <Setter Property="Foreground" Value="#303030"/>
+                <Setter Property="Background" Value="{StaticResource ColorAccentForeground}"/>
             </Trigger>
         </Style.Triggers>
     </Style>

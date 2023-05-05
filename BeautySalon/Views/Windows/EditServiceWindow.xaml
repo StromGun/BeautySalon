@@ -35,8 +35,8 @@
             
             
             <WrapPanel Margin="2 5" HorizontalAlignment="Right">
-                <Button Content="Сохранить" Command="{StaticResource DialogResultCommand}" CommandParameter="True"/>
-                <Button Content="Отмена" Command="{StaticResource DialogResultCommand}" CommandParameter="False"/>
+                <Button Content="Сохранить" Style="{StaticResource BtnCommon}" Command="{StaticResource DialogResultCommand}" CommandParameter="True"/>
+                <Button Content="Отмена" Style="{StaticResource BtnCommon}" Command="{StaticResource DialogResultCommand}" CommandParameter="False"/>
             </WrapPanel>
         </StackPanel>
     </Grid>

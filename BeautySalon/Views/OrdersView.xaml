@@ -6,6 +6,7 @@
              xmlns:vm="clr-namespace:BeautySalon.ViewModels"
              xmlns:con="clr-namespace:BeautySalon.Resources.Converters"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:us="clr-namespace:BeautySalon.Resources.UserControls"
              xmlns:local="clr-namespace:BeautySalon.Views"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance {x:Type vm:OrdersViewModels}}"
@@ -106,9 +107,10 @@
 
         <Calendar Grid.Row="1" Grid.Column="2" SelectedDate="{Binding SelectedDate}" />
 
-        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Command="{StaticResource AddOrderCommand}" >
+        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Style="{StaticResource BtnCommon}" Command="{StaticResource AddOrderCommand}" >
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Добавить" />
+                <us:PlusFigure Width="20" Height="20" Margin="0 0 5 0" VerticalAlignment="Center"/>
+                <TextBlock Text="Новая запись" VerticalAlignment="Center" Margin="0 0 0 2" />
             </StackPanel>
         </Button>
     </Grid>

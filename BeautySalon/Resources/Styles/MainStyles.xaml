@@ -3,24 +3,21 @@
                     xmlns:us="clr-namespace:BeautySalon.Resources.UserControls">
 
 
-
-    
-
-
     <!--<Brush x:Key="ColorCommon">#D9A3D5</Brush>-->
     <Brush x:Key="ColorCommon">#263154</Brush>
     <Brush x:Key="ColorAccent">#e98a0b</Brush>
     <Brush x:Key="ColorForeground">#ffffff</Brush>
     <Brush x:Key="ColorBackground">#dcf5f0</Brush>
-    <Brush x:Key="ColorAccentForeground">#C7FCEC</Brush>
+    <Brush x:Key="ColorAccentForeground">#bcdefb</Brush>
     
     <LinearGradientBrush x:Key="GradientCommon" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="#F48BDC" Offset="0"/>
         <GradientStop Color="#C7FCEC" Offset="1"/>
     </LinearGradientBrush>
-    <LinearGradientBrush x:Key="GradientCommonReverse" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#C7FCEC" Offset="0"/>
-        <GradientStop Color="#f48bdc" Offset="1"/>
+    
+    <LinearGradientBrush x:Key="GradientReflect" SpreadMethod="Reflect" StartPoint="0,0" EndPoint="0,0.5">
+        <GradientStop Color="#263154" Offset="0"/>
+        <GradientStop Color="#bcdefb" Offset="0.2"/>
     </LinearGradientBrush>
 
     <Style TargetType="TextBox" x:Key="TboxCommon">
@@ -39,12 +36,25 @@
     </Style>
 
     <Style TargetType="Button" x:Key="BtnCommon">
-        <Setter Property="Width" Value="120"/>
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="Margin" Value="10"/>
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="5 0"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="Background" Value="{StaticResource ColorAccent}"/>
-        <Setter Property="Foreground" Value="{StaticResource ColorAccentForeground}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#C97300"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="Button" x:Key="NavigationBtn">

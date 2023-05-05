@@ -119,18 +119,18 @@
             </DataGrid>
 
                 <StackPanel Margin="0 5 5 0" Grid.Column="1" VerticalAlignment="Stretch">
-                    <Button Content="+" Margin="0 5" Command="{Binding AddServiceCmd}"/>
-                    <Button Content="+1" Margin="0 5" Command="{Binding PlusAmountCmd}"/>
-                    <Button Content="-1" Margin="0 5" Command="{Binding MinusAmountCmd}"/>
-                    <Button Content="-" Margin="0 5" Command="{Binding RemoveServiceCmd}"/>
+                    <Button Content="+" Margin="0 5" Style="{StaticResource BtnCommon}" Command="{Binding AddServiceCmd}"/>
+                    <Button Content="+1" Margin="0 5" Style="{StaticResource BtnCommon}" Command="{Binding PlusAmountCmd}"/>
+                    <Button Content="-1" Margin="0 5" Style="{StaticResource BtnCommon}" Command="{Binding MinusAmountCmd}"/>
+                    <Button Content="-" Margin="0 5" Style="{StaticResource BtnCommon}" Command="{Binding RemoveServiceCmd}"/>
                 </StackPanel>
             </Grid>
         </Border>
 
 
         <WrapPanel Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-            <Button Content="Сохранить" Command="{StaticResource DialogResultCommand}" CommandParameter="True"/>
-            <Button Content="Отмена" Command="{StaticResource DialogResultCommand}" CommandParameter="False"/>
+            <Button Content="Сохранить" Style="{StaticResource BtnCommon}" Command="{StaticResource DialogResultCommand}" CommandParameter="True"/>
+            <Button Content="Отмена" Style="{StaticResource BtnCommon}" Command="{StaticResource DialogResultCommand}" CommandParameter="False"/>
         </WrapPanel>
     </Grid>
 </Window>

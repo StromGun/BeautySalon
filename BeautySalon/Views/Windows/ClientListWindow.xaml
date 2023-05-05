@@ -53,8 +53,8 @@
         </DataGrid>
 
         <WrapPanel Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-            <Button Content="Выбрать" Command="{StaticResource DialogResultCommand}" CommandParameter="True"/>
-            <Button Content="Отмена" Command="{StaticResource DialogResultCommand}" CommandParameter="False"/>
+            <Button Content="Выбрать" Style="{StaticResource BtnCommon}" Command="{StaticResource DialogResultCommand}" CommandParameter="True"/>
+            <Button Content="Отмена" Style="{StaticResource BtnCommon}" Command="{StaticResource DialogResultCommand}" CommandParameter="False"/>
         </WrapPanel>
     </Grid>
 </Window>

@@ -39,6 +39,8 @@
                     <TreeView.Resources>
                         <ContextMenu  x:Key="CtxMenu">
                             <MenuItem Header="Редактировать" 
+                                      Command="{Binding Path=DataContext.EditServiceTypeCmd, 
+                                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                                    />
                             <MenuItem Header="Удалить" 
                                   Command="{Binding Path=DataContext.RemoveServiceTypeCmd, 
@@ -68,6 +70,8 @@
                     <DataGrid.Resources>
                         <ContextMenu  x:Key="CtxMenu">
                             <MenuItem Header="Редактировать" 
+                                      Command="{Binding Path=DataContext.EditServiceCmd, 
+                                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                                    />
                             <MenuItem Header="Удалить" 
                                   Command="{Binding Path=DataContext.RemoveServiceCmd, 
@@ -85,7 +89,7 @@
 
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="Цена" Binding="{Binding Price}"/>
+                        <DataGridTextColumn Header="Цена" Binding="{Binding Price, StringFormat={}{0:C2}, ConverterCulture=ru-RU}"/>
                         <DataGridTextColumn Header="Длительность" Binding="{Binding Time}"/>
                     </DataGrid.Columns>
                 </DataGrid>

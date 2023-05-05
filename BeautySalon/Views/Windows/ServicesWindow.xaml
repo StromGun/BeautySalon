@@ -55,8 +55,7 @@
                   SelectedItem="{Binding SelectedServiceR}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Цена" Binding="{Binding Price}"/>
-                <DataGridTextColumn Header="Количество" Binding="{Binding }"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price, StringFormat={}{0:C2}, ConverterCulture=ru-RU}"/>
             </DataGrid.Columns>
         </DataGrid>
 

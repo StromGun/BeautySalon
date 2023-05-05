@@ -4,8 +4,10 @@ using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 using System.Windows.Data;
 
@@ -66,16 +68,59 @@ namespace BeautySalon.ViewModels
             ServiceType newServiceType = new();
             if (!userDialog.EditServiceCategory(ref newServiceType)) return;
 
-            try
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(newServiceType!);
+
+            if (!Validator.TryValidateObject(newServiceType!, context, results, true))
             {
-                dB.ServiceTypes.Add(newServiceType);
-                dB.SaveChanges();
+                foreach (var item in results)
+                    MessageBox.Show(item.ErrorMessage);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    dB.ServiceTypes.Add(newServiceType);
+                    dB.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
+        #endregion
+
+        #region EditServiceType - Command
+        private RelayCommand? editServiceType;
+        public RelayCommand? EditServiceTypeCmd => editServiceType ??= new(obj => EditServiceType(SelectedServiceType!),
+            obj => SelectedServiceType is ServiceType and not null);
+        private void EditServiceType(ServiceType serviceType)
+        {
+
+            if (!userDialog.EditServiceCategory(ref serviceType)) return;
+
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(serviceType!);
+
+            if (!Validator.TryValidateObject(serviceType!, context, results, true))
+            {
+                foreach (var item in results)
+                    MessageBox.Show(item.ErrorMessage);
+            }
+            else
+            {
+                try
+                {
+                    dB.ServiceTypes.Update(serviceType);
+                    dB.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        } 
         #endregion
 
         #region RemoveServiceType - Command
@@ -105,16 +150,59 @@ namespace BeautySalon.ViewModels
             Service newService = new();
             if (!userDialog.EditService(ref newService)) return;
 
-            try
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(newService!);
+
+            if (!Validator.TryValidateObject(newService!, context, results, true))
             {
-                dB.Services.Add(newService);
-                dB.SaveChanges();
+                foreach (var item in results)
+                    MessageBox.Show(item.ErrorMessage);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    dB.Services.Add(newService);
+                    dB.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
+        #endregion
+
+        #region EditService - Command
+        private RelayCommand? editService;
+        public RelayCommand? EditServiceCmd => editService ??= new(obj => EditService(SelectedService!),
+           obj => SelectedService is Service and not null);
+        private void EditService(Service service)
+        {
+
+            if (!userDialog.EditService(ref service)) return;
+
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(service!);
+
+            if (!Validator.TryValidateObject(service!, context, results, true))
+            {
+                foreach (var item in results)
+                    MessageBox.Show(item.ErrorMessage);
+            }
+            else
+            {
+                try
+                {
+                    dB.Services.Update(service);
+                    dB.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        } 
         #endregion
 
         #region RemoveService - Command

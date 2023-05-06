@@ -49,7 +49,7 @@ namespace BeautySalon.ViewModels
                     orderViewSource = new()
                     {
                         Source = value,
-                        SortDescriptions = { new SortDescription(nameof(Order.DateStart), ListSortDirection.Ascending) }
+                        SortDescriptions = { new SortDescription(nameof(Order.TimeStart), ListSortDirection.Ascending) }
                     };
 
                     orderViewSource.Filter += SelectedDateFilter;
@@ -68,17 +68,14 @@ namespace BeautySalon.ViewModels
                     if (order?.DateStart.Value.Date == SelectedDate.Date)
                     {
                         if (StatusIsPerformed)
-                            if (order.Status == StatusOrder.Выполняется)
-                                e.Accepted = true;
-                            else e.Accepted = false;
+                            if (order.Status != StatusOrder.Выполняется)
+                                e.Accepted = false;
                         if (StatusCanceled)
-                            if (order.Status == StatusOrder.Отменен)
-                                e.Accepted = true;
-                            else e.Accepted = false;
+                            if (order.Status != StatusOrder.Отменен)
+                                 e.Accepted = false;
                         if (StatusPerformed)
-                            if (order.Status == StatusOrder.Выполнен)
-                                e.Accepted = true;
-                            else e.Accepted = false;
+                            if (order.Status != StatusOrder.Выполнен)
+                                e.Accepted = false;
                         if (StatusIsPerformed && StatusCanceled && StatusPerformed)
                             e.Accepted = true;
                     }

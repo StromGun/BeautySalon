@@ -6,17 +6,17 @@ namespace BeautySalon.ViewModels
 {
     internal class MainViewModel : ViewModel
     {
+        private readonly AuthorizationViewModel authorizationViewModel;
         private readonly NavigationViewModel navigationViewModel;
         private readonly ClientViewModel clientView;
         private readonly OrdersViewModels ordersView;
         private readonly ServicesListViewModel servicesListViewModel;
         private readonly IUserDialog userDialog;
 
-
         private ViewModel? currentViewModel;
         public ViewModel? CurrentViewModel { get => currentViewModel; set => Set(ref currentViewModel, value); }
 
-        private string _title = "Кунгурская типография";
+        private string _title = "CRM Beauty Salon";
         public string Title { get => _title; set => Set(ref _title, value); }
 
         #region OpenClientViewModel - Command
@@ -55,19 +55,30 @@ namespace BeautySalon.ViewModels
         }
 
         public MainViewModel(
+            AuthorizationViewModel authorizationViewModel,
             NavigationViewModel navigationViewModel,
             ClientViewModel clientView,
             OrdersViewModels ordersView,
             ServicesListViewModel servicesListViewModel,
             IUserDialog userDialog)
         {
+            this.authorizationViewModel = authorizationViewModel;
             this.navigationViewModel = navigationViewModel;
             this.clientView = clientView;
             this.ordersView = ordersView;
             this.servicesListViewModel = servicesListViewModel;
             this.userDialog = userDialog;
-            CurrentViewModel = this.navigationViewModel;
+
+
+            CurrentViewModel = this.authorizationViewModel;
+
+
+            authorizationViewModel.IsAuthorizated += AuthorizationViewModel_IsAuthorizated;
         }
 
+        private void AuthorizationViewModel_IsAuthorizated(object? sender, AuthorizationViewModel e)
+        {
+            CurrentViewModel = navigationViewModel;
+        }
     }
 }

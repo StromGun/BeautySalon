@@ -10,6 +10,7 @@ namespace BeautySalon.ViewModels
             {
                 DataContext = s.GetRequiredService<MainViewModel>()
             })
+            .AddTransient<AuthorizationViewModel>()
             .AddTransient<ClientViewModel>()
             .AddTransient<NavigationViewModel>()
             .AddTransient<OrdersViewModels>()

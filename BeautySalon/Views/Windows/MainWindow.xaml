@@ -8,7 +8,7 @@
         d:DataContext="{d:DesignInstance {x:Type vm:MainViewModel}}"
         mc:Ignorable="d"
         FontSize="14" WindowStartupLocation="CenterScreen"
-        Title="MainWindow" MinHeight="600" MinWidth="1024">
+        Title="{Binding Title}" MinHeight="600" MinWidth="1024">
     <Grid Background="{StaticResource GradientReflect}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" MaxHeight="90"/>

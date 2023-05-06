@@ -5,6 +5,7 @@ namespace BeautySalon.DAL.Context
 {
     public class BeautySalonDB : DbContext
     {
+        public DbSet<User> Users { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<ServiceType> ServiceTypes { get; set; }

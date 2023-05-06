@@ -1,6 +1,9 @@
 ﻿using BeautySalon.Commands;
+using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
+using System;
+using System.Windows;
 
 namespace BeautySalon.ViewModels
 {
@@ -15,6 +18,9 @@ namespace BeautySalon.ViewModels
 
         private ViewModel? currentViewModel;
         public ViewModel? CurrentViewModel { get => currentViewModel; set => Set(ref currentViewModel, value); }
+
+        private User? user;
+        public User? User { get => user; set => Set(ref user, value); }
 
         private string _title = "CRM Beauty Salon";
         public string Title { get => _title; set => Set(ref _title, value); }
@@ -49,6 +55,14 @@ namespace BeautySalon.ViewModels
         }
         #endregion
 
+        private RelayCommand? logoutCmd;
+        public RelayCommand? LogoutCmd => logoutCmd ??= new(obj => LogoutExecuted(), obj => CurrentViewModel != authorizationViewModel);
+        private void LogoutExecuted()
+        {
+            CurrentViewModel = authorizationViewModel;
+            User = null;
+        }
+
         private void ChangeViewModel(ViewModel viewModel)
         {
             CurrentViewModel = viewModel;
@@ -78,7 +92,12 @@ namespace BeautySalon.ViewModels
 
         private void AuthorizationViewModel_IsAuthorizated(object? sender, AuthorizationViewModel e)
         {
-            CurrentViewModel = navigationViewModel;
+            if (sender is User)
+            {
+                User = (User)sender;
+                CurrentViewModel = navigationViewModel;
+            }
+            else MessageBox.Show($"Sender in not User. MainViewModel");
         }
     }
 }

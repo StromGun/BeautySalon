@@ -105,7 +105,9 @@
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Style="{StaticResource ButtonStyle1}" Width="20" Cursor="Hand">
+                                    <Button Style="{StaticResource ButtonStyle1}"  Width="20" Cursor="Hand"
+                                            Command="{Binding Path=DataContext.EditServiceCmd, 
+                                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" >
                                         <Image Source="/Resources/Images/edit_note.png"/>
                                     </Button>
                                 </DataTemplate>
@@ -114,7 +116,9 @@
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Style="{StaticResource ButtonStyle1}" Width="20" Cursor="Hand">
+                                    <Button Style="{StaticResource ButtonStyle1}" Width="20" Cursor="Hand"
+                                            Command="{Binding Path=DataContext.RemoveServiceCmd, 
+                                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
                                         <Image Source="/Resources/Images/close.png"/>
                                     </Button>
                                 </DataTemplate>

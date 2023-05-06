@@ -15,7 +15,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MinWidth="600"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="0.25*" MinWidth="170"/>
+            <ColumnDefinition Width="0.20*" MinWidth="190"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -105,7 +105,16 @@
 
         <GridSplitter Grid.Row="1" Grid.Column="1" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"  BorderThickness="1" BorderBrush="Black"/>
 
-        <Calendar Grid.Row="1" Grid.Column="2" SelectedDate="{Binding SelectedDate}" />
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <Calendar  SelectedDate="{Binding SelectedDate}"/>
+            <GroupBox Margin="5" Header="Фильтр" BorderBrush="Black" BorderThickness="0.5">
+                <StackPanel Margin="5">
+                    <CheckBox Content="Выполняются" IsChecked="{Binding StatusIsPerformed}"/>
+                    <CheckBox Content="Отменены" IsChecked="{Binding StatusCanceled}"/>
+                    <CheckBox Content="Выполнены" IsChecked="{Binding StatusPerformed}"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
 
         <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Style="{StaticResource BtnCommon}" Command="{StaticResource AddOrderCommand}" >
             <StackPanel Orientation="Horizontal">

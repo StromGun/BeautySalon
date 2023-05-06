@@ -30,8 +30,10 @@ namespace BeautySalon.ViewModels
                 if (user != null)
                 {
                     IsAuthorizated?.Invoke(user, this);
+                    Login = null;
+                    Password = null;
                 }
-                else MessageBox.Show("ox");
+                else MessageBox.Show("Неверные данные");
             }
             catch (Exception ex)
             {

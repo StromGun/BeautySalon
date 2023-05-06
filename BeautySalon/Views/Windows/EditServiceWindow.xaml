@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:BeautySalon.Views.Windows"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type vm:EditServiceViewModel}}"
-        Title="Редактирование услуги" FontSize="14"
+        Title="Редактирование услуги" FontSize="14" ShowInTaskbar="False"
         Height="250" Width="400" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">

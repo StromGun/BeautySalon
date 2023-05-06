@@ -10,7 +10,7 @@
         xmlns:uc="clr-namespace:BeautySalon.Resources.UserControls"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type vm:EditClientViewModel}}"
-        Title="EditClientWindow" Height="450" Width="900" 
+        Title="Редактирование клиента" Height="450" Width="900" 
         FontSize="14" ShowInTaskbar="False"
         WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize">
     <Window.Resources>

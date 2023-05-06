@@ -26,6 +26,14 @@ namespace BeautySalon.ViewModels
         private Order? selectedOrder;
         public Order? SelectedOrder { get => selectedOrder; set => Set(ref selectedOrder, value); }
 
+        #region Statuses
+        private bool statusIsPerformed;
+        public bool StatusIsPerformed { get => statusIsPerformed; set { Set(ref statusIsPerformed, value); orderViewSource?.View.Refresh(); } }
+        private bool statusCanceled;
+        public bool StatusCanceled { get => statusCanceled; set { Set(ref statusCanceled, value); orderViewSource?.View.Refresh(); } }
+        private bool statusPerformed;
+        public bool StatusPerformed { get => statusPerformed; set { Set(ref statusPerformed, value); orderViewSource?.View.Refresh(); } } 
+        #endregion
 
         #region Orders
         private ObservableCollection<Order>? orders;
@@ -52,14 +60,28 @@ namespace BeautySalon.ViewModels
             }
         }
 
-
         private void SelectedDateFilter(object sender, FilterEventArgs e)
         {
             if (e.Item is Order order)
             {
                 if (order?.DateStart != null)
                     if (order?.DateStart.Value.Date == SelectedDate.Date)
-                        e.Accepted = true;
+                    {
+                        if (StatusIsPerformed)
+                            if (order.Status == StatusOrder.Выполняется)
+                                e.Accepted = true;
+                            else e.Accepted = false;
+                        if (StatusCanceled)
+                            if (order.Status == StatusOrder.Отменен)
+                                e.Accepted = true;
+                            else e.Accepted = false;
+                        if (StatusPerformed)
+                            if (order.Status == StatusOrder.Выполнен)
+                                e.Accepted = true;
+                            else e.Accepted = false;
+                        if (StatusIsPerformed && StatusCanceled && StatusPerformed)
+                            e.Accepted = true;
+                    }
                     else e.Accepted = false;
                 else e.Accepted = false;
             }

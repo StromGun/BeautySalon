@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:vm="clr-namespace:BeautySalon.ViewModels"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cv="clr-namespace:BeautySalon.Resources.Converters"
         xmlns:local="clr-namespace:BeautySalon"
         d:DataContext="{d:DesignInstance {x:Type vm:MainViewModel}}"
         mc:Ignorable="d"
@@ -18,12 +19,16 @@
 
 
         <Grid Background="{StaticResource ColorCommon}" Margin="0">
-            <Menu Background="{StaticResource ColorCommon}" FontSize="14" Foreground="{StaticResource ColorForeground}">
+            <Menu Background="{StaticResource ColorCommon}" FontSize="14" 
+                  Foreground="{StaticResource ColorForeground}" Visibility="{Binding User, Converter={cv:UserToVisibility}}">
                 <MenuItem Header="Клиенты" Command="{Binding OpenClientViewCmd}"/>
                 <MenuItem Header="Записи" Command="{Binding OpenOrderViewCmd}"/>
                 <MenuItem Header="Услуги" Command="{Binding OpenServiceViewCmd}"/>
                 <MenuItem Header="О программе" Command="{Binding OpenAboutBoxCmd}"/>
             </Menu>
+            <Button Content="Выйти" Command="{Binding LogoutCmd}"
+                    HorizontalAlignment="Right" Background="Transparent" Margin="5 0" Visibility="{Binding User, Converter={cv:UserToVisibility}}"
+                    BorderThickness="0" Foreground="{StaticResource ColorForeground}" VerticalAlignment="Center"/>
         </Grid>
 
         <ContentControl Grid.Row="1" Name="FrameMain" Content="{Binding CurrentViewModel}"/>

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Input;
 using System.Windows;
+using System.Linq;
 
 namespace BeautySalon.Commands
 {
@@ -25,10 +26,11 @@ namespace BeautySalon.Commands
 
         public void Execute(object? parameter)
         {
-            var order = new Order() { OrderName = $"Заказ № " };
+            var order = new Order() { };
             if (!userDialog.EditOrder(ref order)) return;
 
             if (DataBase is null) return;
+            order!.OrderName = $"Заказ {order.DateStart!.Value.Date:ddMMyyyy} №{DataBase.Orders.Where(x => x.DateStart!.Value.Date == DateTime.Now.Date).Count() + 1}";
 
             var results = new List<ValidationResult>();
             var context = new ValidationContext(order!);

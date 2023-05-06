@@ -54,6 +54,11 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#C97300"/>
             </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#FFF4F4F4"/>
+                <Setter Property="Foreground" Value="#FF838383"/>
+                <Setter Property="BorderBrush" Value="#FFADB2B5"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
 
@@ -72,7 +77,6 @@
     </Style>
     <Style TargetType="TextBlock" x:Key="TBlockCommon">
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="{StaticResource ColorForeground}"/>
     </Style>
 
 

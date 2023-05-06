@@ -1,5 +1,6 @@
 ﻿using BeautySalon.Commands;
 using BeautySalon.DAL.Context;
+using BeautySalon.DAL.Entities;
 using BeautySalon.ViewModels.Base;
 using System;
 using System.Linq;
@@ -44,6 +45,12 @@ namespace BeautySalon.ViewModels
         public AuthorizationViewModel(BeautySalonDB dB)
         {
             this.dB = dB;
+
+            if (!dB.Users.Any())
+            {
+                dB.Users.Add(new User { Login = "admin", Password = "admin" });
+                dB.SaveChanges();
+            }
         }
     }
 }

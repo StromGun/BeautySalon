@@ -18,7 +18,7 @@ namespace BeautySalon.Data
                     default: throw new InvalidOperationException($"Тип подключения {type} не поддерживается");
 
                     case "MSSQL":
-                        opt.UseSqlServer(configuration.GetConnectionString(type));
+                        opt.UseSqlServer(configuration.GetConnectionString(type), builder => builder.EnableRetryOnFailure(3, TimeSpan.FromSeconds(5), null));
                         break;
                 }
             })

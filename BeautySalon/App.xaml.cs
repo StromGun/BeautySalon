@@ -1,6 +1,8 @@
-﻿using BeautySalon.Data;
+﻿using BeautySalon.DAL.Context;
+using BeautySalon.Data;
 using BeautySalon.Services;
 using BeautySalon.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -41,8 +43,13 @@ namespace BeautySalon
         {
             var host = Host;
 
+            var db = host.Services.GetRequiredService<BeautySalonDB>();
+            db.Database.Migrate();
+
+
             MainWindow = host.Services.GetRequiredService<MainWindow>();
             MainWindow.Show();
+
 
             base.OnStartup(e);
             host.Start();

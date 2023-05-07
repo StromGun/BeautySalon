@@ -28,7 +28,13 @@
                     <TextBlock Text="{Binding Path=Name}"/>
                     <HierarchicalDataTemplate.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}" />
+                            <StackPanel>
+                                <StackPanel.InputBindings>
+                                    <MouseBinding Gesture="LeftDoubleClick"
+                                                  Command="{Binding DataContext.AddServiceCmd,RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                </StackPanel.InputBindings>
+                            <TextBlock Text="{Binding Name}"/>
+                            </StackPanel>
                         </DataTemplate>
                     </HierarchicalDataTemplate.ItemTemplate>
                 </HierarchicalDataTemplate>
@@ -37,15 +43,18 @@
             <i:Interaction.Behaviors>
                 <b:BindableSelectedItemBehavior SelectedItem="{Binding SelectedServiceL, Mode=TwoWay}"/>
             </i:Interaction.Behaviors>
+
+
+
                 
         </TreeView>
 
         <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Margin="5" Command="{Binding AddServiceCmd}" >
+            <Button Margin="5" Command="{Binding AddServiceCmd}" Background="{StaticResource ColorAccent}">
                 <Image Source="/Resources/Images/arrow_forward.png" Height="25"/>
             </Button>
 
-            <Button Margin="5" Command="{Binding DeleteServiceCmd}">
+            <Button Margin="5" Command="{Binding DeleteServiceCmd}" Background="{StaticResource ColorAccent}">
                 <Image Source="/Resources/Images/arrow_back.png" Height="25"/>
             </Button>
         </StackPanel>

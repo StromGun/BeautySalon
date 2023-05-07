@@ -27,15 +27,24 @@
             Text="{Binding SelectedDate, StringFormat={}{0:dd MMMM yyyy}г, ConverterCulture=ru-RU}" 
                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <ListView ItemContainerStyle="{StaticResource LVstyle}" SelectedItem="{Binding SelectedOrder}" SelectionMode="Single"
+        <ListView  SelectedItem="{Binding SelectedOrder}" SelectionMode="Single"
             Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding OrdersView}">
+            
+            <ListView.Resources>
+                <ContextMenu  x:Key="CtxMenuLV">
+                    <MenuItem Header="Редактировать" 
+                  Command="{StaticResource EditOrderCommand}" 
+                  CommandParameter="{Binding DataContext.SelectedOrder, 
+                        RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
+                </ContextMenu>
+            </ListView.Resources>
 
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{StaticResource EditOrderCommand}" CommandParameter="{Binding Path=SelectedOrder}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem" BasedOn="{StaticResource LVstyle}">
+                    <Setter Property="ContextMenu" Value="{StaticResource CtxMenuLV}"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Margin="5" ItemHeight="150" ItemWidth="250"/>
@@ -46,6 +55,12 @@
                 <DataTemplate>
                     <Border Margin="5" Background="{Binding Status, Converter={con:StatusToBackgroundColor}}" 
                             BorderBrush="Black" CornerRadius="25 25 5 25" BorderThickness="1">
+                        <Border.InputBindings>
+                            <MouseBinding Gesture="LeftDoubleClick"
+                                          Command="{StaticResource EditOrderCommand}" 
+                                          CommandParameter="{Binding Path=DataContext.SelectedOrder, 
+                                RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                        </Border.InputBindings>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>

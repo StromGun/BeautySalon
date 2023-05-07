@@ -24,7 +24,7 @@
                     </i:Interaction.Behaviors>
                 </PasswordBox>
             </WrapPanel>
-            <Button Content="Войти" Command="{Binding LoginCmd}" Style="{StaticResource BtnCommon}"/>
+            <Button Content="Войти" IsDefault="True" Command="{Binding LoginCmd}" Style="{StaticResource BtnCommon}"/>
         </StackPanel>
     </Grid>
 </UserControl>

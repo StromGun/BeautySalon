@@ -113,18 +113,22 @@ namespace BeautySalon.ViewModels
         private void OrderServiceBindingList_ListChanged(object? sender, ListChangedEventArgs e)
         {
             if (e.ListChangedType == ListChangedType.ItemChanged)
-            {
-                foreach (var item in OrderServiceBindingList!)
-                    item.TotalPrice = item.Service!.Price * item.Amount - item.Service.Price * item.Amount * item.Discount;
-
-                var sum = new TimeSpan(OrderServiceBindingList.Sum(x => x.Service!.Time!.Value.Ticks));
-                Order!.TimeEnd = Order.TimeStart + sum;
-                Order!.TotalPrice = OrderServiceBindingList.Sum(x => x.TotalPrice);
-
-                //MessageBox.Show(e.ListChangedType.ToString());
-            }
+                UpdateOrderServiceData();
+            if (e.ListChangedType == ListChangedType.ItemAdded)
+                UpdateOrderServiceData();
+            if (e.ListChangedType == ListChangedType.ItemDeleted)
+                UpdateOrderServiceData();
         }
 
+        private void UpdateOrderServiceData()
+        {
+            foreach (var item in OrderServiceBindingList!)
+                item.TotalPrice = item.Service!.Price * item.Amount - item.Service.Price * item.Amount * item.Discount;
+
+            var sum = new TimeSpan(OrderServiceBindingList.Sum(x => x.Service!.Time!.Value.Ticks));
+            Order!.TimeEnd = Order.TimeStart + sum;
+            Order!.TotalPrice = OrderServiceBindingList.Sum(x => x.TotalPrice);
+        }
 
 
         public EditOrderViewModel(Order? order)

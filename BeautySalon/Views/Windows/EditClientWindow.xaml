@@ -81,7 +81,7 @@
 
                     <WrapPanel ItemWidth="200" Orientation="Vertical" Margin="5">
                         <TextBlock Text="Email" Style="{StaticResource TBlockCommon}"/>
-                        <TextBox Text="{Binding Client.Email}" Style="{StaticResource TboxCommon}"/>
+                        <TextBox Text="{Binding Client.Email}" Style="{StaticResource TboxCommon}" ToolTip="Пример: beautysalon@mail.com"/>
                     </WrapPanel>
                 </WrapPanel>
             </GroupBox>

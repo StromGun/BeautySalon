@@ -139,7 +139,10 @@ namespace BeautySalon.Services
 
         public bool OpenAboutBox()
         {
-            var aboutBox = new AboutWindow();
+            var aboutBox = new AboutWindow()
+            {
+                Owner = App.ActiveWindow
+            };
             aboutBox.ShowDialog();
             return true;
         }

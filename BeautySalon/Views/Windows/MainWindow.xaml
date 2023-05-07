@@ -17,6 +17,7 @@
             <RowDefinition Height="0.1*" MaxHeight="50"/>
         </Grid.RowDefinitions>
 
+        <Image Grid.Row="1" Source="/DSC_0414se.png" Width="300" />
 
         <Grid Background="{StaticResource ColorCommon}" Margin="0">
             <Menu Background="{StaticResource ColorCommon}" FontSize="14" 

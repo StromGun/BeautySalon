@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DSC_0414se.png" />
     <None Remove="Resources\Images\2_.png" />
     <None Remove="Resources\Images\add.png" />
     <None Remove="Resources\Images\arrow_back.png" />
@@ -18,22 +19,23 @@
     <None Remove="Resources\Images\face.png" />
     <None Remove="Resources\Images\person_add.png" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
-  </ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+	</ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BeautySalon.DAL\BeautySalon.DAL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="DSC_0414se.png" />
     <Resource Include="Resources\Images\2_.png" />
     <Resource Include="Resources\Images\add.png" />
     <Resource Include="Resources\Images\arrow_back.png" />

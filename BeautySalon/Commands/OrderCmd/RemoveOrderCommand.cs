@@ -1,14 +1,14 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using BeautySalon.DAL.Context;
+using BeautySalon.DAL.Entities;
+using BeautySalon.Services.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows;
 using System.Windows.Input;
-using BeautySalon.DAL.Context;
-using BeautySalon.DAL.Entities;
-using BeautySalon.Services.Interfaces;
 
-namespace BeautySalon.Commands
+namespace BeautySalon.Commands.OrderCmd
 {
-    internal class RemoveClientCommand : ICommand
+    internal class RemoveOrderCommand : ICommand
     {
         private readonly BeautySalonDB DataBase = App.Services.GetRequiredService<BeautySalonDB>();
         private readonly IUserDialog userDialog = App.Services.GetRequiredService<IUserDialog>();
@@ -19,17 +19,17 @@ namespace BeautySalon.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public bool CanExecute(object? parameter) => parameter != null && parameter is Client;
+        public bool CanExecute(object? parameter) => parameter != null && parameter is Order;
 
         public void Execute(object? parameter)
         {
-            var client = (Client)parameter!;
+            var order = (Order)parameter!;
 
-            if (userDialog.ConfirmedWarning($"Вы точно хотите удалить клиента {client.LastName}?", "Внимание"))
+            if (userDialog.ConfirmedWarning($"Вы точно хотите удалить {order.OrderName}?", "Внимание"))
             {
                 try
                 {
-                    DataBase.Clients.Remove(client!);
+                    DataBase.Orders.Remove(order!);
                     DataBase.SaveChanges();
                 }
                 catch (Exception ex)

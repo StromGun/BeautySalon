@@ -36,6 +36,10 @@
                   Command="{StaticResource EditOrderCommand}" 
                   CommandParameter="{Binding DataContext.SelectedOrder, 
                         RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
+                    <MenuItem Header="Удалить"
+                              Command="{StaticResource RemoveOrderCommand}"
+                              CommandParameter="{Binding DataContext.SelectedOrder, 
+                        RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
                 </ContextMenu>
             </ListView.Resources>
 
@@ -94,7 +98,7 @@
 
                             <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0 1 0 0">
                                 <ScrollViewer Margin="10 5" Style="{StaticResource ScrollViewerStyle1}">
-                                    <ItemsControl  ItemsSource="{Binding Path=OrderServices}">
+                                    <ItemsControl ItemsSource="{Binding Path=OrderServices}">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock>

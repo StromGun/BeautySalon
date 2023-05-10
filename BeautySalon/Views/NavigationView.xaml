@@ -21,38 +21,14 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border BorderBrush="Black" BorderThickness="0 0 1 0">
-                <WrapPanel Orientation="Horizontal" Grid.Column="0" Margin="0" ItemHeight="125" ItemWidth="125">
-                    <Button Style="{StaticResource NavigationBtn}" >
-                        <Button.Content>
-                            <StackPanel HorizontalAlignment="Stretch">
-                                <Image  MaxHeight="90"/>
-                                <TextBlock Text="Клиенты" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-
-                    <Button Style="{StaticResource NavigationBtn}" >
-                        <Button.Content>
-                            <StackPanel HorizontalAlignment="Stretch">
-                                <Image MaxHeight="90"/>
-                                <TextBlock Text="Записи" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-
-                    <Button Style="{StaticResource NavigationBtn}" >
-                        <Button.Content>
-                            <StackPanel HorizontalAlignment="Stretch">
-                                <!--<Image Source="/Resources/Images/fSHGT0HI8rA.jpg" />-->
-
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-
-                    <Button Style="{StaticResource NavigationBtn}"/>
-                </WrapPanel>
-            </Border>
+            <StackPanel>
+                <GroupBox>
+                    <StackPanel>
+                        <TextBlock Text="Ddada"/>
+                    </StackPanel>
+                </GroupBox>
+                
+            </StackPanel>
 
             <StackPanel Grid.Column="1">
                 <StackPanel>

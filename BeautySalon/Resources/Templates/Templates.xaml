@@ -3,10 +3,10 @@
                     xmlns:vm="clr-namespace:BeautySalon.ViewModels"
                     xmlns:view="clr-namespace:BeautySalon.Views">
     <ResourceDictionary.MergedDictionaries>
-        
-        <ResourceDictionary Source="/Resources/Styles/Controls/DataGridTemplates.xaml"/>
-        <ResourceDictionary Source="/Resources/Styles/Controls/ScrollViewerTemplates.xaml"/>
-        <ResourceDictionary Source="/Resources/Styles/Controls/ComboBoxTemplates.xaml"/>
+        <ResourceDictionary Source="/Resources/Templates/Controls/ScrollBarTemplates.xaml"/>
+        <ResourceDictionary Source="/Resources/Templates/Controls/DataGridTemplates.xaml"/>
+        <ResourceDictionary Source="/Resources/Templates/Controls/ScrollViewerTemplates.xaml"/>
+        <ResourceDictionary Source="/Resources/Templates/Controls/ComboBoxTemplates.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 
@@ -25,9 +25,6 @@
     <DataTemplate DataType="{x:Type vm:ServicesListViewModel}">
         <view:ServicesView/>
     </DataTemplate>
-    
-
-
 
 
 </ResourceDictionary>

@@ -6,7 +6,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Commands/AppCommands.xaml"/>
-                <ResourceDictionary Source="/Resources/Styles/Controls/ScrollBarTemplates.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/MainStyles.xaml" />
                 <ResourceDictionary Source="/Resources/Templates/Templates.xaml"/>
             </ResourceDictionary.MergedDictionaries>

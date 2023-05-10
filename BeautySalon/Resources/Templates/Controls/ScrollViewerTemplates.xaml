@@ -1,5 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+   
+    
+    
     <Style x:Key="ScrollViewerStyle1" TargetType="{x:Type ScrollViewer}">
         <Setter Property="Template">
             <Setter.Value>
@@ -18,7 +21,7 @@
                                                 ContentTemplate="{TemplateBinding ContentTemplate}" CanVerticallyScroll="False" 
                                                 Grid.Column="0" Content="{TemplateBinding Content}" CanContentScroll="{TemplateBinding CanContentScroll}" 
                                                 Margin="{TemplateBinding Padding}" Grid.Row="0"/>
-                        <ScrollBar x:Name="PART_VerticalScrollBar" Style="{StaticResource VertScroll}"
+                        <ScrollBar x:Name="PART_VerticalScrollBar" Style="{DynamicResource VertScroll}"
                                    AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Grid.Column="1" 
                                    Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Grid.Row="0" 
                                    Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" 

@@ -25,6 +25,12 @@ namespace BeautySalon.ViewModels
         private string _title = "CRM Beauty Salon";
         public string Title { get => _title; set => Set(ref _title, value); }
 
+        #region OpenNavigation - Command
+        private RelayCommand? openNavigation;
+        public RelayCommand? OpenNavigationCmd => openNavigation
+            ??= new(obj => ChangeViewModel(navigationViewModel), obj => CurrentViewModel != navigationViewModel); 
+        #endregion
+
         #region OpenClientViewModel - Command
         private RelayCommand? openClientView;
         public RelayCommand? OpenClientViewCmd => openClientView ??= new(obj => OpenClientViewExecuted(), obj => CanOpenClientView());
@@ -55,13 +61,15 @@ namespace BeautySalon.ViewModels
         }
         #endregion
 
+        #region Logout - Command
         private RelayCommand? logoutCmd;
         public RelayCommand? LogoutCmd => logoutCmd ??= new(obj => LogoutExecuted(), obj => CurrentViewModel != authorizationViewModel);
         private void LogoutExecuted()
         {
             CurrentViewModel = authorizationViewModel;
             User = null;
-        }
+        } 
+        #endregion
 
         private void ChangeViewModel(ViewModel viewModel)
         {
@@ -95,6 +103,7 @@ namespace BeautySalon.ViewModels
             if (sender is User)
             {
                 User = (User)sender;
+                //CurrentViewModel = clientView;
                 CurrentViewModel = navigationViewModel;
             }
             else MessageBox.Show($"Sender in not User. MainViewModel");

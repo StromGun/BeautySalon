@@ -3,7 +3,7 @@
                     xmlns:vm="clr-namespace:BeautySalon.ViewModels"
                     xmlns:view="clr-namespace:BeautySalon.Views">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Resources/Templates/Controls/ScrollBarTemplates.xaml"/>
+        
         <ResourceDictionary Source="/Resources/Templates/Controls/DataGridTemplates.xaml"/>
         <ResourceDictionary Source="/Resources/Templates/Controls/ScrollViewerTemplates.xaml"/>
         <ResourceDictionary Source="/Resources/Templates/Controls/ComboBoxTemplates.xaml"/>

@@ -17,16 +17,16 @@
             <RowDefinition Height="0.1*" MaxHeight="50"/>
         </Grid.RowDefinitions>
 
-        <Image Grid.Row="1" Source="/DSC_0414se.png" Width="300" />
+        <!--<Image Grid.Row="1" Source="/DSC_0414se.png" Width="300" />-->
 
         <Grid Background="{StaticResource ColorCommon}" Margin="0">
             <Menu Background="{StaticResource ColorCommon}" FontSize="14" 
                   Foreground="{StaticResource ColorForeground}" Visibility="{Binding User, Converter={cv:UserToVisibility}}">
                 <MenuItem Header="Главная" Command="{Binding OpenNavigationCmd}"/>
                 <MenuItem Header="Клиенты" Command="{Binding OpenClientViewCmd}"/>
-                <MenuItem Header="Записи">
-                    <MenuItem Header="На сегодня" Command="{Binding OpenOrderViewCmd}"/>
-                    <MenuItem Header="Все записи"/>
+                <MenuItem Header="Записи" Command="{Binding OpenOrderViewCmd}">
+                    <!--<MenuItem Header="На сегодня" />
+                    <MenuItem Header="Все записи"/>-->
                 </MenuItem>
                 <MenuItem Header="Услуги" Command="{Binding OpenServiceViewCmd}"/>
                 <MenuItem Header="О программе" Command="{Binding OpenAboutBoxCmd}"/>

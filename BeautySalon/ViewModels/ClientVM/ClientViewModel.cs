@@ -1,10 +1,8 @@
 ﻿using BeautySalon.Commands;
-using BeautySalon.DAL.Context;
 using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;

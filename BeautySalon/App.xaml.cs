@@ -45,7 +45,7 @@ namespace BeautySalon
 
             var db = host.Services.GetRequiredService<BeautySalonDB>();
             if (!db.Database.CanConnect())
-                MessageBox.Show("Не удалось подключитсья к БД");
+                MessageBox.Show("Не удалось подключиться к БД");
 
 
             MainWindow = host.Services.GetRequiredService<MainWindow>();

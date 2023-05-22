@@ -18,25 +18,37 @@ namespace BeautySalon.ViewModels
         private string title = "Услуги";
         public string Title { get => title; set => Set(ref title,value); }
 
-
+        /// <summary>
+        /// Список услуг
+        /// </summary>
         private ObservableCollection<Service>? _services;
         public ObservableCollection<Service>? Services { get => _services; set => Set(ref _services, value); }
 
         #region SelectedService
+        /// <summary>
+        /// Выбранная услуга из левого столбца
+        /// </summary>
         private Service? selectedServiceL;
         public Service? SelectedServiceL { get => selectedServiceL; set => Set(ref selectedServiceL, value); }
 
+        /// <summary>
+        /// Выбранная услуга из правого столбца
+        /// </summary>
         private Service? selectedServiceR;
         public Service? SelectedServiceR { get => selectedServiceR; set => Set(ref selectedServiceR, value); } 
         #endregion
 
-
+        /// <summary>
+        /// Список категорий услуг
+        /// </summary>
         private ObservableCollection<ServiceType>? _serviceTypes;
         public ObservableCollection<ServiceType>? ServiceTypes { get => _serviceTypes; set => Set(ref _serviceTypes, value); }
 
+        /// <summary>
+        /// Список услуг из правого столбца
+        /// </summary>
         private ObservableCollection<Service>? selectedServices;
         public ObservableCollection<Service>? SelectedServices { get => selectedServices; set => Set(ref selectedServices, value); }
-
 
         #region AddServiceCmd - Command
         private RelayCommand? addServiceCmd;
@@ -46,17 +58,21 @@ namespace BeautySalon.ViewModels
         {
             try
             {
+                // ненужная проверка.
                 if (SelectedServices!.Count > 0)
                 {
+                    // эквивалентно
                     bool equal = false;
                     foreach ( var item in SelectedServices!.ToList())
                     {
+                        // проверка на присутствие услуги в правом столбце
                         if (item.ID == SelectedServiceL!.ID)
                         {
                             equal = true;
                             break;
                         }
                     }
+                    // если услуги нет в правом столбце добавляем в список выбранную услугу
                     if (!equal) 
                         SelectedServices!.Add(SelectedServiceL!);
                 }
@@ -79,7 +95,7 @@ namespace BeautySalon.ViewModels
         } 
         #endregion
 
-        public ServicesViewModel(ICollection services)
+        public ServicesViewModel(ICollection services )
         {
             Services = servicesService.Services;
             ServiceTypes = servicesService.ServiceTypes;

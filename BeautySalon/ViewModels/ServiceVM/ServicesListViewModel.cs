@@ -48,15 +48,25 @@ namespace BeautySalon.ViewModels
                 e.Accepted = false;
         }
         private CollectionViewSource? servicesViewSource;
-        public ICollectionView? ServicesView => servicesViewSource?.View; 
+        public ICollectionView? ServicesView => servicesViewSource?.View;
         #endregion
 
         private ObservableCollection<ServiceType>? serviceTypes;
+        /// <summary>
+        /// Список категорий услуг
+        /// </summary>
         public ObservableCollection<ServiceType>? ServiceTypes { get => serviceTypes; set => Set(ref serviceTypes, value); }
 
         private ServiceType? selectedServiceType;
+        /// <summary>
+        /// Выбранная категория услуг
+        /// </summary>
         public ServiceType? SelectedServiceType { get => selectedServiceType; set { Set(ref selectedServiceType, value); servicesViewSource?.View.Refresh(); } }
+
         private Service? selectedService;
+        /// <summary>
+        /// Выбранная услуга
+        /// </summary>
         public Service? SelectedService { get => selectedService; set => Set(ref selectedService, value); }
 
 

@@ -82,8 +82,8 @@
                             <TextBlock FontWeight="SemiBold">Время окончания: <Run FontWeight="Regular" Text="{Binding Order.TimeEnd}"/></TextBlock>
 
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="SemiBold">Статус:</TextBlock>
-                                <ComboBox Style="{DynamicResource ComboBoxStyle1}" BorderThickness="0 0 0 0.5"
+                                <TextBlock FontWeight="SemiBold" Margin="0 5">Статус:</TextBlock>
+                                <ComboBox Style="{DynamicResource ComboBoxStyle1}" BorderThickness="0 0 0 0.5" VerticalContentAlignment="Center"
                                           ItemsSource="{Binding Source={StaticResource StatusEnum}}" SelectedItem="{Binding Order.Status}"/>
                             </StackPanel>
                             

@@ -26,6 +26,7 @@ namespace BeautySalon.DAL.Entities
         public virtual ICollection<OrderService>? OrderService { get => orderService; set => Set(ref orderService, value); }
         public virtual ICollection<Product>? Products { get => products; set => Set(ref products, value); }
 
+        [Required]
         public ServiceType? ServiceType { get => serviceType; set => Set(ref serviceType,value); }
         public ICollection<Order>? Orders { get => orders; set => Set(ref orders, value); }
     }

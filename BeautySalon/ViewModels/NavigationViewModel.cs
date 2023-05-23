@@ -3,8 +3,11 @@ using BeautySalon.DAL.Entities;
 using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
 using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Threading;
 
 namespace BeautySalon.ViewModels
@@ -27,9 +30,29 @@ namespace BeautySalon.ViewModels
         private int todayOrderCount;
         public int TodayOrderCount { get => todayOrderCount; set => Set(ref todayOrderCount, value); }
 
-        private Order? order;
-        public Order? Order { get => order; set => Set(ref order, value); }
+        #region Orders
+        private ObservableCollection<Order>? orders;
+        private CollectionViewSource? orderViewSource;
+        public ICollectionView? OrdersView => orderViewSource?.View;
+        public ObservableCollection<Order>? Orders
+        {
+            get => orders;
+            set
+            {
+                if (Set(ref orders, value))
+                {
+                    orderViewSource = new()
+                    {
+                        Source = value,
+                        SortDescriptions = { new SortDescription(nameof(Order.TimeStart), ListSortDirection.Ascending) }
+                    };
 
+                    orderViewSource?.View.Refresh();
+                    OnPropertyChanged(nameof(OrdersView));
+                }
+            }
+        }
+        #endregion
 
         #region Timer
         private void Timer()
@@ -55,10 +78,11 @@ namespace BeautySalon.ViewModels
             NewClientsCount = await countsService.GetCountNewClient();
             TodayOrderCount = await countsService.GetCountTodayOrders();
 
-            Order = orderService.Orders?.FirstOrDefault(o =>
-            o.DateStart.Value.Date == DateTime.Now.Date &&
-            o.TimeStart >= DateTime.TimeOfDay &&
-            o.Status == StatusOrder.Выполняется);
+            var orde = orderService.Orders?.Where(o =>
+                o.DateStart.Value.Date == DateTime.Now.Date &&
+                o.TimeStart >= DateTime.TimeOfDay &&
+                o.Status == StatusOrder.Выполняется).OrderBy(o => o.TimeStart).Take(3).ToList();
+            Orders = orde is null ? new() : new(orde);
         }
 
         public NavigationViewModel(ICountsService countsService, IOrderService orderService)

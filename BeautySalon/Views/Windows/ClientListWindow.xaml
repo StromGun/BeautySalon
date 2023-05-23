@@ -6,7 +6,7 @@
         xmlns:uc="clr-namespace:BeautySalon.Resources.UserControls"
         xmlns:local="clr-namespace:BeautySalon.Views.Windows"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
         Title="{Binding Title}" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -56,5 +56,7 @@
             <Button Content="Выбрать" Style="{StaticResource BtnCommon}" Command="{StaticResource DialogResultCommand}" CommandParameter="True"/>
             <Button Content="Отмена" Style="{StaticResource BtnCommon}" Command="{StaticResource DialogResultCommand}" CommandParameter="False"/>
         </WrapPanel>
+        <Button Grid.Row="2" Content="Новый клиент" Style="{StaticResource BtnCommon}" Command="{StaticResource AddClientCommand}"
+                VerticalAlignment="Center" HorizontalAlignment="Left"/>
     </Grid>
 </Window>

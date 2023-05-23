@@ -63,29 +63,46 @@
 
             <StackPanel Grid.Column="1">
                 <StackPanel>
-                    <GroupBox Header="Ближайшая запись" DataContext="{Binding Order}" Margin="10" BorderThickness="0.5">
-                        <StackPanel Margin="3">
-                            <TextBlock FontSize="16">
-                                <TextBlock.Text>
-                                    <MultiBinding StringFormat="{}{0:hh\:mm} - {1:hh\:mm}">
-                                        <Binding Path="TimeStart"/>
-                                        <Binding Path="TimeEnd"/>
-                                    </MultiBinding>
-                                </TextBlock.Text>
-                            </TextBlock>
+                    <GroupBox Header="Ближайшие записи" Margin="10" BorderThickness="0.5">
 
-                            <TextBlock>
-                                <TextBlock.Text>
-                                    <MultiBinding StringFormat="{}{0} {1} {2}">
-                                        <Binding Path="Client.LastName"/>
-                                        <Binding Path="Client.FirstName"/>
-                                        <Binding Path="Client.Patronymic"/>
-                                    </MultiBinding>
-                                </TextBlock.Text>
-                            </TextBlock>
+                        <ItemsControl ItemsSource="{Binding OrdersView}">
+                            
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Margin="5" ItemWidth="120"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="3">
+                                        <TextBlock FontSize="16">
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0:hh\:mm} - {1:hh\:mm}">
+                                                    <Binding Path="TimeStart"/>
+                                                    <Binding Path="TimeEnd"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
 
-                            <TextBlock Text="{Binding TotalPrice, StringFormat={}{0:C2}, ConverterCulture=ru-RU}"/>
-                        </StackPanel>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} {1} {2}">
+                                                    <Binding Path="Client.LastName"/>
+                                                    <Binding Path="Client.FirstName"/>
+                                                    <Binding Path="Client.Patronymic"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+
+                                        <TextBlock Text="{Binding TotalPrice, StringFormat={}{0:C2}, ConverterCulture=ru-RU}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        
+                        
+                        
                     </GroupBox>
                 </StackPanel>
                 

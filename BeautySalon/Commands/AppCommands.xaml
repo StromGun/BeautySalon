@@ -10,6 +10,6 @@
 
     <cmd:EditOrderCommand x:Key="EditOrderCommand"/>
     <cmd:AddOrderCommand x:Key="AddOrderCommand"/>
-    <cmd:RemoveClientCommand x:Key="RemoveOrderCommand"/>
+    <cmd:RemoveOrderCommand x:Key="RemoveOrderCommand"/>
 
 </ResourceDictionary>

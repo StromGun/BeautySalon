@@ -10,6 +10,9 @@
     <Brush x:Key="ColorBackground">#dcf5f0</Brush>
     <Brush x:Key="ColorAccentForeground">#bcdefb</Brush>
     
+    <Color x:Key="ColorCommonBrush">#263154</Color>
+    <Color x:Key="ColorForegroundBrush">#ffffff</Color>
+    
     <LinearGradientBrush x:Key="GradientCommon" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="#F48BDC" Offset="0"/>
         <GradientStop Color="#C7FCEC" Offset="1"/>

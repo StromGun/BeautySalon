@@ -26,6 +26,9 @@ namespace BeautySalon.ViewModels
         private Order? selectedOrder;
         public Order? SelectedOrder { get => selectedOrder; set => Set(ref selectedOrder, value); }
 
+        private Order? selectedOrderDG;
+        public Order? SelectedOrderDG { get => selectedOrderDG; set => Set(ref selectedOrderDG, value); }
+
         #region Statuses
         private bool statusIsPerformed;
         public bool StatusIsPerformed { get => statusIsPerformed; set { Set(ref statusIsPerformed, value); orderViewSource?.View.Refresh(); } }

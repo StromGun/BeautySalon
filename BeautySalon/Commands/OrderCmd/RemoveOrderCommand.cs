@@ -6,7 +6,7 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 
-namespace BeautySalon.Commands.OrderCmd
+namespace BeautySalon.Commands
 {
     internal class RemoveOrderCommand : ICommand
     {

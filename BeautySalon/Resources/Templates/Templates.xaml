@@ -7,6 +7,8 @@
         <ResourceDictionary Source="/Resources/Templates/Controls/DataGridTemplates.xaml"/>
         <ResourceDictionary Source="/Resources/Templates/Controls/ScrollViewerTemplates.xaml"/>
         <ResourceDictionary Source="/Resources/Templates/Controls/ComboBoxTemplates.xaml"/>
+        <ResourceDictionary Source="/Resources/Templates/Controls/MenuItemHeadTemplates.xaml"/>
+        <ResourceDictionary Source="/Resources/Templates/Controls/MenuItemTemplates.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 

@@ -14,65 +14,7 @@
     <Grid>
 
         <TabControl Background="Transparent">
-            <TabItem Header="Все записи">
-                <DataGrid ItemsSource="{Binding Orders}"
-                          SelectedItem="{Binding SelectedOrderDG}" Style="{StaticResource BasiGrid2}"
-                          Margin="0 5 5 5" AutoGenerateColumns="False" IsReadOnly="True">
-
-                    <DataGrid.Resources>
-                        <ContextMenu  x:Key="CtxMenu">
-                            <MenuItem Header="Редактировать" 
-                      Command="{StaticResource EditOrderCommand}" 
-                      CommandParameter="{Binding DataContext.SelectedOrderDG, 
-                            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
-                            <MenuItem Header="Удалить"
-                                  Command="{StaticResource RemoveOrderCommand}"
-                                  CommandParameter="{Binding DataContext.SelectedOrderDG, 
-                            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-                        </ContextMenu>
-                    </DataGrid.Resources>
-
-                    <DataGrid.RowStyle>
-                        <Style TargetType="DataGridRow">
-                            <Setter Property="ContextMenu" Value="{StaticResource CtxMenu}"/>
-                        </Style>
-                    </DataGrid.RowStyle>
-
-
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Binding="{Binding ID}" Width="auto"/>
-                        <DataGridTextColumn Header="Наименование" Binding="{Binding OrderName}" Width="auto"/>
-                        <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="*"/>
-                        <DataGridTextColumn Header="Дата" Binding="{Binding DateStart, StringFormat={}{0:d}, ConverterCulture=ru-RU}" Width="*"/>
-                        <DataGridTextColumn Header="Время начала" Binding="{Binding TimeStart}" Width="*"/>
-                        <DataGridTextColumn Header="Время окончания" Binding="{Binding TimeEnd}" Width="*"/>
-                        <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Style="{StaticResource ButtonStyle1}"  Width="20" Cursor="Hand"
-                                            Command="{StaticResource EditOrderCommand}" 
-                                            CommandParameter="{Binding DataContext.SelectedOrderDG, 
-                                                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" >
-                                        <Image Source="/Resources/Images/edit_note.png"/>
-                                    </Button>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Style="{StaticResource ButtonStyle1}" Width="20" Cursor="Hand"
-                                            Command="{StaticResource RemoveOrderCommand}"
-                                            CommandParameter="{Binding DataContext.SelectedOrderDG, 
-                                    RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
-                                        <Image Source="/Resources/Images/close.png"/>
-                                    </Button>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </TabItem>
+            
 
             <!--//     //-->
             <TabItem Header="Записи на определенный день">
@@ -166,7 +108,7 @@
                                                 <ItemsControl ItemsSource="{Binding Path=OrderServices}">
                                                     <ItemsControl.ItemTemplate>
                                                         <DataTemplate>
-                                                            <TextBlock>
+                                                            <TextBlock TextWrapping="Wrap">
                                                                 <TextBlock.Text>
                                                                     <MultiBinding StringFormat="{}{0} {1:C2} Кол-во: {2}" ConverterCulture="ru-RU">
                                                                         <Binding Path="Service.Name"/>
@@ -208,6 +150,69 @@
                     </Button>
 
                 </Grid>
+            </TabItem>
+
+
+            <!--//     //-->
+            <!--//     //-->
+            <TabItem Header="Все записи">
+                <DataGrid ItemsSource="{Binding Orders}"
+                          SelectedItem="{Binding SelectedOrderDG}" Style="{StaticResource BasiGrid2}"
+                          Margin="0 5 5 5" AutoGenerateColumns="False" IsReadOnly="True">
+
+                    <DataGrid.Resources>
+                        <ContextMenu  x:Key="CtxMenu">
+                            <MenuItem Header="Редактировать" 
+                      Command="{StaticResource EditOrderCommand}" 
+                      CommandParameter="{Binding DataContext.SelectedOrderDG, 
+                            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
+                            <MenuItem Header="Удалить"
+                                  Command="{StaticResource RemoveOrderCommand}"
+                                  CommandParameter="{Binding DataContext.SelectedOrderDG, 
+                            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+                        </ContextMenu>
+                    </DataGrid.Resources>
+
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="ContextMenu" Value="{StaticResource CtxMenu}"/>
+                        </Style>
+                    </DataGrid.RowStyle>
+
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding ID}" Width="auto"/>
+                        <DataGridTextColumn Header="Наименование" Binding="{Binding OrderName}" Width="auto"/>
+                        <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="*"/>
+                        <DataGridTextColumn Header="Дата" Binding="{Binding DateStart, StringFormat={}{0:d}, ConverterCulture=ru-RU}" Width="*"/>
+                        <DataGridTextColumn Header="Время начала" Binding="{Binding TimeStart}" Width="*"/>
+                        <DataGridTextColumn Header="Время окончания" Binding="{Binding TimeEnd}" Width="*"/>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource ButtonStyle1}"  Width="20" Cursor="Hand"
+                                            Command="{StaticResource EditOrderCommand}" 
+                                            CommandParameter="{Binding DataContext.SelectedOrderDG, 
+                                                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" >
+                                        <Image Source="/Resources/Images/edit_note.png"/>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource ButtonStyle1}" Width="20" Cursor="Hand"
+                                            Command="{StaticResource RemoveOrderCommand}"
+                                            CommandParameter="{Binding DataContext.SelectedOrderDG, 
+                                    RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
+                                        <Image Source="/Resources/Images/close.png"/>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
             </TabItem>
         </TabControl>
     </Grid>

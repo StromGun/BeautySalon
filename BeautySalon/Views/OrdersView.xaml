@@ -17,7 +17,7 @@
             
 
             <!--//     //-->
-            <TabItem Header="Записи на определенный день">
+            <TabItem Style="{StaticResource TabItemStyle1}" Foreground="{StaticResource ColorCommon}" Header="Записи на определенный день">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" MinWidth="600"/>
@@ -155,7 +155,7 @@
 
             <!--//     //-->
             <!--//     //-->
-            <TabItem Header="Все записи">
+            <TabItem Header="Все записи" Style="{StaticResource TabItemStyle1}" Foreground="{StaticResource ColorCommon}">
                 <DataGrid ItemsSource="{Binding Orders}"
                           SelectedItem="{Binding SelectedOrderDG}" Style="{StaticResource BasiGrid2}"
                           Margin="0 5 5 5" AutoGenerateColumns="False" IsReadOnly="True">
@@ -176,6 +176,7 @@
                     <DataGrid.RowStyle>
                         <Style TargetType="DataGridRow">
                             <Setter Property="ContextMenu" Value="{StaticResource CtxMenu}"/>
+                            <Setter Property="Background" Value="{Binding Status, Converter={con:StatusToBackgroundColor}}"/>
                         </Style>
                     </DataGrid.RowStyle>
 

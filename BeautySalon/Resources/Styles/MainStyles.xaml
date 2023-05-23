@@ -12,6 +12,7 @@
     
     <Color x:Key="ColorCommonBrush">#263154</Color>
     <Color x:Key="ColorForegroundBrush">#ffffff</Color>
+    <Color x:Key="ColorAccentForegroundBrush">#bcdefb</Color>
     
     <LinearGradientBrush x:Key="GradientCommon" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="#F48BDC" Offset="0"/>

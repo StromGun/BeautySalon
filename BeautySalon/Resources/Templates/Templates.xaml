@@ -9,6 +9,7 @@
         <ResourceDictionary Source="/Resources/Templates/Controls/ComboBoxTemplates.xaml"/>
         <ResourceDictionary Source="/Resources/Templates/Controls/MenuItemHeadTemplates.xaml"/>
         <ResourceDictionary Source="/Resources/Templates/Controls/MenuItemTemplates.xaml"/>
+        <ResourceDictionary Source="/Resources/Templates/Controls/TabHeaderTemplates.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 

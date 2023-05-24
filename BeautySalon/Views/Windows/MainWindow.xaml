@@ -17,7 +17,7 @@
             <RowDefinition Height="0.1*" MaxHeight="50"/>
         </Grid.RowDefinitions>
 
-        <Image Grid.Row="1" Source="/DSC_0414se.png" Width="300" />
+        <Image Grid.Row="1" Source="/DSC_0414se_1_1.png"  />
 
         <Grid Background="{StaticResource ColorCommon}" Margin="0">
             <Menu Background="{StaticResource ColorCommon}" FontSize="14" 
@@ -35,6 +35,9 @@
 
         <ContentControl Grid.Row="1" Name="FrameMain" Content="{Binding CurrentViewModel}"/>
 
-        <Grid Grid.Row="3" Background="{StaticResource ColorCommon}"/>
+        <Grid Grid.Row="3" Background="{StaticResource ColorCommon}">
+            <TextBlock Text="{Binding DateTime, StringFormat={}{0:HH:mm:ss | dd MMMM yyyy}, ConverterCulture=ru-RU}" 
+                       Foreground="{StaticResource ColorAccentForeground}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
     </Grid>
 </Window>

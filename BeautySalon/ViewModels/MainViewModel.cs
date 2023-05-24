@@ -4,6 +4,7 @@ using BeautySalon.Services.Interfaces;
 using BeautySalon.ViewModels.Base;
 using System;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace BeautySalon.ViewModels
 {
@@ -18,6 +19,9 @@ namespace BeautySalon.ViewModels
 
         private ViewModel? currentViewModel;
         public ViewModel? CurrentViewModel { get => currentViewModel; set => Set(ref currentViewModel, value); }
+
+        private DateTime datetime;
+        public DateTime DateTime { get => datetime; set => Set(ref datetime, value); }
 
         private User? user;
         public User? User { get => user; set => Set(ref user, value); }
@@ -68,7 +72,26 @@ namespace BeautySalon.ViewModels
         {
             CurrentViewModel = authorizationViewModel;
             User = null;
-        } 
+        }
+        #endregion
+
+
+
+        #region Timer
+        private void Timer()
+        {
+            DispatcherTimer timer = new(DispatcherPriority.Render)
+            {
+                Interval = TimeSpan.FromSeconds(1),
+            };
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object? sender, EventArgs e)
+        {
+            DateTime = DateTime.Now;
+        }
         #endregion
 
         private void ChangeViewModel(ViewModel viewModel)
@@ -91,7 +114,7 @@ namespace BeautySalon.ViewModels
             this.servicesListViewModel = servicesListViewModel;
             this.userDialog = userDialog;
 
-
+            Timer();
             CurrentViewModel = this.authorizationViewModel;
 
 

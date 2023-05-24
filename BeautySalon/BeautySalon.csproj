@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="DSC_0414se.png" />
+    <None Remove="DSC_0414se_1_1.png" />
     <None Remove="Resources\Images\2_.png" />
     <None Remove="Resources\Images\add.png" />
     <None Remove="Resources\Images\arrow_back.png" />
@@ -36,6 +37,7 @@
 
   <ItemGroup>
     <Resource Include="DSC_0414se.png" />
+    <Resource Include="DSC_0414se_1_1.png" />
     <Resource Include="Resources\Images\2_.png" />
     <Resource Include="Resources\Images\add.png" />
     <Resource Include="Resources\Images\arrow_back.png" />

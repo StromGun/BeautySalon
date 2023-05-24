@@ -21,9 +21,6 @@ namespace BeautySalon.ViewModels
         private string _title = "Navigation";
         public string Title { get => _title; set => Set(ref _title,value); }
 
-        private DateTime datetime;
-        public DateTime DateTime { get => datetime; set => Set(ref datetime, value); }
-
         private int newClients;
         public int NewClientsCount { get => newClients; set => Set(ref newClients, value); }
 
@@ -54,23 +51,7 @@ namespace BeautySalon.ViewModels
         }
         #endregion
 
-        #region Timer
-        private void Timer()
-        {
-            DispatcherTimer timer = new(DispatcherPriority.Render)
-            {
-                Interval = TimeSpan.FromSeconds(1),
-            };
-            timer.Tick += Timer_Tick;
-            timer.Start();
-        }
-
-        private void Timer_Tick(object? sender, EventArgs e)
-        {
-            DateTime = DateTime.Now;
-        } 
-        #endregion
-
+        
         private RelayCommand? loaded;
         public RelayCommand? Loaded => loaded ??= new(async obj => await Load());
         private async Task Load()
@@ -80,8 +61,8 @@ namespace BeautySalon.ViewModels
 
             var orde = orderService.Orders?.Where(o =>
                 o.DateStart.Value.Date == DateTime.Now.Date &&
-                o.TimeStart >= DateTime.TimeOfDay &&
-                o.Status == StatusOrder.Выполняется).OrderBy(o => o.TimeStart).Take(3).ToList();
+                o.TimeStart >= DateTime.Now.TimeOfDay &&
+                o.Status == StatusOrder.Выполняется).OrderBy(o => o.TimeStart).Take(6).ToList();
             Orders = orde is null ? new() : new(orde);
         }
 
@@ -89,7 +70,7 @@ namespace BeautySalon.ViewModels
         {
             this.countsService = countsService;
             this.orderService = orderService;
-            Timer();
+
         }
     }
 }

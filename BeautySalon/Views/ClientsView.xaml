@@ -57,7 +57,7 @@
         </GroupBox>
          
         <DataGrid Style="{StaticResource BasiGrid2}" Grid.Row="1" ItemsSource="{Binding ClientsView}" Margin="5 0" Language="ru-RU" SelectionMode="Single" 
-                  AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedClient}">
+                  AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedClient}" Background="Transparent" BorderThickness="0">
         
             <DataGrid.InputBindings>
                 <MouseBinding Gesture="LeftDoubleClick" 

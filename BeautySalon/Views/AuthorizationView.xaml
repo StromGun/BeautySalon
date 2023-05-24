@@ -12,9 +12,13 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <WrapPanel Margin="5">
+            <WrapPanel Margin="5 40 5 5">
                 <TextBlock Text="Логин" Width="50" Margin="5 0"/>
-                <TextBox Text="{Binding Login}" Width="90"/>
+                <TextBox Text="{Binding Login}" Width="90">
+                    <TextBox.Background>
+                        <SolidColorBrush Opacity="0.9" Color="White"/>
+                    </TextBox.Background>
+                </TextBox>
             </WrapPanel>
             <WrapPanel Margin="5">
                 <TextBlock Text="Пароль" Width="50" Margin="5 0"/>

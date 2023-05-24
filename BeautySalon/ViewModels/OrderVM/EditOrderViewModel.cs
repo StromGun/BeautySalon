@@ -92,9 +92,7 @@ namespace BeautySalon.ViewModels
         private void RemoveService()
         {
             OrderServiceBindingList!.Remove(SelectedOrderService!);
-        }
-
-        
+        }     
         #endregion
 
         #region SelectClient - Command
@@ -102,16 +100,15 @@ namespace BeautySalon.ViewModels
         public RelayCommand? SelectClientCmd => selectClient ??= new(obj => SelectClient(), obj => Order!.Client == null);
         private void SelectClient()
         {
-
             if (userDialog.OpenClientList(ref client!) != true) return;
 
             Order!.Client = client;
-
         } 
         #endregion
 
         private void OrderServiceBindingList_ListChanged(object? sender, ListChangedEventArgs e)
         {
+
             if (e.ListChangedType == ListChangedType.ItemChanged)
                 UpdateOrderServiceData();
             if (e.ListChangedType == ListChangedType.ItemAdded)

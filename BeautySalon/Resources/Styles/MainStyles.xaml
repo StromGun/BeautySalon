@@ -84,7 +84,15 @@
     </Style>
 
 
-
+    <Style TargetType="GroupBox" x:Key="NavGBox">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" FontWeight="Bold" Foreground="{StaticResource ColorCommon}" FontSize="16"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
 

@@ -30,8 +30,8 @@
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock FontSize="18" FontWeight="Medium"
-                Text="{Binding SelectedDate, StringFormat={}{0:dd MMMM yyyy}г, ConverterCulture=ru-RU}" 
+                    <TextBlock FontSize="18" FontWeight="Medium" Foreground="Black"
+                Text="{Binding SelectedDate, StringFormat={}Записи за {0:dd MMMM yyyy}г, ConverterCulture=ru-RU}" 
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                     <ListView  SelectedItem="{Binding SelectedOrder}" SelectionMode="Single" Background="Transparent" BorderThickness="0"

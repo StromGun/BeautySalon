@@ -42,9 +42,9 @@
                 <ColumnDefinition Width="*" MinWidth="500"/>
             </Grid.ColumnDefinitions>
 
-            <Border BorderThickness="0 0 1 0" Margin="5 5 0 5" BorderBrush="Black">
+            <Border BorderThickness="0 0 1 0" Margin="5 5 0 5" BorderBrush="Black" >
                 <TreeView>
-                    <TreeViewItem Header="Все категории" ItemsSource="{Binding ServiceTypes}" DisplayMemberPath="Name">
+                    <TreeViewItem Header="Все категории" ItemsSource="{Binding ServiceTypes}" IsExpanded="True" DisplayMemberPath="Name">
                     </TreeViewItem>
 
                     <TreeView.Resources>

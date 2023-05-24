@@ -86,8 +86,8 @@
                                 <ComboBox Style="{DynamicResource ComboBoxStyle1}" BorderThickness="0 0 0 0.5" VerticalContentAlignment="Center"
                                           ItemsSource="{Binding Source={StaticResource StatusEnum}}" SelectedItem="{Binding Order.Status}"/>
                             </StackPanel>
-                            
-                            <TextBlock FontWeight="SemiBold">Итого: <Run FontWeight="Regular" Text="{Binding Order.TotalPrice}"/></TextBlock>
+
+                            <TextBlock FontWeight="SemiBold">Итого: <Run FontWeight="Regular" Text="{Binding Order.TotalPrice, StringFormat={}{0:C2}, ConverterCulture=ru-RU}"/></TextBlock>
                         </StackPanel>
                         
                     </Grid>
@@ -113,8 +113,8 @@
                         <DataGridTextColumn Header="Длительность" Binding="{Binding Path=Service.Time}" IsReadOnly="True"/>
                         <DataGridTextColumn Header="Количество" Binding="{Binding Path=Amount}"/>
                     <DataGridTextColumn Header="Скидка" Binding="{Binding Path=Discount, StringFormat={}{0:P1}}"/>
-                    <DataGridTextColumn Header="Цена" Binding="{Binding Path=Service.Price}"/>
-                    <DataGridTextColumn Header="Итого" Binding="{Binding Path=TotalPrice}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Path=Service.Price, StringFormat={}{0:C2}, ConverterCulture=ru-RU}"/>
+                        <DataGridTextColumn Header="Итого" Binding="{Binding Path=TotalPrice, StringFormat={}{0:C2}, ConverterCulture=ru-RU}" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
 

@@ -17,18 +17,19 @@
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+
 
             <StackPanel>
                 <GroupBox Style="{StaticResource NavGBox}" Header="Статистика за сегодня" Margin="10" BorderThickness="0.5">
                     <StackPanel Margin="3">
                         <TextBlock Style="{StaticResource TBlockCommon}">Количество записей: 
-                            <Run Text="{Binding TodayOrderCount}"/></TextBlock>
+                                    <Run Text="{Binding TodayOrderCount}"/></TextBlock>
                         <TextBlock Style="{StaticResource TBlockCommon}">Количество новых клиентов: 
-                            <Run Text="{Binding NewClientsCount}"/></TextBlock>
+                                    <Run Text="{Binding NewClientsCount}"/></TextBlock>
                         <TextBlock Text=""/>
                     </StackPanel>
                 </GroupBox>

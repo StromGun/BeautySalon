@@ -13,7 +13,7 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <WrapPanel ItemWidth="120" >
                 <TextBlock Text="Наименование"/>
-                <TextBox Text="{Binding ServiceType.Name}"/>
+                <TextBox Text="{Binding ServiceType.Name}" ToolTip="{StaticResource RequiredField}"/>
             </WrapPanel>
             <WrapPanel Margin="0 5" HorizontalAlignment="Right">
                 <Button Content="Сохранить" Style="{StaticResource BtnCommon}" Command="{StaticResource DialogResultCommand}" CommandParameter="True"/>

@@ -14,7 +14,7 @@
             
             <WrapPanel Margin="2" ItemWidth="120" >
                 <TextBlock Text="Наименование"/>
-                <TextBox Text="{Binding Service.Name}"/>
+                <TextBox Text="{Binding Service.Name}" ToolTip="{StaticResource RequiredField}"/>
             </WrapPanel>
             
             <WrapPanel Margin="2" ItemWidth="120" >
@@ -24,12 +24,12 @@
 
             <WrapPanel Margin="2" ItemWidth="120" >
                 <TextBlock Text="Цена"/>
-                <TextBox Text="{Binding Service.Price}"/>
+                <TextBox Text="{Binding Service.Price}" ToolTip="{StaticResource RequiredField}"/>
             </WrapPanel>
 
             <WrapPanel Margin="2" ItemWidth="120" >
                 <TextBlock Text="Длительность"/>
-                <TextBox Text="{Binding Service.Time}"/>
+                <TextBox Text="{Binding Service.Time}" ToolTip="{StaticResource RequiredField}"/>
             </WrapPanel>
             
             

@@ -26,7 +26,7 @@ namespace BeautySalon.ViewModels
         public BindingList<OrderService>? OrderServiceBindingList { get => orderServiceBindingList; set => Set(ref orderServiceBindingList, value); }
 
         private Order? order;
-        public Order? Order { get => order; set => Set(ref order,value); }
+        public Order? Order { get => order; set { Set(ref order, value); } }
 
         private Client? client = new();
 

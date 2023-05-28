@@ -57,7 +57,7 @@
 
             <Grid Grid.Column="2">
                 <StackPanel>
-                    <GroupBox Style="{StaticResource NavGBox}" Header="Ближайшие записи" Margin="10" BorderThickness="0.5">
+                    <GroupBox Style="{StaticResource NavGBox}" Header="Записи на сегодня" Margin="10" BorderThickness="0.5">
 
                         <ItemsControl ItemsSource="{Binding Orders}">
                             

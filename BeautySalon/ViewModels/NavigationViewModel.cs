@@ -27,6 +27,18 @@ namespace BeautySalon.ViewModels
         private int todayOrderCount;
         public int TodayOrderCount { get => todayOrderCount; set => Set(ref todayOrderCount, value); }
 
+        private int newWeeklyClients;
+        public int NewWeeklyClientsCount { get => newWeeklyClients; set => Set(ref newWeeklyClients, value); }
+
+        private int weeklyOrderCount;
+        public int WeeklyOrderCount { get => weeklyOrderCount; set => Set(ref weeklyOrderCount, value); }
+
+        private int newMonthlyClientsCount;
+        public int NewMonthlyClientsCount { get => newMonthlyClientsCount; set => Set(ref newMonthlyClientsCount, value); }
+
+        private int monthlyOrdersCount;
+        public int MonthlyOrdersCount { get => monthlyOrdersCount; set => Set(ref monthlyOrdersCount, value); }
+
         #region Orders
         private ObservableCollection<Order>? orders;
         private CollectionViewSource? orderViewSource;
@@ -54,10 +66,16 @@ namespace BeautySalon.ViewModels
         
         private RelayCommand? loaded;
         public RelayCommand? Loaded => loaded ??= new(async obj => await Load());
+
+
         private async Task Load()
         {     
             NewClientsCount = await countsService.GetCountNewClient();
             TodayOrderCount = await countsService.GetCountTodayOrders();
+            NewWeeklyClientsCount = await countsService.GetWeeklyNewClient();
+            WeeklyOrderCount = await countsService.GetWeeklyOrders();
+            NewMonthlyClientsCount = await countsService.GetMonthlyNewClient();
+            MonthlyOrdersCount = await countsService.GetMonthlyOrders();
 
             var orde = orderService.Orders?.Where(o =>
                 o.DateStart.Value.Date == DateTime.Now.Date &&

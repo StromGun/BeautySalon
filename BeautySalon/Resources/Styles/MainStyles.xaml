@@ -35,7 +35,8 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="BorderThickness" Value="0 0 0 1"/>
-        <Setter Property="Height" Value="27"/>
+        <Setter Property="MinHeight" Value="27"/>
+        <Setter Property="MinWidth" Value="100"/>
         <Setter Property="DefaultTextBrush" Value="Gray"/>
     </Style>
 

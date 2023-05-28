@@ -32,6 +32,31 @@ namespace BeautySalon.Services
         }
 
 
+        public async Task<int> GetWeeklyNewClient()
+        {
+            return await db.Clients
+                .Where(c => c.DateAdded.Date >= DateTime.Now.Date.AddDays(-7)
+                && c.DateAdded.Date <= DateTime.Now.Date).CountAsync();
+        }
+        public async Task<int> GetWeeklyOrders()
+        {
+            return await db.Orders.Where(c => c.DateStart >= DateTime.Now.Date.AddDays(-7)
+                && c.DateStart <= DateTime.Now.Date).CountAsync();
+        }
+
+
+        public async Task<int> GetMonthlyNewClient()
+        {
+            return await db.Clients
+                .Where(c => c.DateAdded.Date >= DateTime.Now.Date.AddDays(-30)
+                && c.DateAdded.Date <= DateTime.Now.Date).CountAsync();
+        }
+        public async Task<int> GetMonthlyOrders()
+        {
+            return await db.Orders.Where(c => c.DateStart >= DateTime.Now.Date.AddDays(-30)
+                && c.DateStart <= DateTime.Now.Date).CountAsync();
+        }
+
         #region INPC
 
         public event PropertyChangedEventHandler? PropertyChanged;

@@ -6,5 +6,11 @@ namespace BeautySalon.Services.Interfaces
     {
         Task<int> GetCountNewClient();
         Task<int> GetCountTodayOrders();
+
+        Task<int> GetWeeklyNewClient();
+        Task<int> GetWeeklyOrders();
+
+        Task<int> GetMonthlyNewClient();
+        Task<int> GetMonthlyOrders();
     }
 }

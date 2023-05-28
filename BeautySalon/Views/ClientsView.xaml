@@ -44,7 +44,7 @@
                     </Button>
                 </StackPanel>
             </GroupBox.Header>
-            <WrapPanel ItemWidth="100">
+            <WrapPanel>
                 <uc:WatermarkTextBox WaterMarkText="Фамилия" Style="{StaticResource WTboxCommon}" Text="{Binding LastName, Mode=TwoWay}" Margin="2" />
                 <uc:WatermarkTextBox WaterMarkText="Имя" Style="{StaticResource WTboxCommon}" Text="{Binding FirstName, Mode=TwoWay}" Margin="2"/>
                 <uc:WatermarkTextBox WaterMarkText="Отчество" Style="{StaticResource WTboxCommon}" Text="{Binding Patronymic, Mode=TwoWay}" Margin="2"/>

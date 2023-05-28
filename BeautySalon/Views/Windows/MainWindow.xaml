@@ -8,9 +8,9 @@
         xmlns:local="clr-namespace:BeautySalon"
         d:DataContext="{d:DesignInstance {x:Type vm:MainViewModel}}"
         mc:Ignorable="d"
-        FontSize="14" WindowStartupLocation="CenterScreen"
+        FontSize="16" WindowStartupLocation="CenterScreen" 
         Title="{Binding Title}" MinHeight="600" MinWidth="1024">
-    
+
     <Grid Background="{StaticResource GradientReflect}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" MaxHeight="30"/>
@@ -18,10 +18,10 @@
             <RowDefinition Height="0.1*" MaxHeight="50"/>
         </Grid.RowDefinitions>
 
-        <Image Grid.Row="1" Source="/DSC_0414se_1_1.png" />
+        <Image Grid.Row="1" Margin="25 50 25 0" Source="/DSC_0414se_1_1.png" />
 
         <Grid Background="{StaticResource ColorCommon}" Margin="0">
-            <Menu Background="{StaticResource ColorCommon}" FontSize="14" 
+            <Menu Background="{StaticResource ColorCommon}" FontSize="16" 
                   Foreground="{StaticResource ColorForeground}" Visibility="{Binding User, Converter={cv:UserToVisibility}}">
                 <MenuItem Style="{DynamicResource MenuItemStyle}" Header="Главная" Command="{Binding OpenNavigationCmd}"/>
                 <MenuItem Header="Клиенты" Style="{DynamicResource MenuItemHeadStyle}" Command="{Binding OpenClientViewCmd}"/>
@@ -29,7 +29,7 @@
                 <MenuItem Header="Услуги" Style="{DynamicResource MenuItemHeadStyle}" Command="{Binding OpenServiceViewCmd}"/>
                 <MenuItem Header="О программе" Style="{DynamicResource MenuItemHeadStyle}" Command="{Binding OpenAboutBoxCmd}"/>
             </Menu>
-            <Button Content="Выйти" Command="{Binding LogoutCmd}"
+            <Button Content="Выйти" Command="{Binding LogoutCmd}" FontSize="16"
                     HorizontalAlignment="Right" Background="Transparent" Margin="5 0" Visibility="{Binding User, Converter={cv:UserToVisibility}}"
                     BorderThickness="0" Foreground="{StaticResource ColorForeground}" VerticalAlignment="Top"/>
         </Grid>
@@ -37,7 +37,7 @@
         <ContentControl Grid.Row="1" Name="FrameMain" Content="{Binding CurrentViewModel}"/>
 
         <Grid Grid.Row="3" Background="{StaticResource ColorCommon}">
-            <TextBlock Text="{Binding DateTime, StringFormat={}{0:HH:mm:ss | dd MMMM yyyy}, ConverterCulture=ru-RU}" 
+            <TextBlock Text="{Binding DateTime, StringFormat={}{0:HH:mm:ss | dd MMMM yyyy}, ConverterCulture=ru-RU}" FontSize="20"
                        Foreground="{StaticResource ColorAccentForeground}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
     </Grid>

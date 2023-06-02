@@ -12,7 +12,7 @@
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type vm:EditOrderViewModel}}"
         ShowInTaskbar="False" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize"
-        Title="{Binding Path=Order.OrderName, FallbackValue=Новый заказ}" FontSize="14"
+        Title="{Binding Path=Order.OrderName, FallbackValue=Новый заказ}" FontSize="14" Icon="/logo.png"
         Height="600" Width="900">
     <Window.Resources>
         <ObjectDataProvider x:Key="StatusEnum"

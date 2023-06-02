@@ -11,7 +11,7 @@
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type vm:EditClientViewModel}}"
         Title="Редактирование клиента" Height="450" Width="900" 
-        FontSize="14" ShowInTaskbar="False"
+        FontSize="14" ShowInTaskbar="False" Icon="/logo.png"
         WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize">
     <Window.Resources>
         <ObjectDataProvider x:Key="GenderEnum" MethodName="GetValues" ObjectType="{x:Type system:Enum}">

@@ -10,7 +10,7 @@
       xmlns:local="clr-namespace:BeautySalon.Views" 
              mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance {x:Type vm:ServicesListViewModel}}"
-      d:DesignHeight="450" d:DesignWidth="800">
+      d:DesignHeight="600" d:DesignWidth="1024">
     
     <Grid>
         <Grid.RowDefinitions>

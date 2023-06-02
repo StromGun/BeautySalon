@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BeautySalon.Views.Windows"
         mc:Ignorable="d" 
         ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
-        Title="AboutWindow" Height="450" Width="800" ResizeMode="CanMinimize">
+        Title="AboutWindow" Height="450" Width="800" ResizeMode="CanMinimize" Icon="/logo.png">
     <ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Stretch">
         <StackPanel >
 

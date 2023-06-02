@@ -9,7 +9,7 @@
         d:DataContext="{d:DesignInstance {x:Type vm:MainViewModel}}"
         mc:Ignorable="d"
         FontSize="16" WindowStartupLocation="CenterScreen" 
-        Title="{Binding Title}" MinHeight="600" MinWidth="1024">
+        Title="{Binding Title}" MinHeight="600" MinWidth="1024" Icon="/logo.png">
 
     <Grid Background="{StaticResource GradientReflect}">
         <Grid.RowDefinitions>

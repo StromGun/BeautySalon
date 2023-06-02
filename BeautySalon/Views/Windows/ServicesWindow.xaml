@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type vm:ServicesViewModel}}"
         FontSize="14" ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
-        Title="ServicesWindow" Height="450" Width="800">
+        Title="Выбор услуг" Height="450" Width="800" Icon="/logo.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

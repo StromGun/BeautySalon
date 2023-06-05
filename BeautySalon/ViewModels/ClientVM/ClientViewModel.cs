@@ -144,7 +144,5 @@ namespace BeautySalon.ViewModels
         {
             this.clientService = clientService;
         }
-
-
     }
 }
